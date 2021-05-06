@@ -1,0 +1,108 @@
+<div class="cabecera">
+    <app-cabecera-interna></app-cabecera-interna>
+  </div>
+<div class="containerPage">
+    <section class="box-reserva-finalizada container-fluid">
+        <div *ngIf="!preloader" class="content-final">
+          <div class="row">
+      
+            <div class="col-12 col-lg-3 padding">
+              <div class="box-header">
+                <p><span class="strong">Tu cita ha sido reservada</span></p>
+                <div class="vector-orange">
+                  <div class="circle"></div>
+                </div>
+                <div class="vector-orange-horizontal">
+                  <div class="circle"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-lg-7 offset-lg-2">
+              <ul>
+                <li>
+                    <div class="content">
+                      <h3>Sede:</h3>
+                      <p>Aviva - Los Olivos</p>
+                      <img src="assets/img/aviva.svg" alt="">
+                    </div>
+                </li>
+                <li>
+                  <div class="icon">
+                    <img width="35" src="assets/reserva-finalizada/calendario.svg" alt="">
+                  </div>
+                  <div class="content">
+                    <h3>Día:</h3>
+                    <p>{{dataService.r_fecha}}</p>
+                  </div>
+                </li>
+                <li>
+                  <div class="icon">
+                    <img width="35" src="assets/reserva-finalizada/reloj.svg" alt="">
+                  </div>
+                  <div class="content">
+                    <h3>Hora:</h3>
+                    <p>{{dataService.hour}}</p>
+                  </div>
+                </li>
+                <li>
+                  <div class="icon">
+                    <img width="35" src="assets/reserva-finalizada/especialista.svg" alt="">
+                  </div>
+                  <div class="content">
+                    <h3>Especialista:</h3>
+                    <p>Dr(a). {{ dataService.professional.fullName}}</p>
+                  </div>
+                </li>
+              </ul>
+              <p>Te enviaremos un correo de confirmación. También puedes obtener tu constancia por medio de:</p>
+          <!--     <ul class="social">
+                <li class="whatssap">
+                  <a [href]="LinkWhatssap">
+                    <img width="80" src="assets/reserva-finalizada/whatsapp.svg" alt="">
+                    <h5>WHATSSAP</h5>
+                  </a>
+                </li>
+                <li *ngIf="urlData[0].href">
+                  <a href="{{urlData[0].href}}">
+                    <img width="80" src="assets/reserva-finalizada/pdf.svg" alt="">
+                    <h5>DESCARGAR</h5>
+                  </a>
+                </li>
+              </ul> -->
+            </div>
+          </div>
+        <!--   <div class="no-padding container">
+            <div class="row">
+              <div class="col-12">
+                <div class="box-content-down">
+                  <div style="display: flex" class="box-header-up">
+                    <img src="assets/reserva-finalizada/madre.jpg" alt="">
+                  </div>
+                  <div class="box-info">
+      
+                    <h2 class="before">CONOCE NUESTROS PROGRAMAS MATERNOS</h2>
+                    <P>Te ofrecemos programas que te acompañarán desde la etapa prenatal, durante y después del parto.</P>
+                    <button [routerLink]="['/planes-programas']" mat-raised-button color="primary">VER PROGRAMAS</button>
+                    <span class="line"></span>
+                    <h3 class="before-2">DESCARGA LA <br> GUÍA DEL EMBARAZO</h3>
+                    <a href="https://api.aviva.pe/middleware2/api/v2/mama/google-play-url" target="_blank">
+                      <img width="170" src="assets/reserva-finalizada/google_play.svg" alt="">
+                    </a>
+                  </div>
+      
+                </div>
+              </div>
+            </div>
+          </div> -->
+        </div>
+        <div style="    height: 81vh;
+      width: 100%;
+      max-width: 101%;" class="preloader" *ngIf="preloader">
+          <mat-progress-spinner [color]="color" [mode]="mode" [diameter]="70">
+          </mat-progress-spinner>
+          <br>
+          <br>
+          <p class="text-small">Estamos los detalles de tu cita reserva</p>
+        </div>
+      </section>
+</div>

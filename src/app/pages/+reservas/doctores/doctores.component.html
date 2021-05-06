@@ -1,0 +1,102 @@
+<div class="cabecera">
+  <app-cabecera-interna></app-cabecera-interna>
+</div>
+<div class="containerPage">
+    <section class="box-doctores aviva-cuida-section content-box-info container-fluid" @fadeIn>
+        <div class="row">
+      
+          <div class="col-12 col-lg-4 padding">
+            <div class="box-header">
+              <!-- <p><span class="main-letter">Hola,</span> <br>en base al motivo de tu consulta, <span class="strong">escoge el servicio donde deseas ser atendido</span></p> -->
+              <p class="docs">Para <span class="strong title-title">{{ speciallty }}</span> tenemos al siguiente personal
+                disponible</p>
+              <div class="vector-orange">
+                <div class="circle"></div>
+              </div>
+              <div class="vector-orange-horizontal">
+                <div class="circle"></div>
+              </div>
+            </div>
+          </div>
+      
+          <div class="col-12 col-lg-7 offset-lg-1">
+            <section class="content-box-info box-doctor">
+              <div class="box-specialty">
+                <h2>ELIGE A UN ESPECIALISTA Y UN HORARIO EN BASE A SU DISPONIBILIDAD</h2>
+              </div>
+              <p *ngIf="preloader === false" class="text-small"><span class="strong">{{manyBoxes}} especialistas</span>
+                disponibles</p>
+      
+              <div class="preloader" *ngIf="preloader === true">
+                <mat-progress-spinner [color]="color" [mode]="mode" [diameter]="70">
+                </mat-progress-spinner>
+                <br>
+                <br>
+                <p class="text-small">Estamos cargando la lista de doctores</p>
+              </div>
+              <!-- BOXES DOCTORS -->
+              <div class="container-boxes">
+                <div *ngFor="let item of dataDoctors; let itemDoctor = index;">
+                  <div class="box-main-content">
+                    <div class="box-m box-content">
+                      <div class="box-grey-top">
+                        <div class="box-info">
+                          <div class="box-photo">
+                            <img src="{{ urlBase + item.info.imageUrl }}" alt="" />
+                          </div>
+                          <div class="box-content-info">
+                            <h3>{{item.fullName}}</h3>
+                            <p *ngIf="item.info.almaMater ">{{item.info.almaMater}}</p>
+                            <a (click)="openLogin(item)">Ver perfil profesional</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="box-grey-bottom">
+                        <div class="box-calendar no-border">
+                          <p>Próximos días disponibles</p>
+                          <ul>
+                            <li (click)="stateShow(itemDoctor, index)"
+                              [ngClass]="{'active': boxCaID === index && itemDoctor === boxID }"
+                              *ngFor="let items of item.availables; let index = index">
+                              <div class="box-day" id="{{index}}">{{items.date}}</div>
+                              <span>{{items.newFormatDay}}</span>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div style="overflow: hidden;" *ngFor="let itemss of item.availables; let ii = index">
+                      <div *ngIf="itemDoctor === boxID && boxCaID === ii" id="{{ii}}" class="box-hour">
+                        <p>Horario disponible Consulta Externa</p>
+                        <div class="box-hour-main">
+                          <div *ngFor="let items of itemss.hours.hour; let indexxx = index"><span
+                              id="{{'span-elegir-doctor-horaydia-'+item.service.idTraking}}"
+                              [ngClass]="{'activo': itemss.hours[indexxx].isAvailable === true, 'desactive': itemss.hours[indexxx].isAvailable === false}"><a
+                                (click)="redirectTo(indexxx, ii, itemDoctor, itemss.hours[indexxx].params.provisionId , indexxx) " >{{items}}</a></span>
+                          </div>
+                        </div>
+                      </div>
+                      <!--  <div *ngIf="itemDoctor === boxID && boxCaID === ii" id="{{i}}" class="box-hour-tele">
+                        <p class="titleHorarioTel">Horario disponible Teleconsulta</p>
+                        <div class="box-hour-main" >
+                          <div *ngFor="let items of itemss.hours.hour; let indexxx = index">
+                            <span id="{{'span-elegir-doctor-horaydia-'+item.service.idTraking}}" [ngClass]="{'activo': itemss.hours[indexxx].isAvailable === true, 'desactive': itemss.hours[indexxx].isAvailable === false}">
+                              <a (click)="redirectTo(indexxx, ii, itemDoctor, itemss.hours[indexxx].params.provisionId, items)">{{items}}</a>
+                            </span>
+                          </div>
+                        </div>
+                    </div> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- BOXES DOCTORS -->
+              <div routerLink="/reserva" class="button-back">
+                <img src="assets/img/sacar-cita/back-page.svg" alt="">
+              </div>
+            </section>
+          </div>
+      
+        </div>
+      </section>
+</div>

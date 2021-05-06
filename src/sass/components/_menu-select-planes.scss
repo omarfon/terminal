@@ -1,0 +1,1268 @@
+//SUB MENU
+
+.box-select-planes-details{
+  width: 100%; 
+
+  background-color: $color-beige;
+  text-align: center;
+  @media (min-width: 992px) {
+    background-color: $color-blue01;
+  }
+  .box-select-mobile {
+    select {
+      width: 100%;
+      margin: auto;
+      font-size: 12px;
+      font-family: $avenir-LT;
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    @media (min-width: 992px) {
+      display: none;
+    }
+  }
+  
+  .box-select-details {
+    @media (min-width: 992px) {
+      width: 100%;
+      color: $text-disabled;
+      font-size: 12px;
+      font-family: $avenir-LT;
+      ul {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: start;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+        -ms-flex-line-pack: center;
+        align-content: center;
+        a {
+          color: $text-disabled;
+        }
+
+        li {
+          height: 100%;
+          -webkit-box-flex: 0;
+          -ms-flex: 0 1 auto;
+          flex: 0 1 auto;
+          padding: 20px;
+          -webkit-transition: all 0.5s;
+          transition: all 0.5s;
+
+          &:hover {
+            -webkit-transition: all 0.5s;
+            transition: all 0.5s;
+            color: $color-white;
+            cursor: pointer;
+          }
+        }
+        .active {
+          color: $color-white;
+        }
+      }
+    }
+  }
+  .box-select-desktop {
+    display: none;
+    @media (min-width: 992px) {
+      display: block;
+
+      width: 100%;
+      color: $text-disabled;
+      font-size: 12px;
+      font-family: $avenir-LT;
+      ul {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: start;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+        -ms-flex-line-pack: center;
+        align-content: center;
+        a {
+          color: $text-disabled;
+        }
+
+        li {
+          height: 100%;
+          -webkit-box-flex: 0;
+          -ms-flex: 0 1 auto;
+          flex: 0 1 auto;
+          padding: 20px;
+          -webkit-transition: all 0.5s;
+          transition: all 0.5s;
+
+          &:hover {
+            -webkit-transition: all 0.5s;
+            transition: all 0.5s;
+            color: $color-white;
+            cursor: pointer;
+          }
+        }
+        .active {
+          color: $color-white;
+        }
+      }
+      select{
+        height: 100%;
+      }
+    }
+  }
+  .box-select-details{
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+
+    &::before{
+
+      content: "";
+      position: absolute;
+      right: 20px;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      width: 0;
+      height: 0;
+      border-left: 11px solid #062f51;
+      border-top: 9px solid transparent;
+      border-bottom: 9px solid transparent;
+      transform: rotate(90deg);
+      @media (min-width: 992px) {
+        display: none;
+      }
+    }
+  
+    label{
+      font-family: $avenir-Bold;
+      color: $color-white;
+      @media (max-width: 992px) {
+        display: none;
+      }
+    }
+    select{
+      height: 100%;
+      font-size: 16px;
+      font-family: $avenir-LT;
+      -moz-appearance: inner-spin-button;
+      margin-left: 20px;
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      appearance: none;
+    
+      @media (min-width: 992px) {
+        color: $color-white;
+        width: 25%;
+      }
+    }
+  }
+  .select-specia-details-movil{
+    display: block;
+    @media (min-width: 992px){
+      display: none;
+    }
+  }
+
+  .select-specia-details-desktop{
+    display: none;
+    position: relative;
+    @media (min-width: 992px){
+      display: flex;
+    }
+    .icon-text{
+      margin-left: 30px;
+      position: relative;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      .ico{
+        border-left: 11px solid #fff;
+        border-top: 9px solid transparent;
+        border-bottom: 9px solid transparent;
+        -webkit-transform: rotate(90deg);
+        transform: rotate(90deg);
+        transition: all 0.2s;
+        margin-left: 20px;
+      }
+  
+      .ico-active{
+    -webkit-transform: rotate(270deg);
+    transform: rotate(270deg);
+    transition: all 0.2s;
+      }
+    }
+  
+    .content-men{
+      position: absolute;
+      background-color: #ffffff;
+      top: 63px;
+      min-width: 314px;
+      overflow: hidden;
+      ul{
+        display: flex;
+        flex-direction: column;
+        color: #1f668b;
+        transition: all 0.2s;
+        li{
+          padding: 0;
+          a{
+            padding: 15px;
+            color: #1f668b;
+            display: inline-block;
+            width: 100%;
+            transition: all 0.2s;
+            font-size: 14px;
+            border-bottom: 1px solid #d5d5d5;
+            &:hover{
+              background-color: #1f668b;
+              color: white;
+            }
+          }
+        }
+      }
+    }
+  
+    .hide-list{
+      margin-top: -202%;
+      transition: all 0.3s;
+    }
+  
+    .show-list{
+      margin-top: 0;
+      transition: all 0.3s;
+    }
+    
+  }
+  
+}
+
+
+
+
+
+
+.box-select-planes {
+  width: 100%;
+  height: 55px;
+  background-color: $color-beige;
+  text-align: center;
+  @media (min-width: 992px) {
+    background-color: $color-blue01;
+  }
+  .box-select-mobile {
+    position: relative;
+    max-width: 74%;
+    margin: auto;
+    &::before{
+
+      content: "";
+      position: absolute;
+      right: 20px;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      width: 0;
+      height: 0;
+      border-left: 11px solid #062f51;
+      border-top: 9px solid transparent;
+      border-bottom: 9px solid transparent;
+      transform: rotate(90deg);
+      @media (min-width: 992px) {
+        display: none;
+      }
+    }
+    select {
+      width: 100%;
+      margin: auto;
+      
+      font-family: $avenir-LT;
+      font-size: 16px;
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      appearance: none;
+
+      @media (min-width: 992px) {
+        width: auto;
+        margin-left: 20px;
+      }
+
+    }
+    @media (min-width: 992px) {
+      display: none;
+      font-size: 12px;
+      max-width: auto;
+    margin: auto;
+    }
+  }
+
+  .box-select-desktop {
+    display: none;
+    @media (min-width: 992px) {
+      display: block;
+
+      width: 100%;
+      color: $text-disabled;
+      font-size: 12px;
+      font-family: $avenir-LT;
+      ul {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: start;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+        -ms-flex-line-pack: center;
+        align-content: center;
+        a {
+          color: $text-disabled;
+        }
+
+        li {
+          height: 100%;
+          -webkit-box-flex: 0;
+          -ms-flex: 0 1 auto;
+          flex: 0 1 auto;
+          padding: 20px;
+          -webkit-transition: all 0.5s;
+          transition: all 0.5s;
+          text-transform: uppercase;
+          &:hover {
+            -webkit-transition: all 0.5s;
+            transition: all 0.5s;
+            color: $color-white;
+            cursor: pointer;
+          }
+        }
+        .active {
+          color: $color-white;
+        }
+      }
+    }
+  }
+  .box-select-details {
+    height: 100%;
+    @media (min-width: 992px) {
+    
+      width: 100%;
+      color: $text-disabled;
+      font-size: 12px;
+      font-family: $avenir-LT;
+      ul {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: start;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+        -ms-flex-line-pack: center;
+        align-content: center;
+        a {
+          color: $text-disabled;
+        }
+
+        li {
+          height: 100%;
+          -webkit-box-flex: 0;
+          -ms-flex: 0 1 auto;
+          flex: 0 1 auto;
+          padding: 20px;
+          -webkit-transition: all 0.5s;
+          transition: all 0.5s;
+
+          &:hover {
+            -webkit-transition: all 0.5s;
+            transition: all 0.5s;
+            color: $color-white;
+            cursor: pointer;
+          }
+        }
+        .active {
+          color: $color-white;
+        }
+      }
+    }
+    select{
+      height: 100%;
+      font-size: 16px;
+      font-family: $avenir-LT;
+    }
+  }
+}
+
+//HEADER
+.planes-programas-header {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 54vh;
+  img {
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+
+    
+    @media (max-width: 600px) {
+      position: absolute;
+    width: 100%;
+    }
+    @media (max-width: 325px) {
+    height: auto;
+    }
+  }
+  @media (min-width: 1200px) {
+    height: 70vh;
+  }
+  @media (min-width: 1500px) {
+    height: 85vh;
+  }
+
+  .planes-programas-box-text {
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    min-height: 550px;
+
+    @media (min-width: 1200px) {
+      height: 70vh;
+      -webkit-box-pack: start;
+      -ms-flex-pack: start;
+      justify-content: flex-start;
+      -webkit-box-align: start;
+      -ms-flex-align: start;
+      align-items: flex-start;
+    }
+    div {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      width: 75%;
+      padding-top: 30px;
+      z-index: 100;
+      @media (max-width: 320px) {
+  
+      }
+      @media (max-width: 700px) {
+        padding-top: 95px;
+      }
+      @media (min-width: 1200px) {
+        -webkit-box-pack: start;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+        -webkit-box-align: start;
+        -ms-flex-align: start;
+        align-items: flex-start;
+        width: 40%;
+        background-color: $color-blue03;
+        height: 50%;
+        padding: 3% 8% 7% 5%;
+        border-radius: 0 0 200px;
+      }
+
+      h2 {
+        font-size: 24px;
+        text-align: center;
+        color: $color-white;
+        font-family: $avenir-Bold;
+        line-height: 1.3;
+        text-transform: uppercase;
+
+        @media (min-width: 1200px) {
+          text-align: start;
+          font-size: 36px;
+          max-width: 400px;
+          min-width: 480px;
+        }
+      }
+      p {
+        line-height: 1.3;
+        font-family: $avenir-LT;
+        font-size: 15px;
+        color: $color-white;
+        text-align: center;
+        padding-top: 5px;
+        @media (min-width: 1200px) {
+          text-align: start;
+          font-size: 20px;
+          padding: 0;
+          max-width: 400px;
+        }
+      }
+    }
+  }
+}
+
+.content-gene {
+  background-color: $color-blue01;
+  border-radius: 120px 0 0;
+  position: relative;
+}
+//CONTENT
+.planes-programas_title {
+  color: $color-white;
+  font-size: 21px;
+  font-family: $avenir-Bold;
+  text-align: center;
+  @media (min-width: 1200px) {
+    font-size: 36px;
+  }
+}
+.planes-programas-content {
+  background-color: $color-blue01;
+  border-radius: 120px 0 0;
+  margin-top: -15%;
+  padding-top: 42px;
+  padding-bottom: 40px;
+  z-index: 100;
+  position: relative;
+  @media (max-height: 750px) {
+    margin-top: -10%;
+  }
+  @media (max-width: 992px) {
+    border-radius: 70px 0 0;
+    margin-top: -10%;
+  }
+  .planes-programas-beneficios {
+    position: relative;
+    padding: 0px;
+    @media (min-width: 1200px) {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: start;
+          -ms-flex-align: start;
+              align-items: flex-start;
+    }
+
+    &_list {
+      margin: 20px auto;
+      padding: 0 10px;
+      @media (min-width: 1200px) {
+        margin: 0 100px;
+        padding: 0;
+      }
+      ul {
+        @media (min-width: 1200px) {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+        }
+        li {
+          color: $color-white;
+          font-family: $avenir-LT;
+          font-size: 14px;
+          line-height: 1.5;
+          margin: 20px auto;
+          position: relative;
+          padding-left: 15px;
+
+          @media (min-width: 1200px) {
+            margin: 0 10px 20px 0;
+            padding-right: 40px;
+            font-size: 17px;
+          }
+          &::before {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            left: 0px;
+            top: 10%;
+            border-radius: 100%;
+            background-color: $color-orange3;
+          }
+        }
+      }
+    }
+  }
+}
+
+//Sección app-store
+.planes-programas-app-store-container {
+  background-color: $color-blue01;
+  margin-bottom: 20px;
+}
+.planes-programas-app-store {
+  background-color: $color-beige-oscuro;
+  border-radius: 0 40px 0 0;
+  padding: 49px 0 50px;
+  margin-bottom: -57px;
+  @media (min-width: 992px) {
+    margin-bottom: 0;
+    border-radius: 0;
+    background-color: $color-blue01;
+  }
+  .container-app-store {
+    @media (min-width: 992px) {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      min-height: 300px;
+    }
+  }
+  .app-store-text {
+    text-align: center;
+    position: relative;
+    @media (min-width: 992px) {
+      background-color: $color-beige-oscuro;
+      width: 50%;
+      padding: 50px 80px 30px 80px;
+      text-align: start;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0px;
+      left: 12.5%;
+      margin: auto;
+      height: 44px;
+      width: 1px;
+      background-color: $color-orange-aviva;
+    }
+    @media (max-width: 992px) {
+      &::before {
+        width: 0px;
+      }
+    }
+
+    h3 {
+      font-size: 21px;
+      color: $color-blue01;
+      font-family: $avenir-Bold;
+      text-align: center;
+      position: relative;
+      @media (min-width: 992px) {
+        font-size: 27px;
+        text-align: start;
+        br {
+          display: none;
+        }
+        &::before {
+          content: "";
+          position: absolute;
+          width: 10px;
+          height: 10px;
+          left: -30px;
+          top: 20%;
+          border-radius: 100%;
+          background-color: $color-orange-aviva;
+        }
+      }
+    }
+    p {
+      font-size: 15px;
+      color: $color-blue01;
+      font-family: $avenir-LT;
+      text-align: center;
+      margin: 20px auto 0px;
+      position: relative;
+      @media (min-width: 992px) {
+        text-align: start;
+        line-height: 1.3;
+        font-size: 15px;
+      }
+    }
+    button {
+      border-radius: 0 15px 0 0;
+      font-family: $avenir-Bold;
+      @media (min-width: 992px) {
+        width: 70%;
+        height: 41px;
+      }
+    }
+    .app-store-container-img {
+      width: 100%;
+      img {
+        margin: auto;
+        width: 60%;
+        @media (min-width: 992px) {
+          width: 45%;
+          margin-top: 20px;
+        }
+      }
+    }
+  }
+  .app-store-img {
+    display: none;
+    @media (min-width: 992px) {
+      width: 50%;
+      height: 300px;
+      overflow: hidden;
+      display: block;
+      border-radius: 0 80px 0 0;
+      // background-image: url("/../../assets/planes-programas/planes.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: top;
+    }
+  }
+}
+.line-divisor {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.32);
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: 1px;
+    background-color: rgba(6, 50, 74, 0.980392);
+  }
+}
+//información
+.planes-programas-informacion {
+  margin-top: 0px;
+  border-radius: 0;
+  position: relative;
+  padding-top: 40px;
+
+  .planes-programas_title {
+    @media (min-width: 768px) {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+    }
+  }
+
+  .informacion-pdf {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    a {
+      width: 50%;
+      padding: 30px;
+      text-align: center;
+      @media (min-width: 768px) {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        padding-top: 0;
+        -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        padding-bottom: 0;
+      }
+      @media (min-width: 768px) {
+        -webkit-box-pack: start;
+            -ms-flex-pack: start;
+                justify-content: flex-start;
+      }
+      @media (min-width: 1024px) {
+        -webkit-box-pack: end;
+            -ms-flex-pack: end;
+                justify-content: flex-end;
+      }
+      img {
+        width: 80%;
+        max-width: 100px;
+        @media (min-width: 768px) {
+          width: 30%;
+        }
+        @media (min-width: 1024px) {
+          width: 20%;
+          margin-right: 30px;
+        }
+      }
+      p {
+        color: $color-white;
+        font-size: 12px;
+        text-align: center;
+        margin-top: 10px;
+        font-family: $avenir-Bold;
+        @media (min-width: 768px) {
+          font-size: 15px;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  .line-divisor {
+    @media (min-width: 768px) {
+      margin-top: 40px;
+    }
+  }
+}
+//inversión
+
+.planes-programas-inversión {
+  .container {
+    .row {
+      @media (min-width: 992px) {
+        -webkit-box-align: start;
+            -ms-flex-align: start;
+                align-items: flex-start;
+      }
+    }
+  }
+  .planes-programas_title {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+
+    h3 {
+      margin: auto;
+      @media (min-width: 768px) {
+        margin: 0;
+        
+      }
+    }
+    .inversion-title-curve {
+   
+      @media (min-width: 992px) {
+        display: block;
+        margin-bottom: 0px;
+      }
+      margin-top: 20px;
+      margin-bottom: 30px;
+      .inversion-title-curve-content {
+        text-align: start;
+        padding: 30px 25px 30px 15px;
+        background-color: $color-blue05;
+        border-radius: 0 0 125px 0;
+
+        @media (max-width: 992px) {
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -ms-flex-wrap: wrap;
+              flex-wrap: wrap;
+          border-radius: 0 0 60px 0;
+          padding: 10px 25px 10px 30px;
+          -webkit-box-pack: center;
+              -ms-flex-pack: center;
+                  justify-content: center;
+        }
+        p {
+          font-size: 18px;
+          font-family: $avenir-LT;
+          line-height: 1.4;
+        }
+        .inversion-curve-prima {
+          font-size: 24px;
+          color: $text-disabled;
+          @media (max-width: 992px) {
+            font-size: 18px;
+          }
+        }
+        .inversion-curve-content-monto {
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-pack: start;
+              -ms-flex-pack: start;
+                  justify-content: flex-start;
+          -ms-flex-line-pack: center;
+              align-content: center;
+          .inversion-curve-content-rango {
+            padding-left: 10px;
+            text-align: flex-end;
+            padding-top: 20px;
+            @media (max-width: 992px) {
+              display: -webkit-box;
+              display: -ms-flexbox;
+              display: flex;
+              padding-left: 0px;
+              padding-top: 0px;
+            }
+            p:nth-child(1) {
+              font-size: 15px;
+              @media (max-width: 992px) {
+                padding-left: 5px;
+                padding-right: 5px;
+                font-size: 18px;
+              }
+            }
+            p:nth-child(2) {
+              font-size: 34px;
+              font-family: $avenir-Bold;
+              @media (max-width: 992px) {
+                font-size: 18px;
+              }
+            }
+          }
+          .inversion-curve-content-number {
+            p {
+              font-size: 75px;
+              font-family: $avenir-Bold;
+              padding-left: 10px;
+              @media (max-width: 992px) {
+                font-size: 18px;
+                padding-left: 0px;
+              }
+            }
+          }
+        }
+        .inversion-curve-content-p {
+          width: 100%;
+          padding-right: 20px;
+          p {
+            font-size: 15px;
+            text-align: center;
+            @media (max-width: 992px) {
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .line-divisor {
+    padding: 20px 0;
+  }
+}
+
+.inversion-title-curve-mobile {
+  @media (min-width: 992px) {
+    display: block !important;
+  }
+}
+
+//table component
+
+.table-planes-programas {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  @media (min-width: 1200px) {
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+  }
+}
+.tabla-planes-programa {
+  width: 100%;
+  -webkit-box-shadow: 0 0 24px 8px rgba(0, 43, 41, 0.18);
+          box-shadow: 0 0 24px 8px rgba(0, 43, 41, 0.18);
+  margin-top: 15px;
+  @media (min-width: 1200px) {
+    margin: 10px;
+
+    &:nth-child(1) {
+      margin-right: 0;
+    }
+    &:nth-child(2) {
+      margin-left: 0;
+      -webkit-box-shadow: none;
+              box-shadow: none;
+      border-left: 1px solid $color-table-celdas;
+    }
+  }
+  table {
+    color: $color-blue01;
+    thead {
+      .tr-tab-table {
+        .th-tab-table {
+          padding: 0;
+          p {
+            font-size: 12px;
+          }
+          span {
+            font-size: 9px;
+            font-family: $avenir-LT;
+          }
+        }
+      }
+      tr {
+        height: 50px;
+        text-align: left;
+        th,
+        td {
+          vertical-align: middle;
+          font-family: $avenir-Bold;
+          padding-left: 10px;
+          @media (max-width: 320px) {
+            font-size: 15px;
+          }
+        }
+      }
+    }
+    tbody {
+      tr {
+        height: 40px;
+        td {
+          img {
+            width: 20px;
+          }
+        }
+      }
+      tr:nth-child(odd) {
+        td {
+          background-color: $color-table-celdas;
+          vertical-align: middle;
+          padding-left: 10px;
+          @media (max-width: 320px) {
+            font-size: 12px;
+          }
+        }
+      }
+      tr:nth-child(even) {
+        td {
+          vertical-align: middle;
+          background-color: $color-white;
+          padding-left: 10px;
+          @media (max-width: 320px) {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+    width: 100%;
+    background-color: #fff;
+    padding: 10px;
+  }
+}
+
+//tabs
+
+.tab-pyp-container {
+  .tab-content-100 {
+    width: 100%;
+  }
+  .tab-content-pyp {
+    .table-planes-programas {
+      @media (min-width: 992px) {
+        background-color: #fff;
+        padding: 20px;
+      }
+      .tabla-planes-programa {
+        -webkit-box-shadow: none;
+                box-shadow: none;
+        margin-top: 0;
+        margin-right: 0;
+      }
+    }
+  }
+}
+.tab-planes-programas {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+  font-family: $avenir-LT;
+  overflow: hidden;
+  a {
+    width: 100%;
+    display: inline-block;
+  }
+  .tab-pyp {
+    width: 100%;
+    padding: 15px;
+    text-align: center;
+    background-color: $color-blue02;
+    color: $color-white;
+    cursor: pointer;
+  }
+  .tab-pyp-active {
+    background-color: $color-white;
+    border-top: 3px solid $color-orange-aviva;
+    color: $color-blue01;
+  }
+}
+
+//card
+.content-card-programa {
+  padding: 15px 20px 15px 0;
+  background-color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 12px;
+  @media (min-width: 768px) {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    min-height: 280px;
+  }
+  .card-img {
+    div {
+      overflow: hidden;
+      height: 50px;
+      width: 50px;
+      border-radius: 100%;
+      margin-right: 10px;
+      img {
+        width: 100%;
+      }
+      @media (min-width: 325px) {
+        height: 60px;
+        width: 60px;
+      }
+      @media (min-width: 768px) {
+        height: 80px;
+        width: 80px;
+        margin: auto;
+      }
+    }
+    @media (min-width: 768px) {
+      width: 100%;
+    }
+  }
+  .card-content-monto {
+    text-align: start;
+    width: 200px;
+    @media (min-width: 768px) {
+      width: 100%;
+      margin: 15px auto 15px;
+      text-align: center;
+    }
+    p {
+      color: $color-blue01;
+      font-family: $avenir-LT;
+    }
+    p:nth-child(1) {
+      font-size: 18px;
+      @media (min-width: 325px) {
+        font-size: 19px;
+      }
+      @media (min-width: 768px) {
+        font-size: 15px;
+        font-family: $avenir-Bold;
+      }
+    }
+    p:nth-child(2) {
+      font-size: 27px;
+      font-family: $avenir-Bold;
+      @media (min-width: 325px) {
+        font-size: 30px;
+      }
+      span {
+        font-family: $avenir-Bold;
+        font-size: 20px;
+      }
+    }
+  }
+  .card-content-button {
+    position: relative;
+    @media (min-width: 768px) {
+      width: 100%;
+    }
+    .row-span {
+      border-right: solid 2px #062f51;
+      border-top: solid 2px #062f51;
+      right: -10px;
+      width: 10px;
+      height: 10px;
+      @media (min-width: 768px) {
+        display: none;
+      }
+    }
+    button {
+      display: none;
+      @media (min-width: 768px) {
+        display: block;
+        margin: auto;
+        width: 50%;
+        border-radius: 0 15px 0 0;
+        font-family: $avenir-Bold;
+      }
+    }
+  }
+}
+
+.border-left {
+  border-left: 1px solid $color-table-celdas;
+}
+
+.border-buttom {
+  border-bottom: 1px solid $color-table-celdas;
+  margin-top: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  @media (min-width: 992px) {
+    border-right: 1px solid $color-table-celdas;
+    border-bottom: 0;
+    &:nth-child(3){
+      border-right: 0;
+  }
+  }
+}
+
+.btn-tabs-pe {
+  width: 70% !important;
+}
+
+.planes-programas-inversion-content {
+  .content-card-nino-sano {
+    @media (min-width: 992px) {
+     
+    }
+  }
+  .table-planes-programas {
+    @media (min-width: 992px) {
+      margin-top: 0px;
+    }
+  }
+}
+
+.ver-cuadro-comparativo {
+  padding: 15px 0;
+  text-align: center;
+  span {
+    color: $color-blue02;
+    text-decoration: underline;
+    font-size: 15px;
+    font-family: $avenir-Bold;
+    &:hover {
+      text-decoration: none;
+      color: $color-blue03;
+      cursor: pointer;
+    }
+  }
+}
+
+//modal plan embarazo
+
+.modal-cuadro-comparativo {
+}

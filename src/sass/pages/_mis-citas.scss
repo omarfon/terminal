@@ -1,0 +1,16 @@
+.mis-citas-container{
+    overflow: hidden;
+    .box-header{
+        padding: 20px 20px 30px 20px;
+        @media (min-width: 920px) {
+                padding: 90px 33px 90px 41px;
+            }
+    }
+
+    .tab-content-pyp {
+        padding: 0 0 0 15px;
+        .tab-item-citas .item-citas-icon span::before{
+            right: 0;
+        }
+    } 
+}

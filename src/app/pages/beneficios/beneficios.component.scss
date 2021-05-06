@@ -1,0 +1,25 @@
+content{
+    background: #f1f3f6;
+}
+.containerPage{
+    width:95%;
+    margin-left:2.5%;
+    position: absolute;
+    top:120px;
+    max-height: 70vh!important;
+}
+.cabecera{
+  width:100%;
+  position: absolute;
+  top:0;
+  left:0;
+}
+.botonInfo{
+  width:300px;
+  font-size:1.4em;
+  margin-left: calc( 50% - 150px );
+  border-radius:10px;
+}
+.pipedriveWebForms{
+  text-align: center;
+}

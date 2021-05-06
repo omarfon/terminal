@@ -1,0 +1,41 @@
+<div class="cabecera">
+  <app-cabecera-interna></app-cabecera-interna>
+</div>
+<div class="containerPage">
+  <section class="box-pago aviva-cuida-section content-box-info container-fluid" @fadeIn>
+      <div class="row">
+        <div class="col-12 col-lg-4 padding">
+          <div class="box-header">
+            <!-- <p><span class="main-letter">Hola,</span> <br>en base al motivo de tu consulta, <span class="strong">escoge el servicio donde deseas ser atendido</span></p> -->
+            <p class="registra">El precio de tu consulta será:</p>
+            <span class="main" *ngIf="financiador !== 'PACIFICO EPS'">S/ {{price}}</span>
+            <span class="main" *ngIf="financiador === 'PACIFICO EPS'">El copago de tu plan de Salud</span>
+            <div class="vector-orange">
+              <div class="circle"></div>
+            </div>
+            <div class="vector-orange-horizontal">
+              <div class="circle"></div>
+            </div>
+          </div>
+        </div>
+    
+        <div class="col-12 col-lg-7 offset-lg-1">
+          <section class="content-box-info box-pago">
+    
+            <div *ngIf="!loader" class="box-specialty">
+              <app-button-pay page="aviva-cuida" idLocal='button-pago-avivacuida-local'
+                idTarjeta="button-pago-avivacuida-con-tarjeta"></app-button-pay>
+            </div>
+    
+            <div style='background-color: #fff; width: 500px; height: 120px;border-top-right-radius: 15px; margin-top:50px;'>
+              <p style='color:#FB6E54; font-size:1.5em; width:90%;padding-top:25px;margin-left:16px;'>Recuerda, si tienes un cupón de descuento podrás aplicarlo pagando sólo en el local.</p>
+            </div>
+    
+            <div (click)="backLink()" class="button-back">
+              <img src="assets/img/sacar-cita/back-page.svg" alt="">
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+</div>

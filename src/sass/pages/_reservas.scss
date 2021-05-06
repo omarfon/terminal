@@ -1,0 +1,1388 @@
+.box-content-reservas {
+  background-color: $color-blue01;
+  overflow: hidden;
+  height: auto;
+  min-height: 100vh;
+
+  @media (min-width: 980px) {
+    min-height: calc(100vh - 72px);
+  }
+
+  .button-back {
+    position: relative;
+    bottom: 0;
+    margin-top: 20px;
+    cursor: pointer;
+
+    @media (max-width: 700px) {
+      display: none;
+    }
+
+    img {
+      width: 45px;
+      margin: auto;
+    }
+  }
+
+  .active-button-back {
+
+    opacity: 1;
+
+    img {
+      width: 45px;
+      margin: auto;
+    }
+  }
+
+  .box-nav-desktop-interno {
+    @media (max-width: 700px) {
+      display: none;
+    }
+  }
+
+  // START BOX CONTENT RESERVAS CONTENT
+  .content-box-info {
+    height: auto;
+
+    padding-bottom: 15px;
+
+    .container-boxes {
+      @media (max-width: 975px) {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+      }
+    }
+
+    .box-specialty {
+      margin-top: 50px;
+      color: white;
+      margin-bottom: 15px;
+
+      h2 {
+        // color: $color-white;
+        width: 100%;
+        text-align: left;
+        font-size: 17px;
+        font-family: $avenir-Bold;
+        line-height: 1.4;
+        max-width: 540px;
+
+        @media (min-width: 980px) {
+          margin: center;
+          color: $color-orange;
+          font-size: 26px;
+          margin-top: 45px;
+        }
+      }
+
+      ul {
+        background-color: white;
+        margin-top: 20px;
+
+        @media (min-width: 980px) {
+          background-color: transparent;
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+          grid-gap: 5px;
+        }
+      }
+
+      li {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+
+        -webkit-box-pack: justify;
+
+        -ms-flex-pack: justify;
+        background-color: $color-white;
+        justify-content: space-between;
+        position: relative;
+        padding: 17px 15px;
+
+        &:hover {
+          cursor: pointer;
+          background-color: #062F51;
+
+          a {
+            p {
+              color: $color-white;
+            }
+          }
+
+          // &:before {
+          //   background-color: $color-green-avivacuida03;
+          // }
+        }
+
+        &:after {
+          content: "";
+          position: absolute;
+          right: 10px;
+          top: 0;
+          bottom: 0;
+          margin: auto;
+          width: 17px;
+          height: 17px;
+          border-top: 1px solid #b1b1b1;
+          border-right: 1.2px solid #b1b1b1;
+          transform: rotate(45deg);
+
+          @media (min-width: 980px) {
+            display: none;
+          }
+
+
+        }
+
+        &:before {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          margin: auto;
+          height: 1px;
+          width: 90%;
+          background-color: #dddddd;
+
+          @media (min-width: 980px) {
+            background-color: transparent;
+            // box-shadow: 0 0 12px 4px rgba(0,43,41,0.18);
+
+
+
+          }
+
+        }
+
+        .row {
+          position: absolute;
+          right: 15px;
+          top: 0;
+          bottom: 0;
+          margin: auto;
+          width: 15px;
+          height: 15px;
+          border-right: solid 2px #062f51;
+          border-top: solid 2px #062f51;
+          -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+          display: inline-block;
+          cursor: pointer;
+        }
+
+        a {
+          cursor: pointer;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          width: 100%;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          align-items: center;
+          -webkit-box-pack: start;
+          -ms-flex-pack: start;
+          justify-content: flex-start;
+          text-transform: lowercase;
+
+          img {
+            width: 25px;
+            display: inline-block;
+            margin-right: 15px;
+          }
+
+          p {
+            color: $color-blue02;
+            font-family: $avenir-Bold;
+            font-size: 15px;
+
+            &:first-letter {
+              text-transform: uppercase;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // END BOX CONTENT RESERVAS CONTENT
+
+  .box-doctor {
+    .box-specialty {
+      @media (min-width: 980px) {
+        margin-bottom: 13px;
+      }
+    }
+
+    .box-specialty-tele {
+      margin-top: 50px;
+      color: white;
+      margin-bottom: 15px;
+
+      h2 {
+        // color: $color-white;
+        width: 100%;
+        text-align: left;
+        font-size: 17px;
+        font-family: $avenir-Bold;
+        line-height: 1.4;
+        max-width: 540px;
+
+        @media (min-width: 980px) {
+          margin: center;
+          color: $color-orange;
+          font-size: 26px;
+          margin-top: 45px;
+        }
+      }
+    }
+
+    .text-small {
+      color: $color-white;
+    }
+
+    .box-m {
+      width: 100%;
+      height: auto;
+      background-color: white;
+      color: $color-primary;
+    }
+
+    .box-header {
+      line-height: 1.4;
+      text-align: left;
+      background-color: transparent;
+
+      &:before {
+        content: "";
+        position: absolute;
+        width: 95%;
+        border-radius: 0 0 100px;
+        height: 154px;
+        margin-right: 11px;
+        /* background-color: $color-green-avivacuida02; */
+        top: -9px;
+        left: 0;
+      }
+
+      p {
+        margin-bottom: 68px;
+        color: #ffffff;
+        font-size: 22.5px;
+        position: relative;
+        line-height: 30px;
+        // font-family: $avenir-Bold;
+      }
+
+      span {
+        font-size: 18px;
+        font-weight: 700;
+        color: $color-white;
+        position: relative;
+
+        &:before {
+          content: "";
+          position: absolute;
+          top: -19px;
+          left: 1px;
+          width: 6px;
+          height: 6px;
+          border-radius: 100px;
+          background-color: $color-white;
+        }
+
+        &:after {
+          content: "";
+          position: absolute;
+          top: -68px;
+          left: 3px;
+          width: 1px;
+          height: 44px;
+          background-color: $color-white;
+        }
+      }
+    }
+
+    .box-main-content {
+      margin: 10px 0;
+      max-width: 600px;
+
+      .box-hour {
+        display: grid;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        padding: 15px;
+        height: auto;
+        background-color: $color-blue01;
+        text-align: center;
+        overflow: hidden;
+
+        p {
+          margin-bottom: 16px;
+          font-size: 11px;
+          color: white;
+        }
+
+        .box-hour-main {
+          width: 100%;
+          height: 100%;
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+          grid-gap: 6px;
+
+          @media (max-width: 560px) {
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+          }
+
+          @media (max-width: 440px) {
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+          }
+
+          span {
+            display: inline-block;
+            padding: 5px 14px;
+            background-color: $color-blue02;
+            border-radius: 5px;
+            font-size: 13px;
+            color: white;
+            cursor: pointer;
+
+            a {
+              color: white;
+            }
+          }
+
+          .desactive {
+            background-color: #a7a9ab;
+            pointer-events: none;
+
+            a {
+              color: #e6e6e4;
+            }
+          }
+        }
+      }
+    }
+
+    .box-content {
+      position: relative;
+
+      @media (min-width: 980px) {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: space-between;
+      }
+
+      .box-white,
+      .box-grey {
+        position: absolute;
+        margin-left: -20px;
+        width: 110%;
+        height: 50%;
+      }
+
+      .box-calendar {
+        width: 100%;
+        text-align: center;
+        padding: 15px 15px;
+        background-color: #ececec;
+        border-radius: 0 20px;
+
+        @media (min-width: 980px) {
+          border-radius: 20px 0 0 0 !important;
+          width: 290px;
+        }
+
+        p {
+          font-size: 12px;
+          color: $color-blue01;
+        }
+
+        ul {
+          display: grid;
+          margin-top: 10px;
+          grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+          grid-column-gap: 10px;
+
+          .active {
+            position: relative;
+
+            &:before {
+              content: "";
+              position: absolute;
+              bottom: -16px;
+              width: 0;
+              height: 0;
+              border-right: 13px solid transparent;
+              border-top: 12px solid transparent;
+              border-left: 13px solid transparent;
+              /* border-bottom: 12px solid $color-blue01; */
+            }
+
+            .box-day {
+              background-color: $color-blue01;
+              cursor: pointer;
+            }
+
+            span {
+              color: $color-blue01;
+            }
+          }
+
+          li {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+
+            .box-day {
+              width: 35px;
+              height: 35px;
+              font-size: 12px;
+              border-radius: 100px;
+              background-color: $color-blue02;
+              display: -webkit-box;
+              display: -ms-flexbox;
+              display: flex;
+              -webkit-box-align: center;
+              -ms-flex-align: center;
+              align-items: center;
+              -webkit-box-pack: center;
+              -ms-flex-pack: center;
+              justify-content: center;
+              color: white;
+              cursor: pointer;
+            }
+
+            span {
+              margin-top: 5px;
+              display: inline-block;
+              color: $color-blue02;
+              font-size: 17px;
+              font-family: $avenir-Bold;
+            }
+          }
+        }
+      }
+
+      .box-grey-top {
+        background-color: #ececec;
+        width: 100%;
+      }
+
+      .box-grey-bottom {
+        background-color: $color-white;
+      }
+
+      .box-info {
+        display: grid;
+        grid-template-columns: 30% 70%;
+        background-color: $color-white;
+        border-radius: 0 0 0 40px;
+        padding: 11px 15px;
+
+        @media (min-width: 980px) {
+          border-radius: 0;
+          padding: 8px 15px;
+        }
+
+        .box-photo {
+          // background-color: $color-primary;
+          width: 72px;
+          height: 72px;
+          border-radius: 100px;
+          min-width: 60px;
+          margin-right: 10px;
+          overflow: hidden;
+
+          img {
+            width: 100%;
+          }
+        }
+
+        .box-content-info {
+          h3 {
+            font-size: 15px;
+            color: $color-blue01;
+            line-height: 1.3;
+            font-family: $avenir-Bold;
+          }
+
+          p {
+            font-size: 12px;
+            margin: 6px 0;
+            color: $color-gray-1;
+          }
+
+          a {
+            text-decoration: none;
+            font-size: 9px;
+            text-transform: uppercase;
+            color: $color-blue02;
+            font-family: $avenir-Bold;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+
+  .content-loading-bar {
+    width: 100%;
+    height: 10px;
+    background-color: transparent;
+    position: relative;
+    z-index: 4;
+
+    .loading-bar {
+      background-color: #92dce8;
+      -webkit-transition: all 0.5s;
+      transition: all 0.5s;
+      height: 6px;
+    }
+  }
+
+  .box-header {
+    // background-color: $color-blue03;
+    color: white;
+    position: relative;
+    width: 95%;
+    height: 200px;
+    margin-right: 15px;
+    border-radius: 0 0 100px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    padding: 20px 30px 40px 27px;
+
+    @media (min-width: 980px) {
+      padding: 60px 30px 40px 90px;
+      width: 495px;
+      height: 455px;
+      margin-right: 15px;
+      border-radius: 0 0 200px;
+    }
+
+    .vector-orange {
+      width: 100%;
+      position: absolute;
+      bottom: -33px;
+      left: 27px;
+
+      .circle {
+        margin: 0;
+
+        &:before {
+          top: -58px;
+          height: 51px;
+        }
+      }
+    }
+
+    p {
+      font-size: 20px;
+      line-height: 1.3;
+
+      @media (min-width: 980px) {
+        font-size: 34px;
+        width: 324px;
+      }
+    }
+
+    .main-letter {
+      font-size: 30px;
+      font-weight: bold;
+      font-family: $avenir-Bold;
+      position: relative;
+      z-index: 10;
+
+      &:before {
+        content: "01";
+        position: absolute;
+        left: -50px;
+        top: -60px;
+        height: 10px;
+        width: 10px;
+        font-family: $avenir-LT;
+        font-size: 99px;
+        color: $color-blue-span;
+        z-index: -1;
+
+        @media (max-width: 980px) {
+          display: none;
+        }
+      }
+
+      @media (min-width: 980px) {
+        font-size: 41px;
+      }
+    }
+
+    .strong {
+      display: inline;
+      font-family: $avenir-Bold;
+
+    }
+
+    .title-title {
+
+      text-transform: capitalize;
+
+    }
+  }
+
+  .boxes {
+    margin-top: 9px;
+    padding: 15px;
+    position: relative;
+    -webkit-box-shadow: 0px 3px 13px 0px rgba(0, 0, 0, 0.46);
+    box-shadow: 0px 3px 13px 0px rgba(0, 0, 0, 0.26);
+
+    img {
+      width: 165px;
+    }
+
+    p {
+      color: $color-white;
+      margin: 10px 0;
+
+      span {
+        font-weight: 700;
+      }
+    }
+
+    button {
+      margin: 0 0;
+      border-radius: 0 15px 0 0;
+      height: 42px;
+      font-family: $avenir-Bold;
+    }
+
+    .box-content-cura,
+    .box-content-cuida,
+    .box-content-tele {
+      @media (min-width: 720px) {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 90%;
+        padding: 37px 20px;
+        border-radius: 0 40px 0 0;
+      }
+    }
+
+    .box-content-cura {
+      @media (min-width: 720px) {
+        /* background-color: $color-green-avivacuida; */
+      }
+    }
+
+    .box-content-cuida {
+      @media (min-width: 720px) {
+        /* background-color: $color-orange; */
+      }
+    }
+
+    .box-content-tele {
+      @media (min-width: 720px) {
+        /* background-color: $color-tele; */
+      }
+    }
+  }
+
+  .cont-box {
+    /* margin-left: 400px; */
+    margin-top: 100px;
+
+    @media (min-width: 720px) {
+      margin-top: 78px;
+      margin-left: 400px;
+      display: -webkit-box;
+
+      display: -ms-flexbox;
+
+      display: flex;
+      width: 580px;
+    }
+  }
+
+  .box-cura,
+  .box-cuida,
+  .box-tele {
+    /*     margin-left: 50px;
+    margin-right: auto; */
+    max-width: 580px;
+    background-size: cover;
+    background-size: cover;
+
+    @media (min-width: 720px) {
+      margin-top: 0px;
+      height: 180px;
+      margin-bottom: 10px;
+      border-radius: 0 50px;
+    }
+  }
+
+  .box-cura {
+    /* background-image: url("./assets/img/reservas/aviva_cura_mobile.jpg"); */
+    background-image: url("./assets/img/reservas/aviva_cura_mobile.jpg");
+    margin-top: 60px;
+
+    @media (min-width: 720px) {
+      margin-top: 0px;
+      height: 180px;
+      width: 580px;
+      margin-bottom: 10px;
+      background-image: url("./assets/img/reservas/aviva_cura_mobile.jpg");
+    }
+  }
+
+  .box-cuida {
+    /* background-image: url("./assets/img/reservas/aviva_cuida_mobile.jpg"); */
+    background-image: url("./assets/img/reservas/aviva_cuida_mobile.jpg");
+
+    @media (min-width: 720px) {
+      background-image: url("./assets/img/reservas/aviva_cuida_mobile.jpg");
+    }
+  }
+
+  .box-tele {
+    /* background-image: url("./assets/img/reservas/aviva_cuida_mobile.jpg"); */
+    background-image: url("./assets/img/reservas/avivateleFondo.png");
+
+    @media (min-width: 720px) {
+      background-image: url("./assets/img/reservas/avivateleFondo.png");
+    }
+  }
+}
+
+.aviva-cuidaa {
+  -webkit-animation-name: backgroundCuida;
+  animation-name: backgroundCuida;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+
+}
+
+.aviva-cuida-color {
+  .box-seguro .box-info-extra {
+    background-color: #ffd1c9;
+    max-width: 700px;
+
+    &-title {
+      text-align: center;
+
+      h4 {
+        font-size: 15px;
+        font-family: $avenir-Bold;
+        color: $color-orange;
+        padding: 15px 0;
+
+        @media (min-width: 920px) {
+          font-size: 20px;
+
+        }
+      }
+    }
+  }
+}
+
+.aviva-cura {
+  -webkit-animation-name: backgroundCura;
+  animation-name: backgroundCura;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+
+  .progress-bar::before {
+    background-color: rgb(0, 97, 90) !important;
+  }
+
+  .box-seguro .box-info-extra {
+    background-color: #DAECEB;
+    max-width: 623px;
+
+    &-title {
+      text-align: center;
+
+      h4 {
+        font-size: 15px;
+        font-family: $avenir-Bold;
+        color: #006E67;
+        padding: 15px 0;
+
+        @media (min-width: 920px) {
+          font-size: 20px;
+
+        }
+      }
+    }
+  }
+}
+
+@-webkit-keyframes backgroundCuida {
+  from {
+    background-color: $color-blue01;
+  }
+
+  to {
+    background-color: $color-orange;
+  }
+}
+
+@keyframes backgroundCuida {
+  from {
+    background-color: $color-blue01;
+  }
+
+  to {
+    background-color: $color-orange;
+  }
+}
+
+@-webkit-keyframes backgroundCura {
+  from {
+    background-color: $color-blue01;
+  }
+
+  to {
+    background-color: $color-green-avivacuida;
+  }
+}
+
+@keyframes backgroundCura {
+  from {
+    background-color: $color-blue01;
+  }
+
+  to {
+    background-color: $color-green-avivacuida;
+  }
+}
+
+// SECTION AVIVA CUIDA
+.aviva-cuida-section {
+  .box-specialty {
+    h2 {
+      @media (min-width: 980px) {
+        color: $color-white !important;
+      }
+    }
+  }
+
+  .box-header {
+    // background-color: $color-orange2;
+    height: auto;
+    border-radius: 0 0 129px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: left;
+    padding: 17px 25px 38px;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+
+    @media (min-width: 980px) {
+      padding: 35px 62px 66px 92px;
+      border-radius: 0 0 197px;
+      width: 460px;
+    }
+
+    .content-logo {
+      position: relative;
+      z-index: 1;
+
+      &:before {
+        content: "02";
+        position: absolute;
+        left: -52px;
+        top: -13px;
+        height: 10px;
+        width: 10px;
+        font-family: $avenir-LT;
+        font-size: 99px;
+        z-index: -1;
+
+        @media (max-width: 980px) {
+          display: none;
+        }
+      }
+
+      img {
+        width: 200px;
+        padding-top: 20px;
+      }
+    }
+
+    p {
+      margin-top: 12px;
+
+      @media (min-width: 980px) {
+        font-size: 23px;
+        width: 322px;
+      }
+    }
+
+    .vector-orange {
+      .circle {
+        background-color: $color-white;
+
+        &:before {
+          background-color: $color-white;
+        }
+      }
+    }
+
+    .vector-orange-horizontal {
+      top: 73px;
+
+      .circle {
+        background-color: $color-white;
+
+        &:before {
+          background-color: $color-white;
+        }
+      }
+    }
+  }
+}
+
+// PAGE DOCTORES
+.aviva-cuida-doctores {
+  .box-specialty {
+    margin-bottom: 27px !important;
+  }
+}
+
+.registra,
+.docs {
+  display: inline-block;
+  position: relative;
+  z-index: 2;
+
+  &:before {
+    position: absolute;
+    left: -52px;
+    top: -50px;
+    height: 10px;
+    width: 10px;
+    font-family: $avenir-LT;
+    font-size: 99px;
+    z-index: -1;
+
+    @media (max-width: 980px) {
+      display: none;
+    }
+  }
+}
+
+.registra {
+  &:before {
+    content: "04";
+  }
+}
+
+.docs {
+  &:before {
+    content: "03";
+  }
+}
+
+.box-register {
+  .content-box-info {
+    margin-top: 50px;
+
+    @media (min-width: 980px) {
+      margin-bottom: 0;
+    }
+  }
+
+  .box-specialty {
+    margin: 0 !important;
+
+    @media (min-width: 980px) {
+      margin-bottom: 13px !important;
+    }
+
+    h2 {
+      margin: 10px 0 0;
+      color: $color-white !important;
+      text-align: left !important;
+    }
+  }
+
+  button {
+    font-family: $avenir-Bold;
+    margin: 0;
+    height: 60px;
+    border-radius: 0px 25px 0 0;
+    max-width: 345px;
+    font-size: 15px;
+
+    @media (min-width: 980px) {
+      width: 100%;
+      max-width: 209px;
+      font-size: 12px;
+    }
+
+    &:first-child {
+      margin-bottom: 10px;
+      background: #062f51;
+      @media (min-width: 980px) {
+        margin-right: 15px;
+      }
+    }
+  }
+}
+
+.box-doctores {
+  .box-specialty {
+    margin-bottom: 12px !important;
+
+    h2 {
+      color: $color-white !important;
+      text-align: left !important;
+    }
+  }
+}
+
+.box-seguro {
+  .registra {
+    &:before {
+      content: "05";
+    }
+  }
+
+  .main {
+    font-size: 30px;
+    font-weight: bold;
+    font-family: $avenir-Bold;
+    position: relative;
+    z-index: 10;
+
+    @media (min-width: 980px) {
+      font-size: 41px;
+    }
+  }
+
+  .container-boxes-seguro {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+
+    @media (max-width:992px) {
+      margin-top: 22px;
+
+    }
+
+    button {
+      font-family: $avenir-Bold;
+      margin: 0;
+      height: 50px;
+      border-radius: 0px 25px 0 0;
+      width: 90%;
+      font-size: 14px;
+
+      @media (min-width: 980px) {
+        width: 100%;
+        max-width: 209px;
+        font-size: 12px;
+      }
+
+      &:first-child {
+        margin-bottom: 10px;
+        position: relative;
+
+        @media (max-width: 350px) {
+          margin-right: 10px;
+        }
+
+        .ico-si {
+          position: absolute;
+          bottom: -35px;
+          width: 20px;
+          height: 20px;
+          background-color: #ffd0c9;
+          left: 0;
+          right: 0;
+          margin: auto;
+          -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+        }
+      }
+    }
+  }
+
+  .box-specialty {
+    background-color: $color-white;
+    padding: 21px 0 15px;
+    margin-bottom: 0 !important;
+
+    @media (max-width: 350px) {
+      padding: 21px 11px 15px;
+    }
+
+    @media (min-width: 980px) {
+      padding: 0;
+      max-width: 446px;
+      background-color: transparent;
+    }
+
+    h2 {
+      color: $color-green-avivacuida !important;
+      text-align: center !important;
+
+      @media (min-width: 980px) {
+        color: $color-white !important;
+        text-align: left !important;
+      }
+    }
+  }
+
+  .box-info-extra {
+    background-color: #ffd1c9;
+    padding: 18px;
+
+    @media (min-width: 980px) {}
+
+    h2 {
+      font-size: 15px;
+      font-family: $avenir-Bold;
+      color: $color-orange;
+      text-align: center;
+      margin: 15px 0;
+
+      @media (min-width: 980px) {
+        margin: auto;
+        max-width: 446px;
+        background-color: transparent;
+      }
+    }
+
+    .box-radio {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      margin: 12px 0;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      height: auto;
+      color: $color-blue02;
+
+      @media (max-width: 980px) {
+        -webkit-box-pack: start;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+
+        .mat-radio-button {
+          margin-bottom: 20px;
+        }
+      }
+
+      @media (min-width: 980px) {
+        height: auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 20px;
+      }
+
+      .mat-radio-outer-circle {
+        background-color: $color-white;
+        border-width: 1px;
+      }
+    }
+  }
+}
+
+.box-pago {
+  .registra {
+    &:before {
+      content: "06";
+    }
+  }
+
+  .main {
+    font-size: 30px;
+    font-weight: bold;
+    font-family: $avenir-Bold;
+    position: relative;
+    z-index: 10;
+
+    @media (min-width: 980px) {
+      font-size: 41px;
+    }
+  }
+
+  .container-boxes-seguro {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    margin-top: 22px;
+
+    button {
+      font-family: $avenir-Bold;
+      margin: 0;
+      height: 50px;
+      border-radius: 0px 25px 0 0;
+      width: 150px;
+      font-size: 14px;
+
+      @media (min-width: 980px) {
+        width: 100%;
+        max-width: 209px;
+        font-size: 12px;
+      }
+
+      &:first-child {
+        margin-bottom: 10px;
+        position: relative;
+
+        @media (max-width: 350px) {
+          margin-right: 10px;
+        }
+
+        .ico-si {
+          position: absolute;
+          bottom: -35px;
+          width: 20px;
+          height: 20px;
+          background-color: #ffd0c9;
+          left: 0;
+          right: 0;
+          margin: auto;
+          -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+        }
+      }
+    }
+  }
+
+  .box-specialty {
+    background-color: $color-white;
+    padding: 21px 0 15px;
+    margin-bottom: 0 !important;
+
+    @media (max-width: 350px) {
+      padding: 21px 11px 15px;
+    }
+
+    @media (min-width: 980px) {
+      max-width: 446px;
+      padding: 0;
+      background-color: transparent;
+    }
+
+    h2 {
+      text-align: center !important;
+
+      @media (min-width: 980px) {
+        color: $color-white !important;
+        text-align: left !important;
+      }
+    }
+  }
+}
+
+.aviva-cura {
+  .box-header {
+    background-color: #006e67 !important;
+
+    .content-logo {
+      &:before {
+        color: rgba(144, 209, 207, 0.3);
+      }
+    }
+  }
+
+  .registra,
+  .docs {
+    &:before {
+      color: rgba(144, 209, 207, 0.3);
+    }
+  }
+}
+
+.aviva-cuidaa,
+.aviva-cuida-color {
+  .box-header {
+    background-color: #eb533a !important;
+
+    .content-logo {
+      &:before {
+        color: rgba(255, 164, 147, 0.31);
+      }
+    }
+  }
+
+  .registra,
+  .docs {
+    &:before {
+      color: rgba(255, 164, 147, 0.31);
+    }
+  }
+}
+
+.box-content-reservas {
+  .box-header {
+    background-color: #519db9;
+  }
+}
+
+.jc-start {
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start !important;
+}
+
+.user-bienvenido {
+  width: 100%;
+}

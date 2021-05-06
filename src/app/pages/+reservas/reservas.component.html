@@ -1,0 +1,88 @@
+<div [ngClass]="{'aviva-cuida': page === 'avivaCuida' && pageInternas === 'especialidad',
+                  'aviva-cuida-color' : page === 'avivaCuida',
+                  'aviva-cura': page === 'avivaCura'
+                }" class="box-content-reservas" @fadeIn>
+  <div style="background-color: white;" class="container-fluid">
+    <div class="box-header-interactivo">
+      <a (click)="backLink()"></a>
+      <h2 [ngStyle]="{'color': page === 'avivaCuida' ? '#FB6E54' : ''}">RESERVAR CITA</h2>
+    </div>
+  </div>
+
+  <!-- START BAR PROGRESS -->
+  <!-- <div *ngIf="page === 'avivaCuida' || page === 'avivaCura' || page === 'avivaTele'" class="progress-bar">
+    <div class="container">
+      <div class="row">
+        <div class="box-progress">
+          <ul>
+            <li class="ready">
+              <div class="circle">
+                <img src="assets/img/sacar-cita/check1.svg" alt="">
+              </div>
+              <h3>Servicio</h3>
+              <span class="line"></span>
+            </li>
+            <li [ngClass]="{'active': pageInternas === 'especialidad', 'ready' : pageInternas != 'especialidad'}">
+              <div class="circle">
+                <img style="cursor: pointer" (click)="backLink()" *ngIf="pageInternas != 'especialidad'"
+                  src="assets/img/sacar-cita/check1.svg" alt="">
+                <img *ngIf="pageInternas === 'especialidad' ? true : false"
+                  src="assets/img/sacar-cita/1_especialidades.svg" alt="">
+                <div *ngIf="pageInternas === 'especialidad' ? true : false" class="text-movil">Especialidad</div>
+              </div>
+              <h3>Especialidad</h3>
+              <span class="line"></span>
+            </li>
+            <li
+              [ngClass]="{'active': pageInternas === 'doctores', 'ready' : pageInternas != 'doctores' && doctors === true }">
+              <div class="circle">
+                <img *ngIf="doctors === true" src="assets/img/sacar-cita/check1.svg" alt="">
+                <img *ngIf="pageInternas === 'doctores' ? true : false" src="assets/img/sacar-cita/2_doctores.svg"
+                  alt="">
+                <div *ngIf="pageInternas === 'doctores' ? true : false" class="text-movil">Doctores</div>
+              </div>
+              <h3>Doctores</h3>
+              <span class="line"></span>
+            </li>
+            <li *ngIf="userNoAutenticate()"
+              [ngClass]="{'active': pageInternas === 'registro', 'ready' : registro === true}">
+              <div class="circle">
+                <img *ngIf="registro === true" src="assets/img/sacar-cita/check1.svg" alt="">
+                <img *ngIf="pageInternas === 'registro' ? true : false" style="width: 15px;"
+                  src="assets/img/sacar-cita/3_registro.svg" alt="">
+                <div *ngIf="pageInternas === 'registro' ? true : false" class="text-movil">registro</div>
+              </div>
+              <h3>Registro</h3>
+              <span class="line"></span>
+            </li>
+            <li [ngClass]="{'active': pageInternas === 'seguro', 'ready' : seguro === true}">
+              <div class="circle">
+                <img *ngIf="seguro === true" src="assets/img/sacar-cita/check1.svg" alt="">
+                <img *ngIf="pageInternas === 'seguro' ? true : false" style="width: 15px;"
+                  src="assets/img/sacar-cita/4_seguro.svg" alt="">
+                <div *ngIf="pageInternas === 'seguro' ? true : false" class="text-movil">seguro</div>
+              </div>
+              <h3>Financiador</h3>
+              <span class="line"></span>
+            </li>
+            <li [ngClass]="{'active': pageInternas === 'pago', 'ready' : pago === true}">
+              <div class="circle">
+                <img *ngIf="pago === true" src="assets/img/sacar-cita/check1.svg" alt="">
+                <img *ngIf="pageInternas === 'pago' ? true : false" style="width: 15px;"
+                  src="assets/img/sacar-cita/5_pago.svg" alt="">
+                <div *ngIf="pageInternas === 'pago' ? true : false" class="text-movil">pago</div>
+              </div>
+              <h3>Pago</h3>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <!-- END BAR PROGRESS -->
+
+  <router-outlet></router-outlet>
+  <!-- <div (click)="backLink()" class="button-back">
+    <img src="assets/img/sacar-cita/back-page.svg" alt="">
+  </div> -->
+</div>

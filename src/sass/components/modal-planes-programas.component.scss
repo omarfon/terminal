@@ -1,0 +1,492 @@
+.page-embarazo {
+  .cdk-global-overlay-wrapper {
+    .mat-dialog-container {
+      padding: 0 !important;
+    }
+  }
+}
+
+.modal-cuadro-comparativo-title {
+  width: 90%;
+  background-color: $color-blue03;
+  padding: 15px 10px;
+  border-radius: 0 0 70px 0;
+  color: $color-white;
+  font-family: $avenir-Bold;
+  @media (min-width: 992px) {
+    padding: 64px;
+    margin-top: -3%;
+    border-radius: 0 0 200px 0;
+  }
+  h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    @media (min-width: 992px) {
+      font-size: 45px;
+    }
+  }
+
+  p:nth-child(2) {
+    margin-bottom: 5px;
+    @media (min-width: 992px) {
+      font-size: 18px;
+
+      br {
+        display: none;
+      }
+    }
+  }
+
+  p:nth-child(3) {
+    font-family: $avenir-LT;
+    font-size: 15px;
+    @media (min-width: 992px) {
+      font-size: 18px;
+    }
+  }
+  .new-title{
+    color: #FFD9B9;
+    font-size: 26px;
+    font-family: $avenir-LT;
+
+  }
+}
+
+.modal-cuadro-comparativo-content {
+  padding: 20px;
+  @media (min-width: 992px) {
+    padding: 0 64px;
+  }
+
+  .modal-cuadro-comparativo-beneficios_list {
+    ul {
+      @media (min-width: 992px) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+      li {
+        color: $color-blue01;
+        font-family: $avenir-LT;
+        font-size: 14px;
+        line-height: 1.3;
+        margin: 20px auto;
+        position: relative;
+        padding-left: 15px;
+        @media (min-width: 992px) {
+          margin: 0 10px 20px 0;
+          padding-right: 40px;
+          font-size: 17px;
+        }
+        &::before {
+          content: "";
+          position: absolute;
+          width: 10px;
+          height: 10px;
+          left: 0px;
+          top: 10%;
+          border-radius: 100%;
+          background-color: $color-orange-aviva;
+        }
+      }
+    }
+  }
+  .botton-comparar-programa {
+    button {
+      border-radius: 0 15px 0 0;
+      font-family: $avenir-Bold;
+      @media (min-width: 992px) {
+        width: 35%;
+        margin-left: 12px;
+        margin-top: 0;
+        height: 43px;
+      }
+    }
+  }
+
+  .comparativo-monto {
+    text-align: center;
+    margin-bottom: 20px;
+    @media (min-width: 992px) {
+      text-align: start;
+    }
+    p {
+      font-size: 21px;
+      font-family: $avenir-LT;
+      color: $color-blue01;
+      @media (min-width: 992px) {
+        font-size: 27px;
+      }
+    }
+  }
+
+  .modal-cuadro-comparativo-informacion-pdf {
+    padding-bottom: 20px;
+    .informacion-pdf {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      a {
+        width: 50%;
+        text-align: center;
+        @media (min-width: 992px) {
+          text-align: start;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-pack: start;
+          -ms-flex-pack: start;
+          justify-content: flex-start;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          align-items: center;
+        }
+        img {
+          width: 80%;
+          max-width: 70px;
+          @media (min-width: 992px) {
+            max-width: 60px;
+            margin-right: 15px;
+          }
+        }
+
+        p {
+          color: $color-blue02;
+          font-size: 12px;
+          text-align: center;
+          margin-top: 10px;
+          font-family: $avenir-Bold;
+          @media (min-width: 992px) {
+            font-size: 15px;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}
+
+.modal-cuadro-comparativo_title {
+  text-align: center;
+  margin-bottom: 6px;
+  @media (min-width: 992px) {
+    text-align: start;
+    margin-bottom: 20px;
+  }
+  h3 {
+    font-size: 21px;
+    color: $color-blue01;
+    font-family: $avenir-Bold;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    width: 100%;
+    @media (min-width: 992px) {
+      padding: 24px 0 0;
+      margin-bottom: 0;
+      // width: 124px;
+    }
+  }
+
+  .title-down{
+    font-size: 21px;
+    color: $color-blue01;
+    font-family: $avenir-Bold;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    width: 100%;
+    @media (min-width: 992px) {
+      padding: 24px 0 0;
+      margin-bottom: 0;
+      width: 124px;
+    }
+  }
+}
+
+.elige-este-programa {
+  height: 547px,;
+  background-image: url('./assets/home/banner_home_mobile.jpg');
+	background-size: cover;
+  padding: 24px;
+  border-radius: 0 60px 0 0;
+  text-align: center;
+  background-position: initial;
+  @media (min-width: 992px) {
+    background-image: url('./assets/home/banner_home.jpg');
+    background-position: center;
+    // margin: 20px 64px;
+    margin: 20px 64px 0 64px;
+    height: 237px;
+  }
+  @media (min-width: 1024px) {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: space-between;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    overflow: hidden;
+    flex-direction: column;
+  }
+  &-text {
+    text-align: center;
+    font-family: $avenir-LT;
+    color: $color-blue01;
+    @media (min-width: 1024px) {
+      width: 40%;
+      text-align: start;
+    }
+    @media (min-width: 1300px) {
+      width: 40%;
+      text-align: start;
+    }
+  }
+  .modal-cuadro-comparativo_title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    @media (min-width: 1024px) {
+      margin-bottom: 0;
+    }
+    @media (min-width: 1300px) {
+      
+      h3 {
+        padding: 0;
+        position: relative;
+      }
+    }
+    @media (max-width: 700px){
+      flex-direction: column;
+    }
+
+    .comparativo-monto{
+      display: flex;
+      margin-left: 17px;
+      align-items: flex-end;
+      .soles, .price{
+        color: #FFDA9A;
+        font-family: $avenir-Bold;
+      }
+      .soles{
+        font-size: 28px;
+      }
+
+      .price{
+        font-size: 46px;
+      }
+    }
+  }
+  .elige-este-programa-button {
+    @media (min-width: 1024px) {
+      width: 30%;
+    }
+  }
+}
+
+.elige-este-programa-button {
+  text-align: center;
+  button {
+    border-radius: 0 15px 0 0;
+    font-family: $avenir-Bold;
+    @media (min-width: 1024px) {
+      height: 43px;
+      margin-top: 20px;
+    }
+    @media (min-width: 1024px) {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+}
+
+.pt-4 {
+  padding-top: 20px;
+  @media (min-width: 992px) {
+    padding-top: 0px;
+  }
+}
+
+.table-comparativo {
+  padding: 0 10px 10px 10px;
+  background-color: $color-beige-tabla;
+  overflow: auto;
+  height: 400px;
+  @media (min-width: 1024px) {
+    padding: 20px 64px;
+    height: auto;
+    overflow:auto!important;
+  }
+  
+  table {
+    color: $color-blue01;
+    width: 100%;
+    background-color: $color-beige-tabla;
+    border-collapse: collapse;
+    thead {
+      tr {
+        th {
+          color: $color-blue02;
+          line-height: 1.3;
+          position: -webkit-sticky;
+          position: sticky;
+          background-color: $color-beige-tabla;
+          top: 0;
+          height: 20px;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+          height: 42px;
+          vertical-align: middle;
+          @media (min-width: 1024px) {
+            font-size: 21px;
+          position: initial;
+
+            span{
+            font-size: 18px;
+
+            }
+          }
+
+        }
+      
+      }
+    }
+    tr {
+      font-size: 12px;
+      font-family: $avenir-Bold;
+      @media (min-width: 1024px) {
+        font-size: 16px;
+      }
+      span {
+        font-size: 10px;
+        @media (min-width: 1024px) {
+          font-size: 12px;
+        }
+      }
+
+      img {
+        width: 25px;
+      }
+      td {
+        padding: 10px 0;
+        vertical-align: middle;
+        line-height: 1.3;
+        @media (min-width: 1024px) {
+          padding: 18px 0;
+        }
+      }
+    }
+
+    tr:nth-child(odd) {
+      background-color: $color-beige-tabla;
+    }
+
+    tr:nth-child(even) {
+      background-color: $color-beige-tabla-2;
+    }
+    tbody {
+      tr {
+        td:nth-child(1) {
+          width: 110px;
+          font-family: $avenir-LT;
+          @media (min-width: 1024px) {
+            width: 320px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.font-tabla-comparativa {
+  font-size: 16px;
+  @media (min-width: 1024px) {
+  font-size: 21px;
+  }
+}
+
+.comparativo-de-programas {
+  @media (min-width: 1024px) {
+    background-color: $color-beige-tabla;
+    border-radius: 0 30px 0 0 !important;
+  }
+  .modal-cuadro-comparativo_title {
+    @media (min-width: 1024px) {
+      padding: 20px 64px;
+    }
+
+    h3 {
+      margin-bottom: 10px;
+      @media (min-width: 1024px) {
+        font-size: 27px;
+      }
+    }
+   
+  }
+  .line-divisor{
+    &::after{
+      background-color: rgba(0,0,0,.12) !important;
+    }
+  }
+}
+
+
+.container-movil{
+  @media (max-width: 500px) {
+    height: 62vh;
+    overflow: auto;
+    min-height: 400px;
+    position: relative;
+  }
+}
+
+.box-buttons{
+  display: flex;
+  align-items: center;
+  margin: 13px 0 30px;
+
+  button{
+    width: 100% !important;
+    margin: 0 !important;
+  }
+  a{
+    margin-left: 53px;
+    p {
+      color: $color-blue02;
+      font-size: 12px;
+      text-align: center;
+      margin-top: 10px;
+      font-family: $avenir-Bold;
+      text-decoration: underline;
+      @media (min-width: 992px) {
+        font-size: 15px;
+        text-decoration: underline;
+      }
+    }
+
+    @media (max-width: 700px) {
+     margin: 0;
+     margin-top: 10px;
+      
+    }
+
+  }
+  .botton-comparar-programa{
+    @media (max-width: 700px) {
+      width: 100%;
+      
+    }
+    width: 191px;
+  }
+
+  @media (max-width: 700px) {
+    flex-direction: column;
+
+  }
+}

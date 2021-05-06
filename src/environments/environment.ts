@@ -3,9 +3,29 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  url: 'https://dappapache02.eastus.cloudapp.azure.com/middleware2/',
+  urlImagenes: 'https://dappapache02.eastus.cloudapp.azure.com/middleware2/img/professionals/',
+  urlBaseAlter: 'https://dappapache02.eastus.cloudapp.azure.com/middleware2/',
+  urlApiNodos: 'https://apiwsdev.aviva.pe/',
+  apiKeyCulqi: 'pk_test_e85SD7RVrWlW0u7z',
+  agora: {
+    appId: 'b75a830a11a84a0bbb812fc81aa60860'
+  },
 };
 
+/* export const environment = {
+  production: true,
+  url: 'https://api.aviva.pe/middleware2/',
+  urlBaseAlter: 'https://api.aviva.pe/middleware2/',
+  urlImagenes: 'https://api.aviva.pe/middleware2/img/professionals/',
+  urlApiNodos: 'https://apiws.aviva.pe/',
+  apiKeyCulqi: 'pk_live_CyArY9ygzb0d7oZb',
+  agora: {
+    appId: 'b75a830a11a84a0bbb812fc81aa60860'
+  },
+};
+ */
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

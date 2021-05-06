@@ -1,0 +1,63 @@
+.box-errors-500{
+    height: 100vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    position: relative;
+    padding: 0 20px;
+    img{
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        display: inline-block;
+    }
+    .main-letter{
+        position: relative;
+    }
+    h5{
+        font-size: 36px;
+        color: #EB954D;
+        font-family: avenirLt95Bold;
+        font-size: 15px;
+        position: absolute;
+        top: -16px;
+        left: 0;
+        @media (min-width:620px){
+            font-size: 36px;
+        }
+    }
+    h2{
+        font-family: $avenir-Bold;
+        font-size: 100px;
+        color: $color-blue01;
+        @media (min-width:620px){
+            font-size: 200px;
+        }
+    }
+    p{
+        font-size: 14px;
+        color: $color-blue01;
+        text-align: center;
+        @media (min-width:620px){
+            font-size: 24px;
+        }
+    }
+    button{
+        height: 42px;
+        width: 214px;
+        background-color: #062F51;
+        color: $color-white;
+        font-family: $avenir-Bold;
+        border-radius: 0 15px 0 0;
+    }
+}

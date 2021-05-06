@@ -1,0 +1,39 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-11">
+          <img class="logoAviva" src="assets/images/logo.svg">
+      </div>  
+      <div class="col-1">
+        <mat-icon (click)="goToHome()" aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col content containerWeb" (click)="openGiencoPediatri()">
+        <h1>Saca tu cita para ginecología y pediatría aquí</h1>
+       <!--  <div class="containerReservar">
+          <button class="btn btn-button btn-rounded reservar" > reservar
+          </button>
+        </div> -->
+      </div>
+      <div class="col content containerPlan" (click)="openParto()">
+        <h1>Conoce sobre el parto humanizado en aviva</h1>
+<!--         <div class="containerReservar" > 
+          <button class="btn btn-button btn-rounded reservar">  comenzar
+          </button>
+        </div> -->
+      </div>
+      <div class="col content containerMamapp" (click)="openModalMamapp()"><h1>Conoce nuestra aplicación mamapp</h1>
+          <div class="containerReservar">
+            <!-- <button class="btn btn-button btn-rounded reservar" > ver
+            </button> -->
+          </div>
+      </div>
+      <div class="col content containerWawapp" (click)="openModalWawapp()"><h1>Conoce nuestra aplicación wawapp</h1>
+        <div class="containerReservar">
+          <!-- <button class="btn btn-button btn-rounded reservar"> ver
+          </button> -->
+        </div>   
+      </div>
+    </div>
+  </div>
+ 

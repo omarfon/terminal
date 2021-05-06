@@ -1,0 +1,88 @@
+
+.container-fluid{
+    background: #f1f3f6;
+    height: 90vh!important;
+}
+.content{
+    height: 75vh;
+    margin-top:5vh;
+    margin-left:2.5%;
+    margin-right:2.5%;
+    border-top-right-radius: 25px;
+}
+.containerWeb{
+    background: #126e82;
+    h1{
+        color:#fff;
+        font-size:3em;
+        margin-top:30px;
+    }
+}
+h1{
+    @media (min-width: 980px) {
+        font-size: 3.5em;
+        width: 80%;
+      }
+}
+.containerPlan{
+    background: #28b5b5;
+    h1{
+        color:#fff;
+        font-size:3em;
+        margin-top:30px;
+    }
+}
+.containerMamapp{
+    background: #ff8882;
+    h1{
+        color:#fff;
+        font-size:3em;
+        margin-top:30px;
+    }
+}
+.containerWawapp{
+    background:#ffc93c ;
+    h1{
+        color:#fff;
+        font-size:3.5em;
+        margin-top:30px;
+    }
+}
+.reservar{
+    border: 2px solid #fff;
+    margin-top:30vh;
+    text-align: right;
+    color:#fff;
+    border-radius:10px;
+    width: 100px;
+    position: relative;
+    bottom: 0;
+    right: 0;
+}
+.logoAviva{
+    width:150px;
+    margin-top:30px;
+    margin-left: 30px;
+}
+.containerReservar{
+    height: 200px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+mat-icon{
+    margin-top:30px;
+    text-align: right;
+    font-size:4em!important;
+    color:#126e82;
+}
+.simple-keyboard{
+    display: none;
+    text-align: center;
+    max-width: 1100px;
+    max-height: 500px;
+    position: absolute;
+    bottom: 20px;
+    margin-left: calc( 50% - 550px );
+
+}

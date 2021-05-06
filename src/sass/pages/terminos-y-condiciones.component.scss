@@ -1,0 +1,40 @@
+.container-tyc{
+  height: auto;
+  min-height: 100vh;
+  background-color: $color-blue01;
+  color: $color-white;
+  font-family: $avenir-LT;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  @media (max-width:992px) {
+      height: 100%;  
+  }
+  .container{
+    .col-md-8{
+      margin: auto;
+    }
+  }
+  .title-tyc{
+    text-align: start;
+    margin-bottom: 20px;
+    @media (max-width:992px) {
+      padding-top: 70px;
+
+  }
+    h2{
+      font-size: 24px;
+      font-family: $avenir-Bold;
+      @media (min-width:992px) {
+        font-size: 40px;
+      }
+    }
+  }
+
+  .text-tyc{
+    p{
+      font-size: 15px;
+      line-height: 1.4;
+      text-align: justify;
+    }
+  }
+}

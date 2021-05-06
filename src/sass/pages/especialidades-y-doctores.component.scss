@@ -1,0 +1,624 @@
+.especialidades-y-doctores-container{
+  height: auto;
+  padding-bottom: 60px;
+  @media (min-width: 1024px) {
+    min-height: calc(100vh - 160px);
+    padding-bottom: 60px;
+  }
+}
+
+.box-title-eyp {
+  background-color: $color-blue03;
+  margin-left: -15px;
+  padding-left: 15px;
+  padding: 30px 0px 30px 27px;
+  border-radius: 0 0 100px 0;
+  position: relative;
+ 
+  @media (min-width: 992px) {
+    padding: 30px 0px 30px 15%;
+    min-width: 422px;
+    border-radius: 0 0 200px 0;
+    height: 347px;
+  }
+  p {
+    color: $color-white;
+    font-size: 16px;
+    max-width: 226px;
+    margin-top: 22px;
+    line-height: 1.3;
+    span{
+      font-family: $avenir-Bold;
+    }
+    @media (min-width: 992px) {
+      font-size: 27px;
+      max-width: 400px;
+    }
+    @media (min-width: 1024px) {
+      font-size: 34px;
+      max-width: 268px;
+    }
+  }
+  .vector-orange {
+    width: 0px;
+    position: absolute;
+    bottom: -34px;
+    left: 25px;
+  }
+}
+
+.box-content-eyp{
+  .tab-planes-programas{
+    .tab-pyp{
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
+      @media (min-width:1024px) {
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+      }
+      img{
+        width: 15px;
+        margin-bottom: 4px;
+        @media (min-width:1024px) {
+          width: 21px;
+          margin-right: 10px;
+        }
+      }
+      p{
+        font-size: .9em;
+        @media (min-width:1024px) {
+         font-size: 1.2em;
+        }
+      }
+    }
+  }
+}
+
+.tabs-content-eyp-especialidades{
+  // padding: 5px 0 5px 15px;
+  @media (min-width:1024px) {
+    padding: 10px 5px;
+  }
+  ul{
+    @media (min-width:1024px) {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-gap: 8px;
+      background-color: transparent;
+    }
+    li{
+      background-color: $color-white;
+      padding: 17px 15px 17px 15px;
+      border-top: 1px solid;
+      border-color: #ddd;
+      display: flex;
+      cursor: pointer;
+      @media (min-width:1024px) {
+       padding: 17px 15px;
+        border-top: 0px;
+      }
+      a{
+        cursor: pointer;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        width: 100%;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        -webkit-box-pack: start;
+            -ms-flex-pack: start;
+                justify-content: flex-start;
+        position: relative;
+
+        img{
+          width: 20px;
+          margin-bottom: 4px;
+        }
+
+        p{
+          font-family: $avenir-Bold;
+          color: $color-blue02;
+          font-size: 15px;
+          margin-left: 10px;
+        }
+
+        span{
+          @media (min-width:1024px) {
+            display: none;
+             
+           }
+          &::before{
+            content: "";
+            position: absolute;
+            right: 0px;
+            top: 5px;
+            margin: auto;
+            width: 15px;
+            height: 15px;
+            -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+            border-top: 2px solid;
+            border-right: 2px solid;
+            color: $color-blue02;
+          }
+        }
+      }
+    }
+  }
+}
+
+.tabs-content-eyp-doctores{
+  padding: 5px;
+  background-color: $color-white;
+  @media (min-width:1024px) {
+    padding: 10px 5px;
+  }
+}
+
+.filter-eyp-doctores{
+  padding: 15px;
+  background-color: $color-beige;
+  border-radius: 0 0 30px 0;
+  @media (min-width:1024px) {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  border-radius: 0 0 40px 0;
+
+  }
+  .box-input{
+    @media (min-width:1024px) {
+     width: 50%;
+     display: -webkit-box;
+     display: -ms-flexbox;
+     display: flex;
+     -webkit-box-pack: start;
+         -ms-flex-pack: start;
+             justify-content: flex-start;
+     -webkit-box-align: center;
+         -ms-flex-align: center;
+             align-items: center;
+     text-align: end;
+    }
+    label{
+      color: $color-beige-oscuro-2;
+      font-size: 15px;
+      font-family: $avenir-Bold;
+      @media (min-width:1024px) {
+        width: 35%;
+        padding-right: 10px;
+      font-size: 12px;
+
+       }
+    }
+    select{
+      background-color: $color-white;
+      margin-top: 5px;
+      font-family: $avenir-LT;
+      border-radius: 0;
+      @media (min-width:1024px) {
+        border-radius: 0;
+        height: 40px;
+        font-size: 15px;
+        width: 65%;
+       }
+    }
+  }
+  .box-input:nth-child(1){
+    margin-bottom: 15px;
+    @media (min-width:1024px) {
+      margin-bottom: 0px;
+
+     }
+  }
+}
+
+.list-eyp-doctores-filter{
+  height: 60px;
+  padding: 15px;
+
+  span{
+    font-size: 35px;
+    color: $color-blue03;
+    font-family: $avenir-Bold;
+  }
+}
+.list-eyp-doctores-items:nth-child(odd){
+  background-color: $color-white;
+  &::-webkit-scrollbar {
+    border-radius: 10px;
+    width: 12px;
+    height: 8px;
+    right: -15px;
+  }
+   /* Estilos barra (thumb) de scroll */
+   &::-webkit-scrollbar{
+     border-radius: 10px;
+    width: 12px;
+    background-color: white;
+    right: -15px;
+}
+&::-webkit-scrollbar-track{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #135375;
+    right: -15px;
+}
+&::-webkit-scrollbar-thumb{
+  right: -15px;
+  border-radius: 10px;
+    background-color:white; 
+    background-image: -webkit-linear-gradient(90deg,rgba(255, 255, 255, .2) 25%,transparent 25%,transparent 50%,rgba(255, 255, 255, .2) 50%,rgba(255, 255, 255, .2) 75%,transparent 75%,transparent)
+}
+}
+.list-eyp-doctores-items:nth-child(even){
+  background-color: #F7F7F7;
+
+}
+.list-eyp-doctores-item{
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 15px 0;
+  cursor: pointer;
+  div:nth-child(1){
+    width: 30%;
+    text-align: center;
+    @media (min-width:1024px) {
+      width: 25%;
+    }
+    img{
+      width: 60%;
+      @media (min-width:1024px) {
+        width: 40%;
+        border-radius: 100%;
+      }
+    }
+  }
+  div:nth-child(2){
+    width: 60%;
+    p{
+      font-size: 15px;
+      font-family: $avenir-Bold;
+      color: $color-blue02;
+      @media (min-width:1024px) {
+        font-size: 18px;
+      }
+    }
+    span{
+      font-size: 12px;
+      font-family: $avenir-LT;
+      color: $color-beige-oscuro-2;
+      @media (min-width:1024px) {
+        font-size: 15px;
+      }
+    }
+  }
+  div:nth-child(3){
+    width: 10%;
+    span{
+      position: relative;
+      &::before{
+        content: "";
+        position: absolute;
+        right: -15px;
+        top: -10px;
+        margin: auto;
+        width: 15px;
+        height: 15px;
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+        border-top: 2px solid;
+        border-right: 2px solid;
+        color: $color-blue02;
+        @media (min-width:1024px) {
+        right: -50px;
+        }
+      }
+    }
+  }
+}
+
+.box-content-detail-doctor{
+  background-color: $color-white;
+  border-radius: 0 15px 0 0px;
+  -webkit-box-shadow: 0 0 24px 8px rgba(0, 43, 41, 0.18);
+          box-shadow: 0 0 24px 8px rgba(0, 43, 41, 0.18);
+  @media (min-width:1024px) {
+    border-radius: 0 50px 0 0px;
+
+  }
+.box-info-data-container{
+    background-color: #ececec;
+    border-radius: 0 15px 0 0px;
+    @media (min-width:1024px) {
+      width: 100%;
+      margin-bottom: 0;
+      border-radius: 0 50px 0 0px;
+
+    }
+    .box-info-data{
+      width: 100%;
+      border-radius: 0 15px 0 30px;
+      margin: 70px auto 0px;
+      -webkit-box-shadow: none;
+              box-shadow: none;
+      @media (min-width:1024px) {
+        border-radius: 0 15px 0 50px;
+
+      }
+      .box-info-citas-details-img{
+        @media (min-width:1024px) {
+         img{
+          margin-top: 0px;
+          border-radius: 100%;
+          width: 90%;
+         }
+        }
+      }
+      .box-info-citas-details{
+        .citas-detail-title{
+          @media (min-width:1024px) {
+            padding: 0;
+          }
+          span{
+            font-size: 18px;
+            color: $color-blue01;
+            font-family: $avenir-LT;
+            text-transform: lowercase;
+            @media (min-width:1024px) {
+              font-size: 20px;
+            }
+          }
+          h4{
+            font-size: 21px;
+            font-family: $avenir-Bold;
+            color: $color-blue01;
+            margin-top: 8px;
+            @media (min-width:1024px) {
+              font-size: 24px;
+              line-height: 1.2;
+            }
+          }
+        }
+        .citas-detail-university{
+          text-align: center;
+          @media (min-width:1024px) {
+            text-align: start;
+            margin-top: 24px;
+          }
+          p{
+            color: $color-blue01;
+            font-family: $avenir-Bold;
+            font-size: .9em;
+            margin-bottom: 20px;
+            @media (min-width:1024px) {
+              font-size: 18px;
+            }
+            span{
+              color: rgba(0,0,0,.38);
+            }
+          }
+
+          span{
+            color: $color-gray-1;
+            font-family: $avenir-LT;
+            font-size: 1em;
+            text-align: center;
+            @media (min-width:1024px) {
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .box-grey-bottom{
+    width: 100%;
+    text-align: center;
+    padding: 15px 15px;
+    background-color: #ececec;
+    border-radius: 0 15px 0 0;
+    margin: 0 auto;
+    @media (min-width:1024px) {
+      border-radius: 0 30px 0 0;
+    }
+    p{
+      font-size: 12px;
+      color: $color-blue01;
+      font-family: $avenir-Bold;
+      @media (min-width:1024px) {
+        font-size: 18px;
+      }
+    }
+    ul{
+      display: grid;
+      margin-top: 10px;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+      grid-column-gap: 10px;
+
+      .active{
+        &::before{
+          content: "";
+          position: absolute;
+          bottom: -16px;
+          width: 0;
+          height: 0;
+          border-right: 13px solid transparent;
+          border-top: 12px solid transparent;
+          border-left: 13px solid transparent;
+          border-bottom: 12px solid #20668B;
+        }
+      }
+
+      li{
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        position: relative;
+   
+
+        .box-day{
+          width: 35px;
+          height: 35px;
+          font-size: 12px;
+          border-radius: 100px;
+          background-color: #062F51;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-align: center;
+              -ms-flex-align: center;
+                  align-items: center;
+          -webkit-box-pack: center;
+              -ms-flex-pack: center;
+                  justify-content: center;
+          color: $color-white;
+          cursor: pointer;
+          @media (min-width:1024px) {
+            width: 56px;
+            height: 56px;
+            font-size: 18px;
+          }
+        }
+        span{
+          margin-top: 5px;
+          display: inline-block;
+          color: #062F51;
+          font-size: 17px;
+          font-family: $avenir-Bold;
+          @media (min-width:1024px) {
+            font-size: 29px;
+          }
+        }
+      }
+    }
+  }
+  .box-hour{
+    display: grid;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    padding: 15px;
+    height: auto;
+    background-color: #20668B;
+    text-align: center;
+    overflow: hidden;
+    p{
+      margin-bottom: 16px;
+      font-size: 11px;
+      color: $color-white;
+      @media (min-width:1024px) {
+        font-size: 18px;
+      }
+    }
+    .box-hour-main{
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+      grid-gap: 6px;
+      @media (max-width:560px) {
+        grid-template-columns: 1fr 1fr 1fr 1fr ;
+      }
+
+      div{
+        span{
+          display: inline-block;
+          padding: 5px 14px;
+          background-color: $color-blue02;
+          border-radius: 5px;
+          font-size: 13px;
+          color: $color-white;
+          cursor: pointer;
+
+          a{
+            color: $color-white;
+          }
+        }
+      }
+    }
+  }
+}
+.box-hour-tele{
+  display: grid;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  padding: 15px;
+  height: auto;
+  background-color: #519DB9;
+  text-align: center;
+  overflow: hidden;
+  .titleHorarioTel{
+    margin-bottom: 16px;
+    font-size: 11px!important;
+    color: $color-white;
+    @media (min-width:1024px) {
+      font-size: 18px;
+    }
+  }
+  .box-hour-main{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 6px;
+    @media (max-width:560px) {
+      grid-template-columns: 1fr 1fr 1fr 1fr ;
+    }
+
+    div{
+      span{
+        display: inline-block;
+        padding: 5px 14px;
+        background-color: #EB954D;
+        border-radius: 5px;
+        font-size: 13px;
+        color: $color-white;
+        cursor: pointer;
+
+        a{
+          color: $color-white;
+        }
+      }
+    }
+  }
+}
+
+.expande{
+  max-height: 545px;
+
+  @media (max-width:560px) {
+    max-height: 569px;
+  }
+
+
+}

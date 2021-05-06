@@ -1,0 +1,98 @@
+.box-parent {
+    margin-top: 10px;
+    /* background-color: #78b2d2; */
+}
+
+h3 {
+    font-size: 1.2em;
+    color: #fff;
+    text-align: center;
+    margin-top: 20px;
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+.botonesAdd {
+    button {
+        height: 50px;
+        border-top-right-radius: 20px;
+    }
+}
+
+.tarjetaDepes {
+    height: 60px;
+    background: #fff;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    border-top-right-radius: 15px;
+
+    h3 {
+        color: #062F51;
+        text-align: center;
+        font-size: 1.1em;
+    }
+}
+
+.botonAgregar {
+    margin-bottom: 20px;
+    font-size: 1em;
+    text-transform: uppercase;
+    color: #062F51;
+    background: transparent;
+    border: 2px solid #062F51;
+    border-top-right-radius: 20px;
+}
+
+.imagenDependent {
+    width: 60px;
+    border-radius: 50%;
+}
+
+.nombreDependiente {
+    font-size: 1.2em;
+    text-align: left;
+}
+
+.tiny {
+    font-size: .7em;
+}
+
+.box-specialty {
+    min-height: 400px;
+    height: auto;
+}
+
+mat-radio-button {
+    margin-bottom: 20px;
+
+    span {
+        text-align: left;
+        font-weight: 400;
+        font-size: .8em;
+        color: #044d8a;
+    }
+}
+
+.w-100 {
+    height: 100% !important;
+}
+.containerPage{
+    width:95%;
+    margin-left:2.5%;
+    position: absolute;
+    top:120px;
+    max-height: 80vh!important;
+}
+.cabecera{
+    width:100%;
+    position: absolute;
+    top:0;
+    left:0;
+  }
+  .aviva-cuida-section{
+    background: #FB6E54;
+    height: 83vh!important;
+  }

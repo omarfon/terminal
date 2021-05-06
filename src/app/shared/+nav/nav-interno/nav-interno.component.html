@@ -1,0 +1,229 @@
+<nav class="nav-interno">
+    <div class="">
+      <div class="row">
+        <div class="col-12">
+          <div class="nav-movil">
+            <div (click)="changeStateMenu()">
+              <div class="icon-toggle">
+                <img src="assets/svg/icon-nav-mobil.svg" alt="nav" />
+              </div>
+            </div>
+  
+            <div class="img-log-aviva" id="div-header-Ir_Home_Header">
+              <a [routerLink]="['/']" id="a-header-Ir_Home_Header">
+                <img src="assets/svg/logo.svg" alt="aviva" />
+              </a>
+            </div>
+  
+            <div style="display: flex;">
+              <div class="icons">
+                <a href="tel:017154600">
+                  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 300 300"
+                    style="enable-background:new 0 0 300 300;" xml:space="preserve">
+                    <path class="st0" d="M270.2,285c-6,9.1-16.3,14.4-27.3,13.8c-11-0.6-25.1-2.2-34.8-4.7C164.8,282.8,120,255.8,82,217.8
+                            C44,179.9,17.1,135,5.8,91.7C3.2,82,2,68.2,1.1,57.2c-0.6-10.7,4.4-21,13.5-27L53.1,4.5C63.2-2.1,76.7,1.4,82,12l31.4,60.6
+                            c4.4,8.5,2.2,19.1-5.3,25.1l-28.2,22c11.3,21,22,38,42.7,58.4c19.1,19.1,35.8,30.4,57.4,42l22.3-28.5c6-7.5,16.6-10,25.1-5.3
+                            l60.9,31.4c10.7,5.3,14.1,18.8,7.5,28.9L270.2,285z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+  
+          <div class="nav-dekstop">
+            <div class="box-content-logo-menu"></div>
+            <div class="img-log-aviva" id="div-header-Ir_Home_Header">
+              <a [routerLink]="['/']" id="a-header-Ir_Home_Header">
+                <img src="assets/svg/logo.svg" alt="" />
+              </a>
+            </div>
+            <div class="line-grey"></div>
+            <div class="list-menu">
+              <ul>
+                <li>
+                  <a [routerLink]="['/reservas']" routerLinkActive="active" id="a-cuerpo-Ir_Reservas_Cuerpo">SACAR UNA
+                    CITA</a>
+                </li>
+                <li>
+                  <a [routerLink]="['/especialidades-doctores']" routerLinkActive="active"
+                    id="li-cuerpo-Ver_Especialidades_Y_Doctores_Cuerpo">ESPECIALIDADES <br />Y DOCTORES</a>
+                </li>
+                <li>
+                  <a [routerLink]="['/planes-programas']" routerLinkActive="active"
+                    id="a-cuerpo-Ir_Planes_Y_Programas_Cuerpo">
+                    PROGRAMAS</a>
+                </li>
+                <li>
+                  <a [routerLink]="['/conoce-aviva']" routerLinkActive="active" id="a-cuerpo-Ir_Conoce_Aviva_Cuerpo">
+                    CONOCE
+                    <img width="100" class="aviva-letra" src="assets/svg/logo_letra.svg" alt="aviva" />
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <ul>
+  
+  
+              <li class="close">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 300 300"
+                  style="enable-background:new 0 0 300 300;" xml:space="preserve">
+                  <path class="st0" d="M270.2,285c-6,9.1-16.3,14.4-27.3,13.8c-11-0.6-25.1-2.2-34.8-4.7C164.8,282.8,120,255.8,82,217.8
+                   C44,179.9,17.1,135,5.8,91.7C3.2,82,2,68.2,1.1,57.2c-0.6-10.7,4.4-21,13.5-27L53.1,4.5C63.2-2.1,76.7,1.4,82,12l31.4,60.6
+                   c4.4,8.5,2.2,19.1-5.3,25.1l-28.2,22c11.3,21,22,38,42.7,58.4c19.1,19.1,35.8,30.4,57.4,42l22.3-28.5c6-7.5,16.6-10,25.1-5.3
+                   l60.9,31.4c10.7,5.3,14.1,18.8,7.5,28.9L270.2,285z" />
+                </svg>
+                (01) 7154600
+              </li>
+              <li class="iniciar-session" *ngIf="isUser() === false">
+                <a style="display: flex;
+              align-items: center; width: 100%;
+            height: 100%;" id="header_Ir_Iniciar_Sesion_Header" (click)="openLogin()">
+                  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 300 300"
+                    style="enable-background:new 0 0 300 300;" xml:space="preserve">
+                    <path class="st0" d="M221.4,87.2c-5.1,45.5-37,79.4-71.4,79.5c-34.4-0.1-66.3-34-71.4-79.5C73.5,41.8,105.4,1,150,1
+                   C194.6,1,226.5,41.8,221.4,87.2z" />
+                    <path class="st0"
+                      d="M247.7,174.4c-11.8-5-33.6-11.9-37.5-13.3l-59.6,72.5l-60-72.5c-4.1,1.4-15.9,4.1-38.2,13.3
+                   c-27.9,11.5-46,35.4-46.2,55.2V299h236.2c28.5,0,51.5-23.1,51.5-51.5v-17.8C293.6,209.8,275.5,186.1,247.7,174.4z" />
+                  </svg>
+                  INICIAR SESIÓN
+                </a>
+              </li>
+              <li *ngIf="isUser()" (click)="showSubMenu()" class="iniciar-session logeado">
+                <p>
+                  <span>BIENVENIDO(A):</span> <br /><span class="icon-sub-menu">{{
+                  user
+                }}</span>
+                </p>
+                <div *ngIf="show" class="sub-menu-show">
+                  <ul>
+                    <a [routerLink]="['/mis-citas']" id="li-cuerpo-Ver_Especialidades_Y_Doctores_Cuerpo">
+                      <li>
+                        <img src="assets/svg/mis-citas.svg" alt="" />
+                        <a>MIS CITAS</a>
+                      </li>
+                    </a>
+                    <a [routerLink]="['/mis-datos']">
+                      <li>
+                        <img src="assets/svg/mis-datos.svg" alt="" />
+                        <a>MIS DATOS</a>
+                      </li>
+                    </a>
+                    <a [routerLink]="['/mis-dependientes']">
+                      <li>
+                        <img src="assets/svg/mis-datos.svg" alt="" />
+                        <a>MIS DEPENDIENTES</a>
+                      </li>
+                    </a>
+                    <a (click)="openModalChange()">
+                      <li>
+                        <img src="assets/svg/mis-datos.svg" alt="" />
+                        <a>CAMBIO DE CONTRASEÑA</a>
+                      </li>
+                    </a>
+                    <li>
+                      <img width="15" src="assets/svg/cerrar-sesion.svg" alt="" />
+                      <a (click)="logout()">CERRAR SESIÓN</a></li>
+                  </ul>
+                </div>
+              </li>
+              <!-- <li class="search" id="li-header-Ir_Buscar_Header">
+                  <img width="12" src="assets/svg/buscar.svg" alt="" /> BUSCAR
+                </li> -->
+            </ul>
+          </div>
+        </div>
+        <div [ngClass]="{ 'box-nav-active': addClassMenu === 'activo' }" class="box-nav">
+          <div class="box box-1-close container-fluid">
+            <div class="row">
+              <div class="col-12">
+                <div (click)="changeStateMenu()">
+                  <div>
+                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                      xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 300 300"
+                      style="enable-background:new 0 0 300 300;" xml:space="preserve">
+                      <path class="st0" d="M293,7L293,7c-8-8-20.9-8-28.9,0L150,121.1L35.9,7C27.9-1,15-1,7,7l0,0c-8,8-8,20.9,0,28.9L121.1,150L7,264.1
+                       c-8,8-8,20.9,0,28.9h0c8,8,20.9,8,28.9,0L150,178.9L264.1,293c8,8,20.9,8,28.9,0h0c8-8,8-20.9,0-28.9L178.9,150L293,35.9
+                       C301,27.9,301,15,293,7z" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="isUser() === false" class="box box-3-login container-fluid">
+  
+            <a (click)="openLogin()" id="header_Ir_Iniciar_Sesion_Header"> <img class="show-desktop" width="22"
+                src="assets/svg/login-3.svg" alt="" /> INGRESAR A TU CUENTA</a>
+          </div>
+          <div *ngIf="isUser()" class="box box-4-nav-users container-fluid">
+            <div class="row">
+              <div class="col-12">
+                <ul>
+                  <a [routerLink]="['/mis-citas']" id="li-cuerpo-Ver_Especialidades_Y_Doctores_Cuerpo">
+                    <li>
+                      <img src="assets/svg/mis-citas.svg" alt="" />
+                      <a>MIS CITAS</a>
+                    </li>
+                  </a>
+                  <a [routerLink]="['/mis-datos']">
+                    <li>
+                      <img src="assets/svg/mis-datos.svg" alt="" />
+                      <a>MIS DATOS</a>
+                    </li>
+                  </a>
+                  <a [routerLink]="['/mis-dependientes']">
+                    <li>
+                      <img src="assets/svg/mis-datos.svg" alt="" />
+                      <a>MIS DEPENDIENTES</a>
+                    </li>
+                  </a>
+  
+  
+                  <li>
+                    <img width="15" src="assets/svg/cerrar-sesion.svg" alt="" />
+                    <a (click)="logout()">CERRAR SESIÓN</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="box box-5-nav-public container-fluid">
+            <div class="row">
+              <div class="col-12">
+                <ul>
+                  <li>
+                    <img src="assets/svg/casa.svg" alt="" />
+                    <a (click)="changeStateMenu()" [routerLink]="['/']" routerLinkActive="active"
+                      id="a-header-Ir_Home_Header">INICIO</a>
+                  </li>
+                  <li>
+                    <img src="assets/svg/sacar_cita.svg" alt="" />
+                    <a (click)="changeStateMenu()" [routerLink]="['/reservas']" routerLinkActive="active"
+                      id="a-cuerpo-Ir_Reservas_Cuerpo">SACAR UNA CITA</a>
+                  </li>
+                  <li>
+                    <img src="assets/svg/especialidades.svg" alt="" />
+                    <a (click)="changeStateMenu()" href="" id="li-cuerpo-Ver_Especialidades_Y_Doctores_Cuerpo"
+                      [routerLink]="['/especialidades-doctores']">ESPECIALIDADES Y DOCTORES</a>
+                  </li>
+                  <li>
+                    <img src="assets/svg/planes-y-paquetes.svg" alt="" />
+                    <a (click)="changeStateMenu()" [routerLink]="['/planes-programas']" routerLinkActive="active" href=""
+                      id="a-cuerpo-Ir_Planes_Y_Programas_Cuerpo">PROGRAMAS</a>
+                  </li>
+                  <li>
+                    <img src="assets/svg/conoce-aviva.svg" alt="" />
+                    <a (click)="changeStateMenu()" [routerLink]="['/conoce-aviva']" routerLinkActive="active" href=""
+                      id="a-cuerpo-Ir_Conoce_Aviva_Cuerpo">CONOCE MÁS DE AVIVA</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>

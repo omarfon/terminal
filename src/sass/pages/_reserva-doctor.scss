@@ -1,0 +1,27 @@
+.reserva-doctor{
+    .progress-bar{
+        &::before{
+            background-color: rgb(10, 42, 60);
+        }
+    }
+    .box-seguro .box-info-extra {
+        background-color: #25739c;
+        max-width: 700px;
+    
+        &-title{
+          text-align: center;
+    
+          h4{
+            font-size: 15px;
+            font-family: $avenir-Bold;
+            color: #ffffff;
+            padding: 15px 0;
+    
+            @media (min-width: 920px) {
+            font-size: 20px;
+              
+            }
+          }
+        }
+      }
+}

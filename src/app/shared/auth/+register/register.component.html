@@ -1,0 +1,94 @@
+<!-- <section class="content-regiter" @fadeIn>
+  <div style="background-color: white;" class="container">
+      <div class="box-header-interactivo">
+        <a [routerLink]="[ '/home']">
+          <img src="assets/img/register/row-letf.png" alt="">
+        </a>
+          <h2>
+            Registro del paciente
+          </h2>
+        </div>
+  </div>
+  <div class="container">
+      <div class="row">
+          <div class="col-12">
+            
+            <form action="">
+                <h3>
+                    Ingrese los datos para reservar la cita y crear una cuenta
+                  </h3>
+                  <div class="input">
+                      <label class="labelName" [ngClass]="{ 'input-active' : !name == ''  }">Nombres</label>
+                      <input class="name" autocomplete="off" type="text" name="namee" [(ngModel)]="name" (keyup)="onkeyName()">
+                      <span class="notifiValidate" *ngIf="nameForm === false && name > 1">No es un nombre valido</span>
+                  </div>
+              <div class="input">
+                  <label [ngClass]="{ 'input-active' : !surname1 == '' }">Apellido Paterno</label>
+                  <input autocomplete="off" type="text"name="surname" [(ngModel)]="surname1" (keyup)="onkeySurname1()">
+                  <span class="notifiValidate" *ngIf="surname1Form === false && surname1 > 1">No es un apellido valido</span>
+              </div>
+              <div class="input">
+                  <label [ngClass]="{ 'input-active' : !surname2 == '' }">Apellido Materno</label>
+                  <input autocomplete="off" type="text" name="surname2" [(ngModel)]="surname2" (keyup)="onkeySurname2()">
+                  <span class="notifiValidate" *ngIf="surname2Form === false && surname2 > 1">No es un apellido valido</span>
+              </div>
+              <div class="input">
+                  <select [(ngModel)]="SelectGender" name="selectgenero" id="selecionGenero" (change)="selecGender($event)">
+                      <option value="sexo">Sexo</option>
+                      <option *ngFor="let item of gendersService; let i = index" value="{{item.id}}">{{item.name}}</option>
+                </select>
+                <span class="notifiValidate" *ngIf="SelectGender === 'sexo' && genderForm === false ">Seleccione un sexo</span>
+              </div>
+              <div class="input">
+                  <select [(ngModel)]="tipoDocumento" (change)="documentNumber = ''" name="tipoDocument" id="tipoDocument"  (change)="selecDocument($event)">
+                      <option disabled value="documento">Tipo de documento</option>
+                      <option *ngFor="let item of typeDocument" value="{{item.id}}">{{item.name}}</option>
+                  </select>
+              </div>
+              <div class="input">
+                  <label [ngClass]="{ 'input-active' : !documentNumber == '' }">Número de documento</label>
+                  <input [disabled]="tipoDocumento === 'documento'" autocomplete="off" [(ngModel)]="documentNumber" type="text" name="numberdocument" (keyup)="onkeyDocumentNumber()">
+                  <span class="notifiValidate" *ngIf="documentNumberForm === false">No es un numero de documento valido</span>
+              </div>
+              <div class="input">
+                  <input autocomplete="off" [(ngModel)]="birthdate" type="date" name="phone" >
+              </div>
+              <div class="input">
+                  <label [ngClass]="{ 'input-active' : !phone == '' }">Telèfono</label>
+                  <input autocomplete="off" type="text" name="phone" (keyup)="onkeyPhone()" [(ngModel)]="phone">
+                  <span class="notifiValidate" *ngIf="phoneForm === false">No es un número valido</span>
+              </div>
+              <div class="input">
+                  <label [ngClass]="{ 'input-active' : !email == '' }">Correo electrónico</label>
+                  <input autocomplete="off" type="text" name="email" [(ngModel)]="email" (keyup)="onkeyEmail()">
+                  <span class="notifiValidate" *ngIf="emailForm === false && !email == ''">No es un correo valido</span>
+              </div>
+              <div class="input">
+                  <label [ngClass]="{ 'input-active' : !password == '' }">Crear una contraseña</label>
+                  <input autocomplete="off" type="password" name="password" [(ngModel)]="password">
+              </div>
+              <div class="input">
+                  <label [ngClass]="{ 'input-active' : !password2 == '' }">Repetir contraseña</label>
+                  <input autocomplete="off" type="password" name="password2" [(ngModel)]="password2" (keyup)="onkeyPasswords()">
+                  <span class="notifiValidate" *ngIf="password2Form === false && !password2 == ''">Las contraseñas deben coincidir</span>
+                  <span class="notifiValidate" *ngIf="passwordForm === false && !password2 == ''">Primero debes crear una contraseña</span>
+              </div>
+              <div class="chekbox">
+                  <input [(ngModel)]="checkbox" class="checkbox" type="checkbox" name="checkbox" id="" value="terminos" (click)="checkbosx($event)">
+                  <p>Acepto los términos y condiciones</p>
+              </div>
+              <div *ngIf="checkbox === false">
+                  <p>* Debes aceptar los términos y condiciones</p>
+              </div>
+              <div>
+                
+              </div>
+              <button [disabled]="validateInputs()" (click)="saveData()">Enviar</button>
+            </form>
+            <div class="row">
+                <a class="sub"  [routerLink]="[ '/login']">Ya tengo cuenta</a>
+            </div>
+          </div>
+        </div>
+  </div>
+</section> -->

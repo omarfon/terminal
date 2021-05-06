@@ -1,0 +1,29 @@
+<div class="box-container-loging">
+    <div class="close" (click)="onClickNo()"></div>
+    <div class="box-popup-login">
+      <div class="modal box-login">
+        <div class="box-content-login">
+          <h4>{{data.message}}</h4>
+          <div class="row">
+            <div class="col">
+              <button *ngIf="buttonRegret === true" mat-raised-button color="primary" (click)="backReservas()">BUSCAR UNA
+                NUEVA CITA
+              </button>
+            </div>
+            <div class="col">
+              <button *ngIf="buttonRegret === true" mat-raised-button color="secondary"
+                (click)="onClickNo()">SALIR</button>
+            </div>
+            <div class="col">
+              <button *ngIf="buttonRegret === false" mat-raised-button color="secondary" (click)="onClickNo()">ENTIENDO
+                PAGARÉ EN CLÍNICA</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  
+  
+  
+  </div>

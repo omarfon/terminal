@@ -1,0 +1,34 @@
+
+@font-face{
+  font-family: avenirLtStd;
+  src: url('./fonts/AvenirLTStd-Book.ttf') format("truetype")
+}  
+
+@font-face{
+    font-family: avenirLt95Bold;
+    src: url('./fonts/Avenir-LT-Std-85-Heavy_5177.ttf') format("truetype")
+  }  
+
+// @font-face {
+// 	font-family: "Samplino";
+// 	src: url("fonts/Samplino.eot?") format("eot"),
+// 		 url("fonts/Samplino.woff2") format("woff2"),
+// 		 url("fonts/Samplino.woff") format("woff"),
+// 		 url("fonts/Samplino.ttf") format("truetype"),
+// 		 url("fonts/Samplino.svg#Samplino") format("svg");
+// }
+
+//vVAR FONT
+$avenir-LT: avenirLtStd;
+$avenir-Bold: avenirLt95Bold;
+
+//FONT
+$font-noto: 'Noto Sans JP', sans-serif;
+
+$light : 300;
+$regular : 400;
+$medium : 500;
+$bold : 700;
+$black : 900;
+
+//

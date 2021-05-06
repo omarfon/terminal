@@ -1,0 +1,62 @@
+<section class="aviva-cuida-section content-box-info container-fluid" @fadeIn>
+  <div class="row">
+
+    <div class="col-12 col-lg-4 padding">
+      <div class="box-header">
+        <div class="content-logo">
+            <img src="assets/img/sacar-cita/avivacuida_logo.svg" alt="">
+        </div>
+        <p>Las especialidades de avivacuida están enfocadas en la <span class="strong">prevención de enfermedades mediante controles y chequeos</span> con nuestros especialistas</p>
+        <div class="vector-orange">
+        <div class="circle"></div>
+        </div>
+        <div class="vector-orange-horizontal">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+
+  <div class="col-12 col-lg-6 offset-lg-1">
+      <section class="content-box-info">
+        <div class="box-specialty">
+            <h2>
+                ELIGE LA ESPECIALIDAD
+            </h2>
+            <div class="preloader" *ngIf="preloader === true">
+              <mat-progress-spinner
+              [color]="color"
+              [mode]="mode"
+              [diameter]="70">
+              </mat-progress-spinner>
+            </div>
+          <ul>
+            <!-- SERVICES -->
+            <li *ngFor="let item of dataSpecialty"><a class="sc-especialidades-cuida" [id]="'ir-elige-especialidad-' + item.trackingId + '_Aviva_Cuida'" (click)="doctoresPage(item)"><img src="{{ urlBaseAlter + item.imageUrl }}"><p>{{ item.description }}</p></a></li>
+          </ul>
+        </div> 
+        <div routerLink="/home" class="button-back">
+          <img src="assets/img/sacar-cita/back-page.svg" alt="">
+          </div>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+      </section>
+  </div>
+
+</div>
+</section>
+<!-- <div class="box-ma">
+    <a [routerLink]="[ '/reservas/avivacura']">
+    <div style="background-color: #00ACA0;" class="box-cura-link">
+        <h4>VER ESPECIALIDADES DE AVIVA CURA</h4>
+        <span></span>
+        <div class="circle-div">
+            <img src="assets/img/sacar-cita/change-page.svg" alt="">
+        </div>
+    </div></a>
+</div>
+ -->
+
+

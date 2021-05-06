@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="448px" height="384px" viewBox="0 0 448 384" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>android-camera</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Android" transform="translate(-3064.000000, -2208.000000)" fill="#E02020">
+            <g id="android-camera" transform="translate(3064.000000, 2208.000000)">
+                <g id="Group">
+                    <circle id="Oval" cx="224" cy="216" r="63"></circle>
+                    <path d="M408,32 L320,32 L288,0 L160,0 L128,32 L40,32 C17.908,32 0,49.908 0,72 L0,344 C0,366.092 17.908,384 40,384 L408,384 C430.092,384 448,366.092 448,344 L448,72 C448,49.908 430.092,32 408,32 L408,32 Z M224,328 C162.145,328 112,277.855 112,216 C112,154.145 162.145,104 224,104 C285.855,104 336,154.145 336,216 C336,277.855 285.855,328 224,328 L224,328 Z" id="Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

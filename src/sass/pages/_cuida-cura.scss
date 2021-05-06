@@ -1,0 +1,28 @@
+.cura-cuida{
+    .box-texto{
+        color: white;
+        b{
+            font-family:  $avenir-Bold
+        }
+
+        li{
+            position: relative;
+            margin: 4px 12px;
+            &:before{
+                content: "-";
+                position: absolute;
+                left: -11px;
+                top: -2px;
+                height: 17px;
+                width: 12px;
+            }
+        }
+        margin-bottom: 23px;
+    }
+    .boxes{
+        img{
+            margin-bottom: 15px;
+        }
+        
+    }
+}

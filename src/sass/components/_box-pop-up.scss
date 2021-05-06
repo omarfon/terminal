@@ -1,0 +1,21 @@
+.box-popup-login{
+    width: 100%;
+    position: relative;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    @media (min-width: 980px){
+      width: 100%;}
+
+}
+
+@-webkit-keyframes mostrarPreloader {
+	0%   { opacity: 0; }
+	100% { opacity: 1; }
+	0% { opacity: 0; }
+  }
+
+@keyframes mostrarPreloader {
+	0%   { opacity: 0; }
+	100% { opacity: 1; }
+	0% { opacity: 0; }
+  }
