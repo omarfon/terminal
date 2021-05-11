@@ -21,7 +21,7 @@ import { AppLayoutReservasComponent } from './layouts/app-layout-reservas/app-la
 import { NavInternoComponent } from './shared/+nav/nav-interno/nav-interno.component';
 import { RecoveryComponent } from './modals/recovery/recovery.component';
 
-import { MatProgressSpinnerModule } from '@angular/material';
+import { MatButtonModule, MatProgressSpinnerModule } from '@angular/material';
 import { ReservaModule } from './pages/+reservas/reserva.module';
 
 import { SwiperModule } from 'ngx-swiper-wrapper';
@@ -35,6 +35,7 @@ import { ErrorPaymentComponent } from './shared/modal/error-payment/error-paymen
 import { MamappVideoComponent } from './pages/mamapp-video/mamapp-video.component';
 import { WawappVideoComponent } from './pages/wawapp-video/wawapp-video.component';
 import { InfoFormuComponent } from './shared/modal/info-formu/info-formu.component';
+
 
 export const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
 
@@ -99,7 +100,8 @@ const GUARDS_APLICATION = [
     MatProgressSpinnerModule,
     ReservaModule,
     SwiperModule,
-    FormsModule
+    FormsModule,
+    MatButtonModule,
   ],
   providers: [{
     provide: SWIPER_CONFIG,

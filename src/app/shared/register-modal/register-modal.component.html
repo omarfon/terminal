@@ -13,7 +13,7 @@
       }">
       <label [ngClass]="{ 'input-active': name != '' }">Nombres</label>
       <input [disabled]="loaderSession" autocomplete="off" type="text" [(ngModel)]="name"
-        (keyup)="onkeyValidateString(name)" (blur)="blurValidateString(name)" />
+        (keyup)="onkeyValidateString(name)" (blur)="blurValidateString(name)" (input)="onInputChange($event)" value={{value}}/>
       <div *ngIf="nameReadyValidate" [ngClass]="{ 'icon2 check': nameValidate, 'icon error': !nameValidate }"></div>
     </div>
 
@@ -24,7 +24,7 @@
       }">
       <label [ngClass]="{ 'input-active': lastName != '' }">Apellido paterno</label>
       <input [disabled]="loaderSession" autocomplete="off" type="text" [(ngModel)]="lastName"
-        (keyup)="onkeyValidateString(lastName)" (blur)="blurValidateString(lastName)" />
+        (keyup)="onkeyValidateString(lastName)" (blur)="blurValidateString(lastName)" (input)="onInputChange($event)" value={{value}/>
       <div *ngIf="lastNameReadyValidate" [ngClass]="{
           'icon2 check': lastNameValidate,
           'icon error': !lastNameValidate

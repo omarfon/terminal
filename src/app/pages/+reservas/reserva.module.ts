@@ -23,13 +23,6 @@ import { AlertComponent } from 'src/app/shared/modal/alert/alert.component';
 import { CreateParentComponent } from 'src/app/shared/modal/create-parent/create-parent.component';
 
 
-/* import { ButtonPayComponent } from '../shared/utils/button-pay/button-pay.component';
-import { DoctoresTeleComponent } from './avivatele/doctores/doctores.component';
-import { SeguroTeleComponent } from './avivatele/seguro/seguro.component';
-import { RegistroTeleComponent } from './avivatele/registro/registro.component';
-import { PagoTeleComponent } from './avivatele/pago/pago.component'; */
-
-
 
 @NgModule({
   declarations: [
@@ -49,12 +42,6 @@ import { PagoTeleComponent } from './avivatele/pago/pago.component'; */
   ReservaFinalizadaComponent,
   AlertComponent,
   CreateParentComponent,
-     /*  
-    AvivateleComponent,
-    DoctoresTeleComponent,
-    SeguroTeleComponent,
-    RegistroTeleComponent,
-    PagoTeleComponent */
   ],
   imports: [
     CommonModule,
@@ -81,19 +68,15 @@ import { PagoTeleComponent } from './avivatele/pago/pago.component'; */
     CabeceraInternaComponent,
     ReservaFinalizadaComponent,
     CreateParentComponent
-/*     
-    AvivateleComponent,
-    DoctoresTeleComponent,
-    SeguroTeleComponent,
-    RegistroTeleComponent,
-    PagoTeleComponent
- */
   ],
   entryComponents:[
     RegisterModalComponent,
     ModalComponent,
     AlertComponent,
     CreateParentComponent,
+  ],
+  providers:[
+    
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

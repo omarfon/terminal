@@ -2,7 +2,7 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-export const environment = {
+/* export const environment = {
   production: false,
   url: 'https://dappapache02.eastus.cloudapp.azure.com/middleware2/',
   urlImagenes: 'https://dappapache02.eastus.cloudapp.azure.com/middleware2/img/professionals/',
@@ -12,9 +12,9 @@ export const environment = {
   agora: {
     appId: 'b75a830a11a84a0bbb812fc81aa60860'
   },
-};
+}; */
 
-/* export const environment = {
+export const environment = {
   production: true,
   url: 'https://api.aviva.pe/middleware2/',
   urlBaseAlter: 'https://api.aviva.pe/middleware2/',
@@ -25,7 +25,7 @@ export const environment = {
     appId: 'b75a830a11a84a0bbb812fc81aa60860'
   },
 };
- */
+
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

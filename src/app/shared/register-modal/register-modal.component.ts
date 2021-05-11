@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ViewEncapsulation } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
@@ -6,13 +6,17 @@ import { AuthService } from 'src/app/services/auth.service';
 import { RegisterService } from '../auth/+register/register.service';
 import Keyboard from "simple-keyboard";
 
+
 @Component({
   selector: 'app-register-modal',
+  encapsulation: ViewEncapsulation.None,
   templateUrl: './register-modal.component.html',
-  styleUrls: ['./register-modal.component.scss']
+  styleUrls: ['../../../../node_modules/simple-keyboard/build/css/index.css',
+              './register-modal.component.scss']
 })
 export class RegisterModalComponent implements OnInit {
   keyboard: Keyboard;
+  value = " ";
   serviceError;
   public mailInvalid: boolean = false;
   // NAME
@@ -94,7 +98,6 @@ export class RegisterModalComponent implements OnInit {
   public ER_STR: any = /^[A-Za-z\_\-\.\s\xF1\xD1]+$/;
   public ER_STR_MA: any = /[A-Z]/;
   public ER_EMA = /[\w-\.]{3,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
-  value: string;
 
   constructor(public RegisterService: RegisterService, public dialogRed: MatDialogRef<RegisterModalComponent>, @Inject(MAT_DIALOG_DATA) public message: string, public AuthService: AuthService, public router: Router) { }
 
@@ -135,12 +138,12 @@ export class RegisterModalComponent implements OnInit {
 
       })
   }
-
   ngAfterViewInit() {
     this.keyboard = new Keyboard({
       onChange: input => this.onChange(input),
       onKeyPress: button => this.onKeyPress(button)
     });
+    console.log(this.onChange)
   }
 
   onChange = (input: string) => {
@@ -169,7 +172,6 @@ export class RegisterModalComponent implements OnInit {
       layoutName: shiftToggle
     });
   };
-
 
   //GET CODE
   getCode(email: any) {
