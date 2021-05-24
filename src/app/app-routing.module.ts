@@ -8,6 +8,7 @@ import { PediatriaComponent } from './pages/pediatria/pediatria.component';
 import { ReservaComponent } from './pages/+reservas/reserva/reserva.component';
 import { MamappVideoComponent } from './pages/mamapp-video/mamapp-video.component';
 import { WawappVideoComponent } from './pages/wawapp-video/wawapp-video.component';
+import { InscripcionesComponent } from './pages/inscripciones/inscripciones.component';
 
 
 
@@ -39,6 +40,10 @@ const routes: Routes = [
   {
     path:'wawapp-video',
     component:WawappVideoComponent
+  },
+  {
+    path:'inscripciones',
+    component:InscripcionesComponent
   },
   {
     path: 'reservas',

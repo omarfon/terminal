@@ -6,7 +6,8 @@
     margin-left:2.5%;
     position: absolute;
     top:120px;
-    max-height: 70vh!important;
+    min-height: 70vh;
+    height: 100%!important;
 }
 .cabecera{
   width:100%;
@@ -16,5 +17,6 @@
 }
 .aviva-cuida-section{
   background: #FB6E54;
-  height: 83vh!important;
+  min-height: 80vh;
+  height: auto!important;
 }

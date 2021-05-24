@@ -1,7 +1,7 @@
 
 .container-fluid{
     background: #f1f3f6;
-    height: 90vh!important;
+    height: 100vh!important;
 }
 .content{
     height: 75vh;
@@ -18,7 +18,7 @@
         margin-top:30px;
     }
 }
-h1{
+h1{ 
     @media (min-width: 980px) {
         font-size: 3.5em;
         width: 80%;

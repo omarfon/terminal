@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import * as moment from 'moment';
 import { AuthService } from 'src/app/services/auth.service';
 import { RegisterService } from '../auth/+register/register.service';
-import Keyboard from "simple-keyboard";
 
 
 @Component({
@@ -15,7 +14,6 @@ import Keyboard from "simple-keyboard";
               './register-modal.component.scss']
 })
 export class RegisterModalComponent implements OnInit {
-  keyboard: Keyboard;
   value = " ";
   serviceError;
   public mailInvalid: boolean = false;
@@ -138,40 +136,6 @@ export class RegisterModalComponent implements OnInit {
 
       })
   }
-  ngAfterViewInit() {
-    this.keyboard = new Keyboard({
-      onChange: input => this.onChange(input),
-      onKeyPress: button => this.onKeyPress(button)
-    });
-    console.log(this.onChange)
-  }
-
-  onChange = (input: string) => {
-    this.value = input;
-    console.log("Input changed", input);
-  };
-
-  onKeyPress = (button: string) => {
-    console.log("Button pressed", button);
-
-    /**
-     * If you want to handle the shift and caps lock buttons
-     */
-    if (button === "{shift}" || button === "{lock}") this.handleShift();
-  };
-
-  onInputChange = (event: any) => {
-    this.keyboard.setInput(event.target.value);
-  };
-
-  handleShift = () => {
-    let currentLayout = this.keyboard.options.layoutName;
-    let shiftToggle = currentLayout === "default" ? "shift" : "default";
-
-    this.keyboard.setOptions({
-      layoutName: shiftToggle
-    });
-  };
 
   //GET CODE
   getCode(email: any) {

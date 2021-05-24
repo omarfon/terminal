@@ -21,8 +21,26 @@ import { CabeceraInternaComponent } from 'src/app/shared/cabecera-interna/cabece
 import { ReservaFinalizadaComponent } from './reserva-finalizada/reserva-finalizada.component';
 import { AlertComponent } from 'src/app/shared/modal/alert/alert.component';
 import { CreateParentComponent } from 'src/app/shared/modal/create-parent/create-parent.component';
+import { ErrorPaymentComponent } from 'src/app/shared/modal/error-payment/error-payment.component';
 
+import { MatKeyboardModule, IKeyboardLayouts, keyboardLayouts, MAT_KEYBOARD_LAYOUTS, } from 'angular-onscreen-material-keyboard';
+import { BeneficiosComponent } from '../beneficios/beneficios.component';
+import { OkaComponent } from 'src/app/shared/modal/oka/oka.component';
 
+const customLayouts: IKeyboardLayouts = {
+  ...keyboardLayouts,
+  'Tölles Läyout': {
+    'name': 'espanol',
+    'keys': [
+      [
+        ['1', '!'],
+        ['2', '@'],
+        ['3', '#']
+      ]
+    ],
+    'lang': ['es']
+  }
+};
 
 @NgModule({
   declarations: [
@@ -42,6 +60,8 @@ import { CreateParentComponent } from 'src/app/shared/modal/create-parent/create
   ReservaFinalizadaComponent,
   AlertComponent,
   CreateParentComponent,
+  BeneficiosComponent,
+  OkaComponent
   ],
   imports: [
     CommonModule,
@@ -52,7 +72,8 @@ import { CreateParentComponent } from 'src/app/shared/modal/create-parent/create
     MatButtonModule,
     FormsModule,
     MatIconModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatKeyboardModule
   ],
   exports: [
     ReservasComponent,
@@ -67,16 +88,19 @@ import { CreateParentComponent } from 'src/app/shared/modal/create-parent/create
     ButtonPayComponent,
     CabeceraInternaComponent,
     ReservaFinalizadaComponent,
-    CreateParentComponent
+    CreateParentComponent,
+    BeneficiosComponent
   ],
   entryComponents:[
     RegisterModalComponent,
     ModalComponent,
     AlertComponent,
     CreateParentComponent,
+    ErrorPaymentComponent,
+    OkaComponent
   ],
   providers:[
-    
+    { provide: MAT_KEYBOARD_LAYOUTS, useValue: customLayouts }
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

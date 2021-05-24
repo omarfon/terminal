@@ -6,6 +6,7 @@ import { ReservasService } from 'src/app/pages/+reservas/reservas.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { AlertComponent } from '../../modal/alert/alert.component';
 import { ErrorPaymentComponent } from '../../modal/error-payment/error-payment.component';
+import { OkaComponent } from '../../modal/oka/oka.component';
 
 declare const window: any;
 @Component({
@@ -146,10 +147,10 @@ export class ButtonPayComponent implements OnInit {
                 page: this.page,
                 redirect: false,
                 button: false,
-                message: 'Hubo un error con tu tarjeta a la hora del pago, No te preocupes tu cita ha sido reservada igualmente, recuerda que puedes pagar en la clínica el día de tu atención'
+                message: 'Hubo un error con tu tarjeta a la hora del pago, No te preocupes tu cita ha sido reservada igualmente, recuerda que puedes pagar en admisión tu atención'
               }
               this.openErrorData(data);
-              this.router.navigate(['avivacura/reserva-finalizada']);
+              this.router.navigate(['reserva-finalizada']);
             }
           }
         }, err => {
@@ -261,7 +262,8 @@ export class ButtonPayComponent implements OnInit {
           this.currentAppointment = data
           this.appoiemendIdd = data.appointmentId;
           const local = true;
-          this.seveServiceNodos(local);
+          /* this.seveServiceNodos(local); */
+          this.router.navigate(['reserva-finalizada']);
           console.log('this.currentAppointment en creación parent:', this.currentAppointment);
         })
       } else {
@@ -269,7 +271,8 @@ export class ButtonPayComponent implements OnInit {
           console.log('entro al pago de reserva')
           if (data.appointmentId) {
             const local = true;
-            this.seveServiceNodos(local);
+            /* this.seveServiceNodos(local); */
+            this.router.navigate(['reserva-finalizada']);
           }
         }, (error: any) => {
           console.log(error.error.responseData.errorCode);

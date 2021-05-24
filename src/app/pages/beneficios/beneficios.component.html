@@ -1,13 +1,11 @@
-<app-cabecera></app-cabecera>
+<app-cabecera-interna></app-cabecera-interna>
 <div class="containerPage">
-  <button class="btn btn-button botonInfo" a href="#formulario" >Quiero más información</button>
   <div class="row">
       <div class="col-6">
-          <div class="comparativo-de-programas ng-star-inserted" style=""><div>
+          <div class="comparativo-de-programas ng-star-inserted" ><div>
               <div class="modal-cuadro-comparativo_title pt-4">
                 <h3>COMPARATIVO DE PROGRAMAS PARTO NORMAL</h3>
               </div>
-              <div class="line-divisor"></div>
               <div class="table-comparativo">
                 <table cellpadding="0" cellspacing="0" border="0">
                   <thead>
@@ -136,11 +134,11 @@
       </div>   
  
      <div class="col-6">
-         <div class="comparativo-de-programas ng-star-inserted" style=""><div>
+         <div class="comparativo-de-programas ng-star-inserted"><div>
              <div class="modal-cuadro-comparativo_title pt-4">
                <h3>COMPARATIVO DE PROGRAMAS CESÁREA</h3>
              </div>
-             <div class="line-divisor"></div>
+
              <div class="table-comparativo">
                <table cellpadding="0" cellspacing="0" border="0">
                  <thead>
@@ -290,8 +288,8 @@
                      <td align="start">Perfil del recién nacido</td>
                      <td align="center">
                        <img src="../../../../assets/svg/check_programas.svg" alt="check">
-                     </td>
-                     <td align="center">
+                      </td>
+                      <td align="center">
                        <img src="../../../../assets/svg/check_programas.svg" alt="check">
                      </td>
                      <td align="center">
@@ -353,15 +351,84 @@
              </div>
            </div></div>
           </div>       
-          
           <div class="col-6 contenedorInfo">
             <h2>Quieres mas información, llena el formulario y obtendrás toda la que necesitas</h2>
           </div>
-    <div class="col-6" id="formulario">
-      <div class="pipedriveWebForms" data-pd-webforms="https://webforms.pipedrive.com/f/2TVHjbw4Nyu3X8FotfuWsvTWEvbyVaZcCpEgTVd9MHGocmn5F30jIHpYaielLddAv">
+    <div class="col-6 formulario">
+        <h3>LLena los campos del formulario</h3>
+        <div class="modal box-modal-register">
+          <div class="box-content-form">
+            <!-- BOX NAME -->
+            <div class="box-input" [ngClass]="{
+                'box-input-load': loaderSession,
+                'box-input-error': serviceError
+              }">
+              <label [ngClass]="{ 'input-active': name != '' }">Nombres</label>
+              <input [disabled]="loaderSession" autocomplete="off" type="text" [(ngModel)]="name"
+                (keyup)="onkeyValidateString(name)" (blur)="blurValidateString(name)" [matKeyboard]="name"/>
+              <div *ngIf="nameReadyValidate" [ngClass]="{ 'icon2 check': nameValidate, 'icon error': !nameValidate }"></div>
+            </div>
+  
+            <!-- BOX TELEFONO -->
+            <div class="box-input" [ngClass]="{
+              'box-input-load': loaderSession,
+              'box-input-error': serviceError
+            }">
+            <label [ngClass]="{ 'input-active': phoneNumber != '' }">Telefono</label>
+            <input [disabled]="loaderSession" autocomplete="off" type="phone" [(ngModel)]="phoneNumber"
+              (keyup)="onkeyValidateString(phoneNumber)" (blur)="blurValidateString(phoneNumber)" [matKeyboard]="phoneNumber"/>
+            <div *ngIf="nameReadyValidate" [ngClass]="{ 'icon2 check': phoneValidate, 'icon error': !phoneValidate }"></div>
+          </div>
+  
+          <div class="box-input" [ngClass]="{
+            'box-input-load': loaderSession,
+            'box-input-error': mailInvalid
+          }">
+          <label [ngClass]="{ 'input-active': email != '' }">Correo electrónico</label>
+          <input [disabled]="loaderSession" autocomplete="off" type="text" [(ngModel)]="email"
+            (keyup)="onkeyValidateString(email)" (blur)="blurValidateString(email)" [matKeyboard]/>
+          <span *ngIf="mailInvalid" class="notifiValidate">Este correo ya a sido registrado, intente con otro</span>
+          <div *ngIf="emailReadyValidate" [ngClass]="{
+              'icon2 check': emailValidate,
+              'icon error': !emailValidate
+            }"></div>
+        </div>
+  
+            <!-- BOX SEMANA DE EMBARAZO -->
+            <div class="box-input" [ngClass]="{
+              'box-input-load': loaderSession,
+              'box-input-error': serviceError
+            }">
+            <label [ngClass]="{ 'input-active': week != '' }">Semanas de embarazo</label>
+            <input [disabled]="loaderSession" autocomplete="off" type="number" [(ngModel)]="week"
+              (keyup)="onkeyValidateString(week)" (blur)="blurValidateString(week)" [matKeyboard]="week"/>
+            <div *ngIf="nameReadyValidate" [ngClass]="{ 'icon2 check': nameValidate, 'icon error': !emailValidate }"></div>
+          </div>
+
+            <!-- BOX PLAN INTERES -->
+
+        <div class="box-input" [ngClass]="{
+          'box-input-load': loaderSession,
+          'box-input-error': serviceError
+        }">
+        <label [ngClass]="{ 'input-active': program != 'Tipo de documento' }">Programa de tu interes</label>
+        <select [disabled]="loaderSession" [(ngModel)]="program" (change)="selectDocument($event)">
+          <option value=""></option>
+          <option value="tipo de documento">Tipo de programa</option>
+          <option *ngFor="let item of programas" value="{{ item.name }}">{{ item.name }} S/ {{item.costo}}</option>
+          </select>
+        </div>
+
+          <button *ngIf="!loaderSession" (click)="saveData()"
+          id="button_crear_cuenta_Enviar_Crear_Cuenta">
+          ENVIAR
+        </button>
+
+        </div>
+        </div>
+    <!--   <div class="pipedriveWebForms" data-pd-webforms="https://webforms.pipedrive.com/f/2TVHjbw4Nyu3X8FotfuWsvTWEvbyVaZcCpEgTVd9MHGocmn5F30jIHpYaielLddAv">
           <script src="https://webforms.pipedrive.com/f/loader"></script>
       </div>
-  
-    </div>
+   -->
   </div>      
 </div>

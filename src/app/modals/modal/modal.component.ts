@@ -1,14 +1,19 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import Keyboard from "simple-keyboard";
 
 @Component({
   selector: 'app-modal',
+  encapsulation: ViewEncapsulation.None,
   templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.scss']
+  styleUrls: ['../../../../node_modules/simple-keyboard/build/css/index.css',
+          './modal.component.scss']
 })
 export class ModalComponent implements OnInit {
+  keyboard: Keyboard;
+  value = " ";
 
   public recoverPassword: boolean = false;
   public logins: boolean = false;
@@ -56,8 +61,6 @@ export class ModalComponent implements OnInit {
       document.querySelectorAll('body')[0].classList.remove('aviva-home');
     }
   }
-
-
 
   onClickNo() {
     this.dialogRed.close();

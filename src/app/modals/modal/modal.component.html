@@ -13,19 +13,18 @@
               <!-- INPUT EMAIL -->
               <div class="box-input" [ngClass]="{'box-input-load': loaderSession, 'box-input-error' : serviceError}">
                 <label [ngClass]="{ 'input-active' : email != '' }">Correo electrónico</label>
-                <input [disabled]="loaderSession" autocomplete="off" type="text" [(ngModel)]="email" (keyup)="onkeyEmail()" (blur)="onkeyBlurEmail()">
+                <input [disabled]="loaderSession" autocomplete="off" type="text" [(ngModel)]="email" (keyup)="onkeyEmail()" (blur)="onkeyBlurEmail()" [matKeyboard]="email">
                 <div *ngIf="validate" [ngClass]="{'icon2 check': emailValidate, 'icon error': emailValidate === false}"></div>
               </div>
-  
+
               <!-- INPUT PASS -->
               <div class="box-input" [ngClass]="{'box-input-load': loaderSession, 'box-input-error' : serviceError}">
                 <label [ngClass]="{ 'input-active' : password != '' }">Contraseña</label>
-                <input [disabled]="loaderSession" autocomplete="off" type="password" [(ngModel)]="password" (keyup)="onkeyPass()">
+                <input [disabled]="loaderSession" autocomplete="off" type="password" [(ngModel)]="password" [matKeyboard]="password">
                 <span *ngIf="serviceError" class="notifiValidate">El correo y la contraseña no corresponden. Por favor, vuélvalo a intentar</span>
                 <div *ngIf="validatePasss" [ngClass]="{'icon2 check': passValidate, 'icon error': !passValidate}"></div>
               </div>
-  
-              <button [disabled]="ValidateInputs()" *ngIf="!loaderSession" mat-raised-button color="primary" (click)="login($event)">INGRESAR</button>
+              <button  *ngIf="!loaderSession" mat-raised-button color="primary" (click)="login($event)">INGRESAR</button>
               <div *ngIf="loaderSession" class="preloader">
                   <mat-progress-spinner
                   [color]="color"
@@ -33,7 +32,7 @@
                   </mat-progress-spinner>
               </div>
   
-              <a class="sub" (click)="showRecovPass()">OLVIDÉ MI CONTRASEÑA</a>
+              <!-- <a class="sub" (click)="showRecovPass()">OLVIDÉ MI CONTRASEÑA</a> -->
               <div *ngIf="message === 'home'" class="box-create-acount-home">
                 <div class="box-background"></div>
                 <h3 class="colorCuida">¿ERES NUEVO?</h3>
@@ -41,12 +40,11 @@
               </div>
           </div>
     </div>
-    
   </div>
   
-    
   
-  </div>
+  
+</div>
   <div *ngIf="showRegister">
     <app-register-modal></app-register-modal>
   </div>
@@ -65,7 +63,7 @@
                 <span *ngIf="serviceError" class="notifiValidate">El correo no esta registrado en el sistema</span>
               </div>
               <br>
-              <button [disabled]="!emailValidate" *ngIf="!loaderSession" mat-raised-button color="primary" (click)="sendRecover()">ENVIAR</button>
+              <button *ngIf="!loaderSession" mat-raised-button color="primary" (click)="sendRecover()">ENVIAR</button>
               <div *ngIf="loaderSession" class="preloader">
                   <mat-progress-spinner
                   [color]="color"
@@ -75,8 +73,8 @@
   
           </div>
       </div>
+      
     </div>
-  
   <!-- 
   <div mat-dialog-actions>
     <button mat-button (click)="onClickNo()">NO</button>

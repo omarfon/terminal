@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { ReservasService } from '../reservas.service';
 import * as moment from 'moment';
 import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
+import { MatDialog } from '@angular/material';
+import { OkaComponent } from 'src/app/shared/modal/oka/oka.component';
 
 @Component({
   selector: 'app-reserva-finalizada',
@@ -28,9 +30,16 @@ export class ReservaFinalizadaComponent implements OnInit {
     hour: ''
   };
   public type;
-  constructor(private sanitizer: DomSanitizer, private router: Router, private reservasService: ReservasService) { }
+  public name;
+  constructor(private sanitizer: DomSanitizer, 
+              private router: Router, 
+              private reservasService: ReservasService,
+              public dialog: MatDialog) { }
 
   ngOnInit() {
+
+    const name = localStorage.getItem('session');
+    this.name = JSON.parse(name)
     this.preloader = true;
     if (this.reservasService.dataJson.length === 0) {
       this.router.navigate(['/'])
@@ -48,6 +57,12 @@ export class ReservaFinalizadaComponent implements OnInit {
       this.dataService.hour = moment(this.dataService.appointmentDateTime).locale('es').format('h:mm a');
       this.preloader = false;
     }
+    this.reservaFinalizada();
   }
 
+  reservaFinalizada(){
+    setTimeout(() => {
+      this.router.navigate(['/'])
+    }, 8000);
+  }
 }

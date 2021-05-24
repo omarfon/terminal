@@ -319,9 +319,8 @@
   background-color: $color-beige-tabla;
   overflow: auto;
   height: 400px;
-  @media (min-width: 1024px) {
-    padding: 20px 64px;
-    height: auto;
+  @media (min-width: 1240px) {
+    height: 500px!important;
     overflow:auto!important;
   }
   
