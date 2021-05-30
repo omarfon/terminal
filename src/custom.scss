@@ -107,8 +107,12 @@ $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-
   }
 }
 mat-keyboard-container{
-  width:1200px;
+  width:1500px!important;
 }
-.mat-keyboard{
-  width:1200px;
+.mat-keyboard-wrapper{
+  min-width:1500px!important;
+  width: 1500px;
+}
+.cdk-overly-pane{
+  width:1200px!important;
 }

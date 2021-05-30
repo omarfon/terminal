@@ -26,6 +26,10 @@ import { ErrorPaymentComponent } from 'src/app/shared/modal/error-payment/error-
 import { MatKeyboardModule, IKeyboardLayouts, keyboardLayouts, MAT_KEYBOARD_LAYOUTS, } from 'angular-onscreen-material-keyboard';
 import { BeneficiosComponent } from '../beneficios/beneficios.component';
 import { OkaComponent } from 'src/app/shared/modal/oka/oka.component';
+import { TerminosComponent } from 'src/app/modals/terminos/terminos.component';
+import { FormularioComponent } from 'src/app/modals/formulario/formulario.component';
+import { PerfilComponent } from 'src/app/modals/perfil/perfil.component';
+
 
 const customLayouts: IKeyboardLayouts = {
   ...keyboardLayouts,
@@ -61,7 +65,10 @@ const customLayouts: IKeyboardLayouts = {
   AlertComponent,
   CreateParentComponent,
   BeneficiosComponent,
-  OkaComponent
+  OkaComponent,
+  TerminosComponent,
+  FormularioComponent,
+  PerfilComponent
   ],
   imports: [
     CommonModule,
@@ -97,7 +104,10 @@ const customLayouts: IKeyboardLayouts = {
     AlertComponent,
     CreateParentComponent,
     ErrorPaymentComponent,
-    OkaComponent
+    OkaComponent,
+    TerminosComponent,
+    FormularioComponent,
+    PerfilComponent
   ],
   providers:[
     { provide: MAT_KEYBOARD_LAYOUTS, useValue: customLayouts }

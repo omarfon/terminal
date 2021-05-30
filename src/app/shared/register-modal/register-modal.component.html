@@ -186,7 +186,7 @@
     </div>
     <div class="box-checkbox">
       <mat-checkbox [(ngModel)]="checked" color="primary"></mat-checkbox>
-      <h6>Acepto los <a [routerLink]="[ '/terminos-y-condiciones']" target="_blank">términos y condiciones</a></h6>
+      <h6>Acepto los <a (click)="openModalTerminos()" target="_blank">términos y condiciones</a></h6>
     </div>
   </div>
 

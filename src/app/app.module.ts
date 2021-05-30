@@ -40,6 +40,7 @@ import { environment } from 'src/environments/environment';
 import { AgradecimientoComponent } from './modals/agradecimiento/agradecimiento.component';
 import { InscripcionesComponent } from './pages/inscripciones/inscripciones.component';
 import {MatMenuModule} from '@angular/material/menu';
+
 export const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
 
   direction: 'horizontal',

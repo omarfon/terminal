@@ -1,7 +1,8 @@
 import { Component, OnInit, Inject, ViewEncapsulation } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
+import { TerminosComponent } from 'src/app/modals/terminos/terminos.component';
 import { AuthService } from 'src/app/services/auth.service';
 import { RegisterService } from '../auth/+register/register.service';
 
@@ -97,7 +98,7 @@ export class RegisterModalComponent implements OnInit {
   public ER_STR_MA: any = /[A-Z]/;
   public ER_EMA = /[\w-\.]{3,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
 
-  constructor(public RegisterService: RegisterService, public dialogRed: MatDialogRef<RegisterModalComponent>, @Inject(MAT_DIALOG_DATA) public message: string, public AuthService: AuthService, public router: Router) { }
+  constructor(public RegisterService: RegisterService, public dialogRed: MatDialogRef<RegisterModalComponent>, @Inject(MAT_DIALOG_DATA) public message: string, public AuthService: AuthService, public router: Router, public dialog: MatDialog) { }
 
   ngOnInit() {
     if (this.message === 'aviva-cuida') {
@@ -459,5 +460,8 @@ export class RegisterModalComponent implements OnInit {
     }
   }
 
+  openModalTerminos(){
+    this.dialog.open(TerminosComponent)
+  }
 
 }

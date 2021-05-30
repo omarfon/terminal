@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { AgradecimientoComponent } from 'src/app/modals/agradecimiento/agradecimiento.component';
+import { FormularioComponent } from 'src/app/modals/formulario/formulario.component';
 import { BeneficesService } from 'src/app/services/benefices.service';
 import { InfoFormuComponent } from 'src/app/shared/modal/info-formu/info-formu.component';
 
@@ -31,6 +32,9 @@ export class BeneficiosComponent implements OnInit {
    public mailInvalid: boolean = false;
    public program;
 
+   public preloader = false;
+  public color: any = 'accent';
+  public mode: any = 'indeterminate';
   // EXPRESIONS REGULAR
   public ER_NUM = /^([0-9])*$/;
   public ER_ONLY_NUM: any = /[0-9]/;
@@ -74,102 +78,7 @@ export class BeneficiosComponent implements OnInit {
   ngOnInit() {
   }
 
-  openModalInfo(){
-    this.dialog.open(InfoFormuComponent)
-  }
-
-  // VALIDATOR STRING
-  onkeyValidateString(data: any): void {
-    if (this.nameReadyValidate && data === this.name) {
-      if (data === this.name) {
-        this.blurValidateString(data);
-      }
-    }
-
-    else if (this.phoneReadyValidate && data === this.phoneNumber) {
-      if (data === this.phoneNumber) {
-        this.blurValidateString(data);
-      }
-    }
-    else if (this.emailReadyValidate && data === this.email) {
-      if (data === this.email) {
-        this.blurValidateString(data);
-      }
-    }
-  }
-
-  blurValidateString(data: any): void {
-
-    if (data === this.name) {
-      this.nameReadyValidate = true;
-      if (this.validateInput(this.ER_STR, data)) {
-        this.nameValidate = true;
-      } else {
-        this.nameValidate = false;
-      }
-    }
-
-    else if (data === this.phoneNumber) {
-      this.phoneReadyValidate = true;
-      if (this.validateInput(this.ER_NUM, data) && data.length > 8) {
-        this.phoneValidate = true;
-      } else {
-        this.phoneValidate = false;
-      }
-    }
-
-    else if (data === this.email) {
-      this.emailReadyValidate = true;
-      if (this.validateInput(this.ER_EMA, data)) {
-        this.emailValidate = true;
-      } else {
-        this.emailValidate = false;
-      }
-    }
-
-  }
-
-  // VALIDATE INPUTS EXPRESIONES REGULARES
-  validateInput(expresion: any, input: string): boolean {
-    if (expresion.test(input)) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  saveData(){
-    const data = {
-      name: this.name,
-      phone: this.phoneNumber,
-      email: this.email,
-      weeks: this.week,
-      day: new Date(),
-      program: this.program,
-  }
-  console.log('data en enviar:',data);
-  this.beneficesSrv.saveData(data).then(data => {
-    this.name = "";
-    this.phoneNumber ="";
-    this.email = "";
-    this.week = "";
-    this.program = "";
-    this.dialog.open(AgradecimientoComponent);
-  })
+openModalFormulario(){
+  this.dialog.open(FormularioComponent)
 }
-
-selectDocument(event) {
-  const documentType = event.target.selectedOptions[0].textContent;
-  if (documentType === 'No Tiene') {
-    this.hideBox = true;
-  } else {
-    this.hideBox = false;
-    this.documentNumber = '';
-    this.selectdocument = event.target.selectedOptions[0].textContent;
-    this.activateDocumentNumber = false;
-    this.documentId = event.target.value;
-  }
-
-}
-
 }
