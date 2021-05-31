@@ -168,7 +168,7 @@ export class RegisterModalComponent implements OnInit {
           this.idCode = data.id;
           this.RegisterService.data = {
             email: this.email,
-            password: this.password,
+            password: "12345678A",
             name: this.name,
             surname1: this.lastName,
             surname2: this.lastNameMaterno,

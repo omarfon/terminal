@@ -136,7 +136,7 @@
     </div>
 
     <!-- PASSWORD -->
-    <div class="content-box-input">
+   <!--  <div class="content-box-input">
       <div class="box-input" [ngClass]="{
           'box-input-load': loaderSession,
           'box-input-error': serviceError
@@ -145,9 +145,9 @@
         <input [disabled]="loaderSession" autocomplete="off" type="password" (click)="activeRepeatPass()"
           [(ngModel)]="password" (keyup)="validatePass()" [matKeyboard]/>
         <div [ngClass]="{ 'icon2 check': passwordValidate }"></div>
-      </div>
+      </div> -->
       <!-- REQUISITOS -->
-      <div class="box-validator" [ngClass]="{
+     <!--  <div class="box-validator" [ngClass]="{
           'box-validator-active': activeRepeat,
           'box-validator-desactive': !activeRepeat
         }">
@@ -170,9 +170,9 @@
           </li>
         </ul>
       </div>
-    </div>
+    </div> -->
     <!-- REPEAT PASSWORD -->
-    <div class="box-input" [ngClass]="{
+    <!-- <div class="box-input" [ngClass]="{
         'box-input-load': loaderSession,
         'box-input-error': serviceError
       }">
@@ -183,7 +183,7 @@
           'icon2 check': passwordRepeatValidate,
           'icon error': !passwordRepeatValidate
         }"></div>
-    </div>
+    </div> -->
     <div class="box-checkbox">
       <mat-checkbox [(ngModel)]="checked" color="primary"></mat-checkbox>
       <h6>Acepto los <a (click)="openModalTerminos()" target="_blank">términos y condiciones</a></h6>
