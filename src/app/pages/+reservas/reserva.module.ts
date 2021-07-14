@@ -29,6 +29,7 @@ import { OkaComponent } from 'src/app/shared/modal/oka/oka.component';
 import { TerminosComponent } from 'src/app/modals/terminos/terminos.component';
 import { FormularioComponent } from 'src/app/modals/formulario/formulario.component';
 import { PerfilComponent } from 'src/app/modals/perfil/perfil.component';
+import { ErrorRegisterComponent } from 'src/app/shared/modal/error-register/error-register.component';
 
 
 const customLayouts: IKeyboardLayouts = {
@@ -68,7 +69,8 @@ const customLayouts: IKeyboardLayouts = {
   OkaComponent,
   TerminosComponent,
   FormularioComponent,
-  PerfilComponent
+  PerfilComponent,
+  ErrorRegisterComponent
   ],
   imports: [
     CommonModule,
@@ -107,7 +109,8 @@ const customLayouts: IKeyboardLayouts = {
     OkaComponent,
     TerminosComponent,
     FormularioComponent,
-    PerfilComponent
+    PerfilComponent,
+    ErrorRegisterComponent
   ],
   providers:[
     { provide: MAT_KEYBOARD_LAYOUTS, useValue: customLayouts }

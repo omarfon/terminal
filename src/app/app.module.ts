@@ -41,6 +41,7 @@ import { AgradecimientoComponent } from './modals/agradecimiento/agradecimiento.
 import { InscripcionesComponent } from './pages/inscripciones/inscripciones.component';
 import {MatMenuModule} from '@angular/material/menu';
 
+
 export const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
 
   direction: 'horizontal',

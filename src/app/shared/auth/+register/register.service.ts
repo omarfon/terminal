@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { HttpClient, HttpResponse, HttpRequest, HttpHeaders } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -76,7 +77,9 @@ export class RegisterService {
         "phone": this.data.phone,
         "code": codeValida,
         "id": this.data.id
-      }, {headers});
+      }, {headers}).pipe(
+        map(data => {return data})
+      )
   }
 
 
