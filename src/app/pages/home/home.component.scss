@@ -17,12 +17,19 @@
     margin-right:2.5%;
     border-top-right-radius: 25px;
 }
-.containerWeb{
-    background: #126e82;
+.containerWebHome{
+   /*  background: rgba(255, 255, 255, 0.5); */
+    background:#126e82;
+    border-top-right-radius: 70px;
+    margin-top: 30px;
     h1{
         color:#fff;
-        font-size:3em;
-        margin-top:30px;
+        font-family:Helvetica, sans-serif;
+        font-weight: bold;
+        font-size:6em;
+        margin-top:10px;
+        margin-left: 30px;
+        width: 90%;
     }
 }
 h1{ 
@@ -96,11 +103,14 @@ mat-icon{
     margin-top:100px;
         .cura{
             background: #00ACA0;
+            border-top-right-radius: 20px;
+            width: 90%!important;
             width:80%;
             p{
                 color:#fff;
                 font-size:1.3em;
-                margin-top:20px;
+                margin-top:-5px;
+                margin-bottom:20px;
 
             }
             img{
@@ -109,10 +119,13 @@ mat-icon{
         }
         .cuida{
             background: #E95A40;
+            border-top-right-radius: 20px;
+            width: 90%!important;
             p{
                 color:#fff;
                 font-size:1.3em;
-                margin-top:20px;
+                margin-top:-5px;
+                margin-bottom:20px;
 
             }
             img{
