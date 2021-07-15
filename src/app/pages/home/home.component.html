@@ -8,31 +8,32 @@
       </div>
     </div>
     <div class="row">
-      <div class="col content containerWeb" (click)="openGiencoPediatri()">
-        <h1>Saca tu cita para ginecología y pediatría aquí</h1>
-       <!--  <div class="containerReservar">
-          <button class="btn btn-button btn-rounded reservar" > reservar
-          </button>
-        </div> -->
-      </div>
-      <div class="col content containerPlan" (click)="openParto()">
-        <h1>Conoce sobre el parto humanizado en aviva</h1>
-<!--         <div class="containerReservar" > 
-          <button class="btn btn-button btn-rounded reservar">  comenzar
-          </button>
-        </div> -->
-      </div>
-      <div class="col content containerMamapp" (click)="openModalMamapp()"><h1>Conoce nuestra aplicación mamapp</h1>
-          <div class="containerReservar">
-            <!-- <button class="btn btn-button btn-rounded reservar" > ver
-            </button> -->
+      <div class="col-md-6 content containerWeb" (click)="openCura()">
+        <h1>Realiza una reserva desde aqui, es super rápido</h1>
+        <div class="botones">
+          <div class="row">
+            <div class="col cura">
+              <div class="row">
+                <div class="col-12">
+                  <img src="./../../../assets/images/avivacura_logo.svg" alt="">
+                </div>
+                <div class="col-12">
+                  <p>reserva cura</p>
+                </div>
+              </div>
+            </div>
+            <div class="col cuida" (click)="openGiencoPediatri()">
+              <div class="row">
+                <div class="col-12">
+                  <img src="./../../../assets/images/avivacuida_logo.svg" alt="">
+                </div>
+                <div class="col-12">
+                  <p>reserva cura</p>
+                </div>
+              </div>
+            </div>
           </div>
-      </div>
-      <div class="col content containerWawapp" (click)="openModalWawapp()"><h1>Conoce nuestra aplicación wawapp</h1>
-        <div class="containerReservar">
-          <!-- <button class="btn btn-button btn-rounded reservar"> ver
-          </button> -->
-        </div>   
+        </div>
       </div>
     </div>
   </div>

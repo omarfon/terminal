@@ -44,22 +44,14 @@ export class HomeComponent implements OnInit {
       }
 
       openGiencoPediatri(){
-       /*  const dialoggineco = this.dialog.open(GinecopediaComponent);
-  
-        dialoggineco.afterClosed().subscribe(result => {
-          console.log('dialogo mama cerrado');
-        }); */
         this.router.navigate(['reserva']);
       }
       goToHome(){
         this.router.navigate(['/']);
       }
 
-      openParto(){
-        const dialogParto = this.dialog.open(PartoComponent);
-        dialogParto.afterClosed().subscribe(result => {
-          console.log('dialog parto cerrado')
-        })
+      openCura(){
+        this.router.navigate(['cura'])
       }
 
 }

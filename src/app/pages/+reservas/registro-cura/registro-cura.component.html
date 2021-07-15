@@ -1,0 +1,40 @@
+<div class="cabecera">
+    <app-cabecera-interna></app-cabecera-interna>
+  </div>
+  <div class="containerPage">
+    <section class="box-register aviva-cuida-section content-box-info container-fluid" @fadeIn>
+      <div class="row">
+        <div class="col-12 col-lg-4 padding">
+          <div class="box-header">
+            <!-- <p><span class="main-letter">Hola,</span> <br>en base al motivo de tu consulta, <span class="strong">escoge el servicio donde deseas ser atendido</span></p> -->
+            <p class="registra">Escogiste una cita para el día
+              <span class="strong title-title">{{dateCita}}</span></p>
+            <div class="vector-orange">
+              <div class="circle"></div>
+            </div>
+            <div class="vector-orange-horizontal">
+              <div class="circle"></div>
+            </div>
+          </div>
+        </div>
+    
+        <div class="col-12 col-lg-7 offset-lg-1">
+          <section class="box-register content-box-info">
+            <div class="box-specialty">
+              <h2>PARA COMPLETAR LA RESERVA <br> CREA O INGRESA A TU CUENTA</h2>
+            </div>
+            <div class="container-boxes">
+              <a><button (click)="openRegister()" id="button-aviva_cura_paso4_Crear_Cuenta" mat-raised-button
+                  color="primary">CREAR CUENTA</button></a>
+              <a><button (click)="openLogin()" id="button-aviva_cura_paso4_Ingresar_Cuenta" mat-raised-button
+                  color="primary">INGRESAR A MI CUENTA</button></a>
+            </div>
+            <div (click)="backLink()" class="button-back">
+              <img src="assets/img/sacar-cita/back-page.svg" alt="">
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+    <app-modal-template *ngIf="true"></app-modal-template>
+  </div>

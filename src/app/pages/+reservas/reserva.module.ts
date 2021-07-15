@@ -21,19 +21,24 @@ import { CabeceraInternaComponent } from 'src/app/shared/cabecera-interna/cabece
 import { ReservaFinalizadaComponent } from './reserva-finalizada/reserva-finalizada.component';
 import { AlertComponent } from 'src/app/shared/modal/alert/alert.component';
 import { CreateParentComponent } from 'src/app/shared/modal/create-parent/create-parent.component';
+import { AvivacuraComponent } from './avivacura/avivacura.component';
+import { ReservaCuraComponent } from './reserva-cura/reserva-cura.component';
+import { DoctoresCuraComponent } from './doctores-cura/doctores-cura.component';
+import { RegistroCuraComponent } from './registro-cura/registro-cura.component';
 
 
 
 @NgModule({
   declarations: [
-    ReservasComponent,
-    ReservasComponent,
-    AvivacuidaComponent,
-    ReservasComponentContent,
-    DoctoresComponent,
-   RegistroCitaComponent, 
-    SeguroComponent,
-    PagoComponent,
+  ReservasComponent,
+  ReservasComponent,
+  AvivacuidaComponent,
+  AvivacuraComponent,
+  ReservasComponentContent,
+  DoctoresComponent,
+  RegistroCitaComponent,
+  SeguroComponent,
+  PagoComponent,
   ReservaComponent,
   RegisterModalComponent,
   ModalComponent,
@@ -42,6 +47,9 @@ import { CreateParentComponent } from 'src/app/shared/modal/create-parent/create
   ReservaFinalizadaComponent,
   AlertComponent,
   CreateParentComponent,
+  ReservaCuraComponent,
+  DoctoresCuraComponent,
+  RegistroCuraComponent,
   ],
   imports: [
     CommonModule,
@@ -57,17 +65,19 @@ import { CreateParentComponent } from 'src/app/shared/modal/create-parent/create
   exports: [
     ReservasComponent,
     AvivacuidaComponent,
+    AvivacuraComponent,
     ReservasComponent,
     ReservasComponentContent,
     DoctoresComponent,
-   RegistroCitaComponent,
+    RegistroCitaComponent,
     SeguroComponent,
     PagoComponent,
     ReservaComponent,
     ButtonPayComponent,
     CabeceraInternaComponent,
     ReservaFinalizadaComponent,
-    CreateParentComponent
+    CreateParentComponent,
+    ReservaCuraComponent,
   ],
   entryComponents:[
     RegisterModalComponent,

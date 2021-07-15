@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { ReservasService } from '../reservas.service';
-import { PRIMARY_OUTLET, Router } from '@angular/router';
-import { fadeIn } from 'src/app/shared/animations/animation';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { fadeIn } from 'src/app/shared/animations/animation';
+import { ReservasService } from '../reservas.service';
 
 
 @Component({
-  selector: 'app-avivacuida',
-  templateUrl: './avivacuida.component.html',
-  styleUrls: ['./avivacuida.component.scss'],
+  selector: 'app-avivacura',
+  templateUrl: './avivacura.component.html',
+  styleUrls: ['./avivacura.component.scss'],
   animations: [fadeIn]
 })
-export class AvivacuidaComponent implements OnInit {
+export class AvivacuraComponent implements OnInit {
 
   public dataSpecialty: any;
   public preloader: boolean;
@@ -21,14 +21,16 @@ export class AvivacuidaComponent implements OnInit {
   
 
   progressPage = {
-    page : 'avivaCuida',
+    page : 'avivaCura',
     state :  'especialidad',
     pageDoctor : false
   }
 
-
+  public space = '-';
+  public patron = " ";
+  
   constructor(private auth: AuthService,
-              private reservasService : ReservasService,
+              private reservasService: ReservasService,
               public router: Router) { }
 
   ngOnInit() {
@@ -45,7 +47,7 @@ export class AvivacuidaComponent implements OnInit {
       if(data){ this.preloader = false}
 
       this.dataSpecialty = data.centers[0].services.filter((element) =>{
-        return element.block === 'cuida';
+        return element.block === 'cura';
       })
 
       this.dataSpecialty.forEach(element => {
@@ -53,11 +55,13 @@ export class AvivacuidaComponent implements OnInit {
         element.trackingId = this.eliminarDiacriticos(element.description);
         element.trackingId = element.trackingId.split(" ").join("-");
         element.trackingId = element.trackingId.toLowerCase()
+         
        });
+
     }, (error: any) => {
+ 
     })
   }
-
 
   eliminarDiacriticos(texto){
     return texto.normalize('NFD').replace(/[\u0300-\u036f]/g,"");
@@ -66,8 +70,7 @@ export class AvivacuidaComponent implements OnInit {
 doctoresPage(data){
   console.log(data);
   this.reservasService.especialidad = data;
-  this.router.navigate(['doctores']);
+  this.router.navigate(['doctores-cura']);
 }
-
 
 }

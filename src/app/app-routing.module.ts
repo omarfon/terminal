@@ -6,8 +6,8 @@ import { BeneficiosComponent } from './pages/beneficios/beneficios.component';
 import { HomeComponent } from './pages/home/home.component';
 import { PediatriaComponent } from './pages/pediatria/pediatria.component';
 import { ReservaComponent } from './pages/+reservas/reserva/reserva.component';
-import { MamappVideoComponent } from './pages/mamapp-video/mamapp-video.component';
-import { WawappVideoComponent } from './pages/wawapp-video/wawapp-video.component';
+import { AvivacuraComponent } from './pages/+reservas/avivacura/avivacura.component';
+
 
 
 
@@ -33,12 +33,8 @@ const routes: Routes = [
     component:ReservaComponent
   },
   {
-    path:'mamapp-video',
-    component:MamappVideoComponent
-  },
-  {
-    path:'wawapp-video',
-    component:WawappVideoComponent
+    path:'cura',
+    component:AvivacuraComponent
   },
   {
     path: 'reservas',

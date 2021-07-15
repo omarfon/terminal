@@ -1,11 +1,18 @@
 
 .container-fluid{
-    background: #f1f3f6;
-    height: 90vh!important;
+    height: 100vh!important;
+    background-image: url(../../../assets/images/fondo.jpg);
+    height: calc(100vh - 160px);
+    min-height: 610px;
+    background-color: #fff;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .content{
-    height: 75vh;
-    margin-top:5vh;
+    height: 55vh;
+    margin-top:15vh;
+    width: 50%!important;
     margin-left:2.5%;
     margin-right:2.5%;
     border-top-right-radius: 25px;
@@ -84,5 +91,32 @@ mat-icon{
     position: absolute;
     bottom: 20px;
     margin-left: calc( 50% - 550px );
+}
+.botones{
+    margin-top:100px;
+        .cura{
+            background: #00ACA0;
+            width:80%;
+            p{
+                color:#fff;
+                font-size:1.3em;
+                margin-top:20px;
 
+            }
+            img{
+                width: 50%;
+            }
+        }
+        .cuida{
+            background: #E95A40;
+            p{
+                color:#fff;
+                font-size:1.3em;
+                margin-top:20px;
+
+            }
+            img{
+                width: 50%;
+            }
+        }
 }

@@ -28,7 +28,7 @@
     "ngx9-virtual-material-keyboard": "^0.1.5",
     "rxjs": "~6.4.0",
     "simple-keyboard": "^3.0.65",
-    "swiper": "^6.5.9",
+    "swiper": "^6.7.5",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
   },

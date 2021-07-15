@@ -12,6 +12,10 @@ import { desactivateUser } from 'src/app/shared/auth/guard/desactiva.guard';
 import { CabeceraComponent } from 'src/app/shared/cabecera/cabecera.component';
 import { ReservaComponent } from './reserva/reserva.component';
 import { ReservaFinalizadaComponent } from './reserva-finalizada/reserva-finalizada.component';
+import { AvivacuraComponent } from './avivacura/avivacura.component';
+import { ReservaCuraComponent } from './reserva-cura/reserva-cura.component';
+import { DoctoresCuraComponent } from './doctores-cura/doctores-cura.component';
+import { RegistroCuraComponent } from './registro-cura/registro-cura.component';
 
 
 
@@ -31,12 +35,13 @@ const routes: Routes = [
       path: '', component: ReservaComponent
     }]
   },
-  /* {
-    path: 'avivacura',
-    component: ReservasComponent,
-    loadChildren: () => import('src/app/+reservas/avivacura/aviva-cura.module').then(m => m.AvivaCuraModule)
-
-  }, */
+  {
+    path:'cura',
+    component: ReservaCuraComponent,
+    children: [{
+      path: '', component: AvivacuraComponent
+    }]
+  },
 /*   {
     path: 'avivatele',
     component: ReservasComponent,
@@ -61,6 +66,14 @@ const routes: Routes = [
     ]
   },
   {
+    path: 'doctores-cura',
+    component: ReservasComponent,
+    children: [{
+      path: '', component: DoctoresCuraComponent
+    }
+    ]
+  },
+  {
     path: 'avivacuida/registro',
     canActivate: [desactivateUser],
     component: ReservasComponent,
@@ -78,15 +91,15 @@ const routes: Routes = [
     }
     ]
   },
-  /* {
-    path: 'avivacuida/valida-codigo',
+  {
+    path: 'registro-cura',
     canActivate: [desactivateUser],
     component: ReservasComponent,
     children: [{
-      path: '', component: ValidateCodeComponent
+      path: '', component: RegistroCuraComponent
     }
     ]
-  }, */
+  },
   {
     path: 'avivacuida/seguro',
     canActivate: [UserGuard],

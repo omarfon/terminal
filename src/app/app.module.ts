@@ -37,6 +37,7 @@ import { WawappVideoComponent } from './pages/wawapp-video/wawapp-video.componen
 import { InfoFormuComponent } from './shared/modal/info-formu/info-formu.component';
 
 
+
 export const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
 
   direction: 'horizontal',
