@@ -12,7 +12,15 @@ export const environment = {
   agora: {
     appId: 'b75a830a11a84a0bbb812fc81aa60860'
   },
-};
+  firebaseConfig : {
+    apiKey: "AIzaSyCVijEnV4JQmiZce63b04xt6qH8K57YDJU",
+    authDomain: "kiosko-fc1a9.firebaseapp.com",
+    projectId: "kiosko-fc1a9",
+    storageBucket: "kiosko-fc1a9.appspot.com",
+    messagingSenderId: "805221174958",
+    appId: "1:805221174958:web:b864f0ac6000aa6724673f"
+  }
+}; 
 
 /* export const environment = {
   production: true,
@@ -24,7 +32,15 @@ export const environment = {
   agora: {
     appId: 'b75a830a11a84a0bbb812fc81aa60860'
   },
-}; */
+  firebaseConfig : {
+    apiKey: "AIzaSyCVijEnV4JQmiZce63b04xt6qH8K57YDJU",
+    authDomain: "kiosko-fc1a9.firebaseapp.com",
+    projectId: "kiosko-fc1a9",
+    storageBucket: "kiosko-fc1a9.appspot.com",
+    messagingSenderId: "805221174958",
+    appId: "1:805221174958:web:b864f0ac6000aa6724673f"
+  }
+};
 
 /*
  * For easier debugging in development mode, you can import the following file

@@ -6,6 +6,7 @@ import 'moment/locale/es'
 import { fadeIn } from 'src/app/shared/animations/animation';
 import { MatDialog } from '@angular/material';
 import { AuthService } from 'src/app/services/auth.service';
+import { PerfilComponent } from 'src/app/modals/perfil/perfil.component';
 
 @Component({
   selector: 'app-doctores',
@@ -144,19 +145,17 @@ export class DoctoresComponent implements OnInit {
 
 
   // OPEN MODAL LOGIN
-  openLogin(data): void {
-/*     const diallogRef = this.dialog.open(ModalDetailsDoctorsComponent, {
+  openPerfil(data): void {
+    const diallogRef = this.dialog.open(PerfilComponent, {
       data: {
-
         page: 'aviva-cuida',
         infoDetails: data
-
       },
       width: 'auto'
     });
     diallogRef.afterClosed().subscribe(res => {
 
-    }) */
+    })
   }
 
   eliminarDiacriticos(texto) {

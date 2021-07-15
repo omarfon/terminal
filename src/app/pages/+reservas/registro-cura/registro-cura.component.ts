@@ -13,7 +13,7 @@ import { ReservasService } from '../reservas.service';
 })
 export class RegistroCuraComponent implements OnInit {
   progressPage = {
-    page : 'avivaCuida',
+    page : 'avivaCura',
     state :  'registro',
     pageDoctor : true
   }
@@ -29,7 +29,7 @@ export class RegistroCuraComponent implements OnInit {
   // OPEN MODAL LOGIN
   openLogin(): void{
     const diallogRef = this.dialog.open(ModalComponent, {
-      data: 'aviva-cuida'
+      data: 'aviva-cura'
     });
     diallogRef.afterClosed().subscribe(res => {
       console.log(res);
@@ -40,8 +40,8 @@ export class RegistroCuraComponent implements OnInit {
 
   openRegister(): void{
     const diallogRef = this.dialog.open(RegisterModalComponent, {
-      data: 'aviva-cuida',
-      panelClass: ['aviva-cuida-fondo'] 
+      data: 'aviva-cura',
+      panelClass: ['aviva-cura-fondo'] 
     });
     diallogRef.afterClosed().subscribe(res => {
       console.log(res);

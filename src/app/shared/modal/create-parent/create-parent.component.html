@@ -13,7 +13,7 @@
       }">
       <label [ngClass]="{ 'input-active': name != '' }">Nombres</label>
       <input [disabled]="loaderSession" autocomplete="off" type="text" [(ngModel)]="name"
-        (keyup)="onkeyValidateString(name)" (blur)="blurValidateString(name)" />
+        (keyup)="onkeyValidateString(name)" (blur)="blurValidateString(name)" [matKeyboard]="name"/>
       <div *ngIf="nameReadyValidate" [ngClass]="{ 'icon2 check': nameValidate, 'icon error': !nameValidate }"></div>
     </div>
 
@@ -24,7 +24,7 @@
       }">
       <label [ngClass]="{ 'input-active': lastName != '' }">Apellido paterno</label>
       <input [disabled]="loaderSession" autocomplete="off" type="text" [(ngModel)]="lastName"
-        (keyup)="onkeyValidateString(lastName)" (blur)="blurValidateString(lastName)" />
+        (keyup)="onkeyValidateString(lastName)" (blur)="blurValidateString(lastName)" [matKeyboard]="lastName"/>
       <div *ngIf="lastNameReadyValidate" [ngClass]="{
           'icon2 check': lastNameValidate,
           'icon error': !lastNameValidate
@@ -39,7 +39,7 @@
      }">
       <label [ngClass]="{ 'input-active': lastNameMaterno != '' }">Apellido materno</label>
       <input [disabled]="loaderSession" autocomplete="off" type="text" [(ngModel)]="lastNameMaterno"
-        (keyup)="onkeyValidateString(lastNameMaterno)" (blur)="blurValidateString(lastNameMaterno)" />
+        (keyup)="onkeyValidateString(lastNameMaterno)" (blur)="blurValidateString(lastNameMaterno)" [matKeyboard]="lastNameMaterno"/>
       <div *ngIf="lastNameMaternoReadyValidate" [ngClass]="{
          'icon2 check': lastNameMaternoValidate,
          'icon error': !lastNameMaternoValidate
@@ -84,7 +84,7 @@
       <label [ngClass]="{ 'input-active': documentNumber != '' }">Número de documento</label>
       <input maxlength="8" [disabled]="loaderSession || activateDocumentNumber" autocomplete="off" type="tel"
         [(ngModel)]="documentNumber" (keyup)="onkeyValidateString(documentNumber)"
-        (blur)="blurValidateString(documentNumber)" />
+        (blur)="blurValidateString(documentNumber)" [matKeyboard]="documentNumber"/>
       <div *ngIf="documentReadyValidate" [ngClass]="{
           'icon2 check': documentValidate,
           'icon error': !documentValidate
@@ -98,7 +98,7 @@
       }">
       <label [ngClass]="{ 'input-active': birthday != '' }">Fecha de nacimiento (día/mes/año)</label>
       <input maxlength="10" [disabled]="loaderSession" autocomplete="off" [(ngModel)]="birthday" type="tel"
-        (keyup)="validateBirthdate()" (blur)="validateB()" />
+        (keyup)="validateBirthdate()" (blur)="validateB()" [matKeyboard]="birthday"/>
       <div *ngIf="birthdayReadyValidate" [ngClass]="{
           'icon2 check': birthdayValidate,
           'icon error': !birthdayValidate
@@ -121,7 +121,7 @@
 
   </div>
 
-  <button [disabled]="validateAllInputs()" *ngIf="!loaderSession" mat-raised-button color="primary" (click)="sendForm()"
+  <button *ngIf="!loaderSession" mat-raised-button color="primary" (click)="sendForm()"
     id="button_crear_cuenta_Enviar_Crear_Cuenta">
     CREAR DEPENDIENTE
   </button>

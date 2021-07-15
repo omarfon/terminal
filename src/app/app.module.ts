@@ -10,7 +10,6 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { GinecopediaComponent } from './modals/ginecopedia/ginecopedia.component';
 import {MatIconModule} from '@angular/material/icon';
 import { PartoComponent } from './modals/parto/parto.component';
-import { BeneficiosComponent } from './pages/beneficios/beneficios.component';
 import { GinecoComponent } from './pages/gineco/gineco.component';
 import { PediatriaComponent } from './pages/pediatria/pediatria.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -35,6 +34,12 @@ import { ErrorPaymentComponent } from './shared/modal/error-payment/error-paymen
 import { MamappVideoComponent } from './pages/mamapp-video/mamapp-video.component';
 import { WawappVideoComponent } from './pages/wawapp-video/wawapp-video.component';
 import { InfoFormuComponent } from './shared/modal/info-formu/info-formu.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from 'src/environments/environment';
+import { AgradecimientoComponent } from './modals/agradecimiento/agradecimiento.component';
+import { InscripcionesComponent } from './pages/inscripciones/inscripciones.component';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 
@@ -76,7 +81,6 @@ const GUARDS_APLICATION = [
     WawappComponent,
     GinecopediaComponent,
     PartoComponent,
-    BeneficiosComponent,
     GinecoComponent,
     PediatriaComponent,
     HomeComponent,
@@ -90,7 +94,8 @@ const GUARDS_APLICATION = [
     MamappVideoComponent,
     WawappVideoComponent,
     InfoFormuComponent,
-    
+    AgradecimientoComponent,
+    InscripcionesComponent,
   ],
   imports: [
     BrowserModule,
@@ -103,12 +108,16 @@ const GUARDS_APLICATION = [
     SwiperModule,
     FormsModule,
     MatButtonModule,
+    MatMenuModule,
+    AngularFireModule,
+    AngularFirestoreModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
   providers: [{
     provide: SWIPER_CONFIG,
     useValue: DEFAULT_SWIPER_CONFIG
   }],
   bootstrap: [AppComponent],
-  entryComponents: [MamappComponent, WawappComponent, GinecopediaComponent, PartoComponent, InfoFormuComponent]
+  entryComponents: [MamappComponent, WawappComponent, GinecopediaComponent, PartoComponent, InfoFormuComponent, AgradecimientoComponent]
 })
 export class AppModule { }

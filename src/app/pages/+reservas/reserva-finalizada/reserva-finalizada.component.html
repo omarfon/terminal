@@ -8,7 +8,12 @@
       
             <div class="col-12 col-lg-3 padding">
               <div class="box-header">
-                <p><span class="strong">Tu cita ha sido reservada</span></p>
+                <div class="row">
+                  <div class="col-12"><span class="main">{{name.name}}</span></div>
+                  <div class="col-12">
+                    <p><span class="strong">Tu cita ha sido reservada con éxito</span></p>
+                  </div>
+                </div>
                 <div class="vector-orange">
                   <div class="circle"></div>
                 </div>
@@ -54,7 +59,7 @@
                   </div>
                 </li>
               </ul>
-              <p>Te enviaremos un correo de confirmación. También puedes obtener tu constancia por medio de:</p>
+             <!--  <p>Te enviaremos un correo de confirmación. También puedes obtener tu constancia por medio de:</p> -->
           <!--     <ul class="social">
                 <li class="whatssap">
                   <a [href]="LinkWhatssap">
@@ -78,26 +83,22 @@
                   <div style="display: flex" class="box-header-up">
                     <img src="assets/reserva-finalizada/madre.jpg" alt="">
                   </div>
-                  <div class="box-info">
-      
-                    <h2 class="before">CONOCE NUESTROS PROGRAMAS MATERNOS</h2>
-                    <P>Te ofrecemos programas que te acompañarán desde la etapa prenatal, durante y después del parto.</P>
-                    <button [routerLink]="['/planes-programas']" mat-raised-button color="primary">VER PROGRAMAS</button>
-                    <span class="line"></span>
-                    <h3 class="before-2">DESCARGA LA <br> GUÍA DEL EMBARAZO</h3>
-                    <a href="https://api.aviva.pe/middleware2/api/v2/mama/google-play-url" target="_blank">
-                      <img width="170" src="assets/reserva-finalizada/google_play.svg" alt="">
-                    </a>
-                  </div>
-      
+                  
                 </div>
               </div>
             </div>
           </div> -->
+       <!--    <div class="box-info">
+
+            <h2 class="before">CONOCE NUESTROS PROGRAMAS MATERNOS</h2>
+            <P>Te ofrecemos programas que te acompañarán desde la etapa prenatal, durante y después del parto.</P>
+            <button [routerLink]="['/beneficios']" mat-raised-button color="primary">VER PROGRAMAS</button>
+            <span class="line"></span>
+          </div> -->
         </div>
-        <div style="    height: 81vh;
-      width: 100%;
-      max-width: 101%;" class="preloader" *ngIf="preloader">
+        <div *ngIf="preloader" style="    height: 81vh;
+                        width: 100%;
+           max-width: 101%;" class="preloader" >
           <mat-progress-spinner [color]="color" [mode]="mode" [diameter]="70">
           </mat-progress-spinner>
           <br>

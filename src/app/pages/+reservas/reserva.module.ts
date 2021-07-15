@@ -26,7 +26,28 @@ import { ReservaCuraComponent } from './reserva-cura/reserva-cura.component';
 import { DoctoresCuraComponent } from './doctores-cura/doctores-cura.component';
 import { RegistroCuraComponent } from './registro-cura/registro-cura.component';
 
+import { MatKeyboardModule, IKeyboardLayouts, keyboardLayouts, MAT_KEYBOARD_LAYOUTS, } from 'angular-onscreen-material-keyboard';
+/* import { TerminosComponent } from 'src/app/modals/terminos/terminos.component'; */
+import { PerfilComponent } from 'src/app/modals/perfil/perfil.component';
+import { ErrorRegisterComponent } from 'src/app/shared/modal/error-register/error-register.component';
+import { ErrorPaymentComponent } from 'src/app/shared/modal/error-payment/error-payment.component';
+import { SeguroCuraComponent } from './seguro-cura/seguro-cura.component';
 
+
+const customLayouts: IKeyboardLayouts = {
+  ...keyboardLayouts,
+  'Tölles Läyout': {
+    'name': 'espanol',
+    'keys': [
+      [
+        ['1', '!'],
+        ['2', '@'],
+        ['3', '#']
+      ]
+    ],
+    'lang': ['es']
+  }
+};
 
 @NgModule({
   declarations: [
@@ -50,6 +71,7 @@ import { RegistroCuraComponent } from './registro-cura/registro-cura.component';
   ReservaCuraComponent,
   DoctoresCuraComponent,
   RegistroCuraComponent,
+  SeguroCuraComponent,
   ],
   imports: [
     CommonModule,
@@ -60,7 +82,8 @@ import { RegistroCuraComponent } from './registro-cura/registro-cura.component';
     MatButtonModule,
     FormsModule,
     MatIconModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatKeyboardModule
   ],
   exports: [
     ReservasComponent,
@@ -84,9 +107,12 @@ import { RegistroCuraComponent } from './registro-cura/registro-cura.component';
     ModalComponent,
     AlertComponent,
     CreateParentComponent,
+    ErrorPaymentComponent,
+/*     TerminosComponent, */
+    
   ],
   providers:[
-    
+    { provide: MAT_KEYBOARD_LAYOUTS, useValue: customLayouts }
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

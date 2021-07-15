@@ -94,8 +94,10 @@ export class ReservasService {
   }
 
   startPayCulqi(data: any) {
+    const session = JSON.parse(localStorage.getItem('session'));
+    let headers = new HttpHeaders({ "Authorization": session.authorization });
     return this.http
-      .post(this.urlBase + 'api/v2/ebooking/culqi-charges', data);
+      .post(this.urlBase + 'api/v2/ebooking/culqi-charges', data, {headers});
   }
 
   getPlansFinanciador(service_id, doctorId, fecha) {

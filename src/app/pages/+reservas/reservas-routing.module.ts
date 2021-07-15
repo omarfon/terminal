@@ -16,6 +16,7 @@ import { AvivacuraComponent } from './avivacura/avivacura.component';
 import { ReservaCuraComponent } from './reserva-cura/reserva-cura.component';
 import { DoctoresCuraComponent } from './doctores-cura/doctores-cura.component';
 import { RegistroCuraComponent } from './registro-cura/registro-cura.component';
+import { SeguroCuraComponent } from './seguro-cura/seguro-cura.component';
 
 
 
@@ -115,6 +116,15 @@ const routes: Routes = [
     component: ReservasComponent,
     children: [{
       path: '', component: SeguroComponent
+    }
+    ]
+  },
+  {
+    path: 'seguro-cura',
+    canActivate: [UserGuard],
+    component: ReservasComponent,
+    children: [{
+      path: '', component: SeguroCuraComponent
     }
     ]
   },

@@ -1,0 +1,213 @@
+.botonInfo{
+    width:300px;
+    font-size:1.4em;
+    margin-left: calc( 50% - 150px );
+    border-radius:10px;
+  }
+  .pipedriveWebForms{
+    text-align: center;
+  }
+  .contenedorInfo{
+    height: 400px;
+    background: #126e82;
+    margin-top:20px;
+    border-top-right-radius: 50px;
+    h2{
+      color:#fff;
+      font-size: 2em;
+      margin-top:150px;
+      width: 80%;
+      margin-left: 10%;
+    }
+  }
+  .formulario{
+    background: #fff;
+    margin-top: 50px!important;
+    text-align: center;
+    h3 {
+      font-size: 1.4em!important;
+      font-weight: 600;
+      margin: 12px 10px 20px;
+      /* font-family: $avenir-Bold; */
+      text-align: center;
+      margin-top: 20px;
+      color:#126e82;
+    }
+  }
+  .modal {
+    h3 {
+      font-size: 20px;
+      margin: 12px 10px 20px;
+      /* font-family: $avenir-Bold; */
+      text-align: center;
+      color:#126e82;
+    }
+    ::-webkit-input-placeholder {
+      color: #000;
+      font-size: 14px;
+    }
+    input {
+      width: 100%;
+      max-width: 314px;
+      height: 50px;
+      padding: 0px 12px;
+      color: #000;
+      -webkit-transition: all 0.5s;
+      transition: all 0.5s;
+      margin: 0px;
+      position: relative;
+      border: none;
+      font-family: avenirLt95Bold;
+      font-size: 18px;
+      background-color: transparent;
+      &:focus {
+        outline: red;
+      }
+    }
+    button {
+      background-color: #000;
+      border: none;
+      width: 100%;
+      max-width: 100%;
+      color: #fff;
+      font-size: 12px;
+      border-radius: 0 10px 0 0;
+      margin: 10px 0px 18px 0px;
+      height: 42px;
+      -webkit-transition: all 0.5s;
+      transition: all 0.5s;
+      &:hover {
+        background-color: #004977;
+        transition: all 0.5s;
+      }
+      @media (min-width: 980px) {
+        max-width: 214px;
+      }
+      cursor: pointer;
+      &:focus {
+        outline: none;
+      }
+  
+      &:disabled {
+        background-color: #000;
+        opacity: 0.1;
+        color: white;
+      }
+    }
+    a {
+      color: blue;
+      font-family: avenirLt95Bold;
+      font-size: 12px;
+      border-bottom: 1px solid blue;
+    }
+    .box-input {
+      border: 2px solid #d2d2d2;
+      margin: 7px;
+      position: relative;
+      width: 100%;
+      max-width: 95%;
+      height: 50px;
+      .icon {
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        right: 11px;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        -webkit-animation: mostrarPreloader 0.4s;
+        animation: mostrarPreloader 0.4s;
+      }
+  
+      .icon2 {
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        right: 11px;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        -webkit-animation: mostrarPreloader 0.4s;
+        animation: mostrarPreloader 0.4s;
+      }
+      .check {
+        background-image: url("/../../assets/svg/check_verde.svg");
+      }
+      .error {
+        background-image: url("/../../assets/svg/error.svg");
+      }
+      label {
+        height: 10px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        left: 0;
+        color: #062f51;
+        font-size: 14px;
+        text-align: left;
+        -webkit-transition: all 0.2s;
+        transition: all 0.2s;
+        background-color: white;
+        padding: 0 6px;
+        left: 4px;
+      }
+      .notifiValidate {
+        position: absolute;
+        display: inline-block;
+        bottom: -15px;
+        left: 0;
+        font-size: 10px;
+        color: red;
+      }
+    }
+    .colorCuida {
+      color: #eb533a;
+    }
+    .colorCura {
+      color: green;
+    }
+  
+    .colorAviva {
+      color: blue;
+    }
+    .preloader {
+      height: 78px;
+      width: 100%;
+      overflow: hidden;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+    }
+    .input-active {
+      font-size: 15px !important;
+      top: -49px !important;
+    }
+    .box-input-load {
+      opacity: 0.6;
+    }
+  
+    .box-input-error {
+      border: 1px solid #e60303 !important;
+      background-color: #ffe6e6 !important;
+      label {
+        background-color: #ffe6e6 !important;
+      }
+    }
+  }
+  button{
+    background:#126e82!important;
+    color:#fff;
+    margin-top:20px;
+    min-width: 95%;
+    margin-left:2.5%!important;
+    height: 47px!important;
+    width:100%!important;
+    border-top-right-radius: 10px;
+  }

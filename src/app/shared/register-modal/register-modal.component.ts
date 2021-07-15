@@ -1,10 +1,12 @@
 import { Component, OnInit, Inject, ViewEncapsulation } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
+import { TerminosComponent } from 'src/app/modals/terminos/terminos.component';
 import { AuthService } from 'src/app/services/auth.service';
+import { UserService } from 'src/app/services/user.service';
 import { RegisterService } from '../auth/+register/register.service';
-import Keyboard from "simple-keyboard";
+import { ErrorRegisterComponent } from '../modal/error-register/error-register.component';
 
 
 @Component({
@@ -15,10 +17,10 @@ import Keyboard from "simple-keyboard";
               './register-modal.component.scss']
 })
 export class RegisterModalComponent implements OnInit {
-  keyboard: Keyboard;
   value = " ";
   serviceError;
   public mailInvalid: boolean = false;
+  public dniInvalid: boolean = false;
   // NAME
   public name: string = '';
   public nameReadyValidate: boolean = false;
@@ -41,12 +43,12 @@ export class RegisterModalComponent implements OnInit {
   public sexoID;
   public sexoData;
   // TYPE DOCUMENT
-  public document: any = 'Tipo de documento';
+ /*  public document: any = 'Tipo de documento';
   public selectdocument: any;
   public documentId;
   public tipeDocumentService;
   public hideBox: boolean = false;
-
+ */
   // NUMBER DOCUMENT
   public documentNumber: any = '';
   public documentReadyValidate: boolean = false;
@@ -57,9 +59,9 @@ export class RegisterModalComponent implements OnInit {
   public birthdayReadyValidate: boolean = false;
   public birthdayValidate: boolean;
 
-  // NUMBER DOCUMENT
+  // PHONE DOCUMENT
   public phoneNumber: any = '';
-  public phoneReadyValidate: boolean = false;
+  public phoneReadyValidate: boolean = true;
   public phoneValidate: boolean;
 
   // EMAIL
@@ -90,6 +92,8 @@ export class RegisterModalComponent implements OnInit {
   // ID CODE
   public idCode: any;
   color;
+  public activate = false;
+  public busqueda = false;
 
   public mode: string = 'indeterminate'
   // EXPRESIONS REGULAR
@@ -98,8 +102,12 @@ export class RegisterModalComponent implements OnInit {
   public ER_STR: any = /^[A-Za-z\_\-\.\s\xF1\xD1]+$/;
   public ER_STR_MA: any = /[A-Z]/;
   public ER_EMA = /[\w-\.]{3,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
+  public datDni;
 
-  constructor(public RegisterService: RegisterService, public dialogRed: MatDialogRef<RegisterModalComponent>, @Inject(MAT_DIALOG_DATA) public message: string, public AuthService: AuthService, public router: Router) { }
+  public messageDni;
+  public messageCrea;
+
+  constructor(public RegisterService: RegisterService, public dialogRed: MatDialogRef<RegisterModalComponent>, @Inject(MAT_DIALOG_DATA) public message: string, public AuthService: AuthService, public router: Router, public dialog: MatDialog, public userSrv: UserService) { }
 
   ngOnInit() {
     if (this.message === 'aviva-cuida') {
@@ -126,52 +134,18 @@ export class RegisterModalComponent implements OnInit {
     this.RegisterService.userGenders()
       .subscribe(data => {
         this.sexoData = data;
-
+        console.log(this.sexoData);
       }, error => {
       });
 
-    this.RegisterService.userDocuments()
+    /* this.RegisterService.userDocuments()
       .subscribe(data => {
         this.tipeDocumentService = data;
-
+        console.log(this.tipeDocumentService);
       }, error => {
 
-      })
+      }) */
   }
-  ngAfterViewInit() {
-    this.keyboard = new Keyboard({
-      onChange: input => this.onChange(input),
-      onKeyPress: button => this.onKeyPress(button)
-    });
-    console.log(this.onChange)
-  }
-
-  onChange = (input: string) => {
-    this.value = input;
-    console.log("Input changed", input);
-  };
-
-  onKeyPress = (button: string) => {
-    console.log("Button pressed", button);
-
-    /**
-     * If you want to handle the shift and caps lock buttons
-     */
-    if (button === "{shift}" || button === "{lock}") this.handleShift();
-  };
-
-  onInputChange = (event: any) => {
-    this.keyboard.setInput(event.target.value);
-  };
-
-  handleShift = () => {
-    let currentLayout = this.keyboard.options.layoutName;
-    let shiftToggle = currentLayout === "default" ? "shift" : "default";
-
-    this.keyboard.setOptions({
-      layoutName: shiftToggle
-    });
-  };
 
   //GET CODE
   getCode(email: any) {
@@ -180,23 +154,8 @@ export class RegisterModalComponent implements OnInit {
       .subscribe((data: any) => {
 
         if (data.result === 'ok') {
-          /* if (this.message === 'home') {
-            this.router.navigate(['/validate-code']);
-          } else if (this.message === 'aviva-cuida') {
-            this.router.navigate(['/reservas/avivacuida/valida-codigo']);
-          } else if (this.message === 'aviva-cura') {
-            this.router.navigateByUrl('reservas/avivacura/valida-codigo');
-          } else if (this.message === 'aviva-tele') {
-            this.router.navigateByUrl('reservas/avivatele/valida-codigo');
-          } else if (this.message === 'reserva-doctor') {
-            this.router.navigateByUrl('especialidades-doctores/reserva-doctor/valida-code');
-          } */
-
-
           const newFecha = this.birthday.split('/');
           const newFechaFormat: string = newFecha[2] + '-' + newFecha[1] + '-' + newFecha[0];
-
-
 
           this.onClickNo()
 
@@ -209,12 +168,12 @@ export class RegisterModalComponent implements OnInit {
             surname2: this.lastNameMaterno,
             birthdate: newFechaFormat,
             gender: {
-              id: this.sexoID,
-              name: this.selectSexo
+              id: 2,
+              name: "MUJER"
             },
             documentType: {
-              id: this.documentId,
-              name: this.selectdocument
+              id: 1,
+              name: "D.N.I"
             },
             documentNumber: this.documentNumber,
             phone: this.phoneNumber,
@@ -222,10 +181,22 @@ export class RegisterModalComponent implements OnInit {
             id: this.idCode
           }
           const code = 1234;
-          this.RegisterService.registerNewUser(code).subscribe(data => {
-            localStorage.setItem('session', JSON.stringify(data));
-            this.router.navigate(['seguro']);
-          })
+          if(data){
+            this.RegisterService.registerNewUser(code).subscribe(data => {
+              localStorage.setItem('session', JSON.stringify(data));
+              if(this.message === 'aviva-cuida'){
+                this.router.navigate(['seguro']);
+              }else if(this.message === 'aviva-cura'){
+                this.router.navigate(['seguro-cura']);
+              }
+            }, err =>{
+              console.log('entro al error');
+                this.dialog.open(ErrorRegisterComponent, {
+                  data:err
+                });
+                this.router.navigate(['/']);
+            })
+          }
         }
       }, error => {
         if (error.error.result === 'error') {
@@ -245,21 +216,6 @@ export class RegisterModalComponent implements OnInit {
       this.sexoValidate = false;
     }
   }
-
-  selectDocument(event) {
-    const documentType = event.target.selectedOptions[0].textContent;
-    if (documentType === 'No Tiene') {
-      this.hideBox = true;
-    } else {
-      this.hideBox = false;
-      this.documentNumber = '';
-      this.selectdocument = event.target.selectedOptions[0].textContent;
-      this.activateDocumentNumber = false;
-      this.documentId = event.target.value;
-    }
-
-  }
-
   activeRepeatPass() {
     if (this.passwordValidate === false) {
       this.activeRepeat = true;
@@ -270,10 +226,9 @@ export class RegisterModalComponent implements OnInit {
     if (this.activeRepeat = true) {
       this.passwordRepeat = '';
       this.passwordRepeatValidate = false;
-      this.validaNum();
       this.validateMayus();
       this.validateLen();
-      if (this.isNum && this.mayus && this.mayor) {
+      if (this.mayus && this.mayor) {
         this.passwordValidate = true;
         this.activeRepeat = false;
       } else {
@@ -283,13 +238,13 @@ export class RegisterModalComponent implements OnInit {
     }
   }
 
-  validaNum() {
+ /*  validaNum() {
     if (this.validateInput(this.ER_ONLY_NUM, this.password)) {
       this.isNum = true;
     } else {
       this.isNum = false;
     }
-  }
+  } */
 
   validateMayus() {
     if (this.validateInput(this.ER_STR_MA, this.password)) {
@@ -311,14 +266,14 @@ export class RegisterModalComponent implements OnInit {
   // VALIDANDO PASS
 
 
-  passRepeatKey() {
+  /* passRepeatKey() {
     this.passwordRepeatReadyValidate = true;
     if (this.password === this.passwordRepeat) {
       this.passwordRepeatValidate = true;
     } else {
       this.passwordRepeatValidate = false;
     }
-  }
+  } */
 
   // VALIDATOR NUMBER
 
@@ -342,11 +297,11 @@ export class RegisterModalComponent implements OnInit {
       }
     }
 
-    else if (this.documentReadyValidate && data === this.documentNumber) {
+   /*  else if (this.documentReadyValidate && data === this.documentNumber) {
       if (data === this.documentNumber) {
         this.blurValidateString(data);
       }
-    }
+    } */
 
     else if (this.phoneReadyValidate && data === this.phoneNumber) {
       if (data === this.phoneNumber) {
@@ -458,9 +413,7 @@ export class RegisterModalComponent implements OnInit {
 
 
     } else {
-
       this.birthdayValidate = false;
-
     }
 
   }
@@ -495,5 +448,27 @@ export class RegisterModalComponent implements OnInit {
     }
   }
 
+  openModalTerminos(){
+    this.dialog.open(TerminosComponent)
+  }
 
+  getDataDni(){
+    this.busqueda = true;
+    this.userSrv.getDatosUser(this.documentNumber).subscribe((data:any) =>{
+      if(data.dni){
+        this.datDni = data;
+        this.activate = true;
+        this.name = this.datDni.name;
+        this.lastName = this.datDni.first_name;
+        this.lastNameMaterno = this.datDni.last_name;
+        this.busqueda = false;
+        console.log(this.datDni)
+      }else{
+        this.messageDni = "El dni no es valido, intente con otro..."
+      }
+    },err =>{
+      console.log(err, 'error');
+      this.busqueda = false;
+    }
+    )}
 }

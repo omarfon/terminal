@@ -317,12 +317,10 @@
 .table-comparativo {
   padding: 0 10px 10px 10px;
   background-color: $color-beige-tabla;
-  overflow: auto;
-  height: 400px;
-  @media (min-width: 1024px) {
-    padding: 20px 64px;
-    height: auto;
-    overflow:auto!important;
+  height: 700px;
+  @media (min-width: 1240px) {
+    height: 700px!important;
+    overflow: auto;
   }
   
   table {

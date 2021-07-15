@@ -1,12 +1,12 @@
 
-<div *ngIf="!loader">
+<div>
     <h2 [ngClass]="{'buttonCura': page === 'aviva-cura', 'buttonCuida': page === 'aviva-cuida'}">SELECCIONA TU FORMA DE
       PAGO</h2>
-  <!--   <div class="container-boxes-seguro">
+  <div class="container-boxes-seguro">
       <button (click)="startPay()" color="primary" [id]="idLocal">EN
         EL LOCAL</button>
-      <button *ngIf="financiador !== 'PACIFICO EPS'" (click)="validateCita()" class="btnPago" color="primary" [id]="idTarjeta">CON TARJETA</button>
-    </div> -->
+       <!--  <button *ngIf="financiador !== 'PACIFICO EPS'" (click)="validateCita()" class="btnPago" color="primary" [id]="idTarjeta">CON TARJETA</button> -->
+    </div>
   </div>
   
   <div class="preloader" style="height: 200px;" *ngIf="loader">

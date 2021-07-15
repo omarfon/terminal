@@ -156,8 +156,10 @@ export class AuthService {
 
   // OBTENER DATOS DEL USUARIO
   getDatosUsers() {
+    const session = JSON.parse(localStorage.getItem('session'));
+    let headers = new HttpHeaders({ "Authorization": session.authorization });
     return this.http
-      .get(this.url + 'api/v2/ebooking/datos-paciente');
+      .get(this.url + 'api/v2/ebooking/datos-paciente', {headers});
   }
 
   // OBTENER DATOS DE CITA DEL USUARIO

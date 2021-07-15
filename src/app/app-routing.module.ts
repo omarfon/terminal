@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AppLayoutReservasComponent } from './layouts/app-layout-reservas/app-layout-reservas.component';
-import { BeneficiosComponent } from './pages/beneficios/beneficios.component';
 import { HomeComponent } from './pages/home/home.component';
 import { PediatriaComponent } from './pages/pediatria/pediatria.component';
 import { ReservaComponent } from './pages/+reservas/reserva/reserva.component';
@@ -19,10 +18,6 @@ const routes: Routes = [
   {
     path:'home',
     component: HomeComponent
-  },
-  {
-    path:'beneficios',
-    component:BeneficiosComponent
   },
   {
     path:'pediatria',

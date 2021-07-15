@@ -6,25 +6,46 @@
 
   <!-- BOX FORM -->
   <div class="box-content-form">
+     <!-- DOCUMENT NUMBER -->
+     <div class="box-input" [ngClass]="{
+      'box-input-load': loaderSession,
+      'box-input-error': serviceError
+    }">
+    <label [ngClass]="{ 'input-active': documentNumber != '' }">Número de documento</label>
+    <input maxlength="8" [disabled]="loaderSession " autocomplete="off" type="tel"
+      [(ngModel)]="documentNumber" (keyup)="onkeyValidateString(documentNumber)"
+      (blur)="blurValidateString(documentNumber)" [matKeyboard]/>
+      <span *ngIf="dniInvalid" class="notifiValidate">Este correo ya a sido registrado, intente con otro</span>
+    <div *ngIf="documentReadyValidate" [ngClass]="{
+        'icon2 check': documentValidate,
+        'icon error': !documentValidate
+      }"></div>
+  </div>
+  <button *ngIf="!loaderSession && activate == false" mat-raised-button color="primary" (click)="getDataDni()"
+  id="button_crear_cuenta_Enviar_Crear_Cuenta">
+  BUSCAR
+</button>
+
     <!-- BOX NAME -->
-    <div class="box-input" [ngClass]="{
+    <div class="box-input" *ngIf="activate == true" [ngClass]="{
         'box-input-load': loaderSession,
         'box-input-error': serviceError
       }">
       <label [ngClass]="{ 'input-active': name != '' }">Nombres</label>
       <input [disabled]="loaderSession" autocomplete="off" type="text" [(ngModel)]="name"
-        (keyup)="onkeyValidateString(name)" (blur)="blurValidateString(name)" (input)="onInputChange($event)" value={{value}}/>
+        (keyup)="onkeyValidateString(name)" (blur)="blurValidateString(name)" [matKeyboard]="name"/>
       <div *ngIf="nameReadyValidate" [ngClass]="{ 'icon2 check': nameValidate, 'icon error': !nameValidate }"></div>
     </div>
+  
 
     <!-- BOX LASTNAME PATERNO -->
-    <div class="box-input" [ngClass]="{
+    <div class="box-input" *ngIf="activate == true" [ngClass]="{
         'box-input-load': loaderSession,
         'box-input-error': serviceError
       }">
       <label [ngClass]="{ 'input-active': lastName != '' }">Apellido paterno</label>
       <input [disabled]="loaderSession" autocomplete="off" type="text" [(ngModel)]="lastName"
-        (keyup)="onkeyValidateString(lastName)" (blur)="blurValidateString(lastName)" (input)="onInputChange($event)" value={{value}/>
+        (change)="onkeyValidateString(lastName)" (blur)="blurValidateString(lastName)"  [matKeyboard]="lastName"/>
       <div *ngIf="lastNameReadyValidate" [ngClass]="{
           'icon2 check': lastNameValidate,
           'icon error': !lastNameValidate
@@ -33,13 +54,13 @@
 
 
     <!-- BOX LASTNAME MATERNO -->
-    <div class="box-input" [ngClass]="{
+    <div *ngIf="activate == true" class="box-input" [ngClass]="{
        'box-input-load': loaderSession,
        'box-input-error': serviceError
      }">
       <label [ngClass]="{ 'input-active': lastNameMaterno != '' }">Apellido materno</label>
       <input [disabled]="loaderSession" autocomplete="off" type="text" [(ngModel)]="lastNameMaterno"
-        (keyup)="onkeyValidateString(lastNameMaterno)" (blur)="blurValidateString(lastNameMaterno)" />
+        (change)="onkeyValidateString(lastNameMaterno)" (blur)="blurValidateString(lastNameMaterno)" [matKeyboard]/>
       <div *ngIf="lastNameMaternoReadyValidate" [ngClass]="{
          'icon2 check': lastNameMaternoValidate,
          'icon error': !lastNameMaternoValidate
@@ -47,58 +68,44 @@
     </div>
 
     <!-- BOX SEXO -->
-    <div class="box-input" [ngClass]="{
+<!--     <div class="box-input" [ngClass]="{
         'box-input-load': loaderSession,
         'box-input-error': serviceError
       }">
       <label [ngClass]="{ 'input-active': sexo != 'Sexo' }">Sexo</label>
       <select [disabled]="loaderSession" [(ngModel)]="sexo" (change)="selecGender($event)">
         <option value=""></option>
-        <option value="sexo">Sexo</option>
+        <option value="sexo">Sexo</option> -->
         <!-- <option *ngFor="let item of gendersService; let i = index" value="{{item.id}}">{{item.name}}</option> -->
-        <option *ngFor="let item of sexoData" value="{{ item.id }}">{{
+     <!--    <option *ngFor="let item of sexoData" value="{{ item.id }}">{{
           item.name
         }}</option>
       </select>
-    </div>
+    </div> -->
 
     <!-- DOCUMENT TYPE -->
-    <div class="box-input" [ngClass]="{
+   <!--  <div class="box-input" [ngClass]="{
         'box-input-load': loaderSession,
         'box-input-error': serviceError
-      }">
+      }" >
       <label [ngClass]="{ 'input-active': document != 'Tipo de documento' }">Tipo de documento</label>
       <select [disabled]="loaderSession" [(ngModel)]="document" (change)="selectDocument($event)">
         <option value=""></option>
         <option value="tipo de documento">Tipo de documento</option>
-        <!-- <option *ngFor="let item of gendersService; let i = index" value="{{item.id}}">{{item.name}}</option> -->
         <option *ngFor="let item of tipeDocumentService" value="{{ item.id }}">{{ item.name }}</option>
       </select>
-    </div>
+    </div> -->
 
-    <!-- DOCUMENT NUMBER -->
-    <div *ngIf="!hideBox" class="box-input" [ngClass]="{
-        'box-input-load': loaderSession,
-        'box-input-error': serviceError
-      }">
-      <label [ngClass]="{ 'input-active': documentNumber != '' }">Número de documento</label>
-      <input maxlength="8" [disabled]="loaderSession || activateDocumentNumber" autocomplete="off" type="tel"
-        [(ngModel)]="documentNumber" (keyup)="onkeyValidateString(documentNumber)"
-        (blur)="blurValidateString(documentNumber)" />
-      <div *ngIf="documentReadyValidate" [ngClass]="{
-          'icon2 check': documentValidate,
-          'icon error': !documentValidate
-        }"></div>
-    </div>
+   
 
     <!-- BIRTHDATE -->
-    <div class="box-input" [ngClass]="{
+    <div class="box-input" *ngIf="activate == true" [ngClass]="{
         'box-input-load': loaderSession,
         'box-input-error': serviceError
       }">
       <label [ngClass]="{ 'input-active': birthday != '' }">Fecha de nacimiento (día/mes/año)</label>
       <input maxlength="10" [disabled]="loaderSession" autocomplete="off" [(ngModel)]="birthday" type="tel"
-        (keyup)="validateBirthdate()" (blur)="validateB()" />
+        (keyup)="validateBirthdate()" (blur)="validateB()" [matKeyboard]/>
       <div *ngIf="birthdayReadyValidate" [ngClass]="{
           'icon2 check': birthdayValidate,
           'icon error': !birthdayValidate
@@ -106,13 +113,13 @@
     </div>
 
     <!-- PHONE -->
-    <div class="box-input" [ngClass]="{
+    <div class="box-input" *ngIf="activate == true" [ngClass]="{
         'box-input-load': loaderSession,
         'box-input-error': serviceError
       }">
       <label [ngClass]="{ 'input-active': phoneNumber != '' }">Teléfono</label>
       <input maxlength="9" [disabled]="loaderSession" autocomplete="off" type="tel" [(ngModel)]="phoneNumber"
-        (keyup)="onkeyValidateString(phoneNumber)" (blur)="blurValidateString(phoneNumber)" />
+        (change)="onkeyValidateString(phoneNumber)" (blur)="blurValidateString(phoneNumber)" [matKeyboard]/>
       <div *ngIf="phoneReadyValidate" [ngClass]="{
           'icon2 check': phoneValidate,
           'icon error': !phoneValidate
@@ -120,13 +127,13 @@
     </div>
 
     <!-- EMAIL -->
-    <div class="box-input" [ngClass]="{
+    <div class="box-input" *ngIf="activate == true" [ngClass]="{
         'box-input-load': loaderSession,
         'box-input-error': mailInvalid
       }">
       <label [ngClass]="{ 'input-active': email != '' }">Correo electrónico</label>
       <input [disabled]="loaderSession" autocomplete="off" type="text" [(ngModel)]="email"
-        (keyup)="onkeyValidateString(email)" (blur)="blurValidateString(email)" />
+        (keyup)="onkeyValidateString(email)" (blur)="blurValidateString(email)" [matKeyboard]/>
       <span *ngIf="mailInvalid" class="notifiValidate">Este correo ya a sido registrado, intente con otro</span>
       <div *ngIf="emailReadyValidate" [ngClass]="{
           'icon2 check': emailValidate,
@@ -136,17 +143,17 @@
 
     <!-- PASSWORD -->
     <div class="content-box-input">
-      <div class="box-input" [ngClass]="{
+      <div class="box-input"  *ngIf="activate == true" [ngClass]="{
           'box-input-load': loaderSession,
           'box-input-error': serviceError
         }">
         <label [ngClass]="{ 'input-active': password != '' }">Crear una contraseña</label>
-        <input [disabled]="loaderSession" autocomplete="off" type="password" (click)="activeRepeatPass()"
-          [(ngModel)]="password" (keyup)="validatePass()" />
+        <input [disabled]="loaderSession" autocomplete="off" type="text" (click)="activeRepeatPass()"
+          [(ngModel)]="password" (keyup)="validatePass()" [matKeyboard]/>
         <div [ngClass]="{ 'icon2 check': passwordValidate }"></div>
       </div>
       <!-- REQUISITOS -->
-      <div class="box-validator" [ngClass]="{
+     <div class="box-validator" [ngClass]="{
           'box-validator-active': activeRepeat,
           'box-validator-desactive': !activeRepeat
         }">
@@ -163,33 +170,33 @@
             <div class="ico-small state" [ngClass]="{ check: mayus }"></div>
             <p class=" text blue">Al menos una mayúscula</p>
           </li>
-          <li>
+<!--           <li>
             <div class="ico-small state" [ngClass]="{ check: isNum }"></div>
             <p class="text blue">Al menos un número</p>
-          </li>
+          </li> -->
         </ul>
       </div>
     </div>
     <!-- REPEAT PASSWORD -->
-    <div class="box-input" [ngClass]="{
+    <!-- <div class="box-input" [ngClass]="{
         'box-input-load': loaderSession,
         'box-input-error': serviceError
       }">
       <label [ngClass]="{ 'input-active': passwordRepeat != '' }">Repetir contraseña</label>
       <input [disabled]="loaderSession" autocomplete="off" type="password" name="passwordrepeatt"
-        [(ngModel)]="passwordRepeat" (keyup)="passRepeatKey()" />
+        [(ngModel)]="passwordRepeat" (keyup)="passRepeatKey()" [matKeyboard]/>
       <div *ngIf="passwordRepeatReadyValidate" [ngClass]="{
           'icon2 check': passwordRepeatValidate,
           'icon error': !passwordRepeatValidate
         }"></div>
-    </div>
-    <div class="box-checkbox">
+    </div> -->
+    <div class="box-checkbox" *ngIf="activate == true">
       <mat-checkbox [(ngModel)]="checked" color="primary"></mat-checkbox>
-      <h6>Acepto los <a [routerLink]="[ '/terminos-y-condiciones']" target="_blank">términos y condiciones</a></h6>
+      <h6>Acepto los <a (click)="openModalTerminos()" target="_blank">términos y condiciones</a></h6>
     </div>
   </div>
 
-  <button [disabled]="validateAllInputs()" *ngIf="!loaderSession" mat-raised-button color="primary" (click)="sendForm()"
+  <button *ngIf="!loaderSession && activate == true" mat-raised-button color="primary" (click)="sendForm()"
     id="button_crear_cuenta_Enviar_Crear_Cuenta">
     ENVIAR
   </button>
@@ -197,5 +204,8 @@
     <mat-progress-spinner [color]="color" [mode]="mode" [diameter]="30">
     </mat-progress-spinner>
   </div>
-  <div class="simple-keyboard"></div>
+  <div *ngIf="busqueda == true" class="preloader">
+    <mat-progress-spinner [color]="color" [mode]="mode" [diameter]="30">
+    </mat-progress-spinner>
+  </div>
 </div>

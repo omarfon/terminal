@@ -47,7 +47,7 @@
                           <div class="box-content-info">
                             <h3>{{item.fullName}}</h3>
                             <p *ngIf="item.info.almaMater ">{{item.info.almaMater}}</p>
-                            <a (click)="openLogin(item)">Ver perfil profesional</a>
+                            <a (click)="openPerfil(item)">Ver perfil profesional</a>
                           </div>
                         </div>
                       </div>
@@ -64,28 +64,30 @@
                           </ul>
                         </div>
                       </div>
-                    </div>
-                    <div style="overflow: hidden;" *ngFor="let itemss of item.availables; let ii = index">
-                      <div *ngIf="itemDoctor === boxID && boxCaID === ii" id="{{ii}}" class="box-hour">
-                        <p>Horario disponible Consulta Externa</p>
-                        <div class="box-hour-main">
-                          <div *ngFor="let items of itemss.hours.hour; let indexxx = index"><span
-                              id="{{'span-elegir-doctor-horaydia-'+item.service.idTraking}}"
-                              [ngClass]="{'activo': itemss.hours[indexxx].isAvailable === true, 'desactive': itemss.hours[indexxx].isAvailable === false}"><a
-                                (click)="redirectTo(indexxx, ii, itemDoctor, itemss.hours[indexxx].params.provisionId , indexxx) " >{{items}}</a></span>
+                    </div> 
+                    <div style ="overflow: hidden;">
+                      <div *ngFor="let itemss of item.availables; let ii = index">
+                        <div *ngIf="itemDoctor === boxID && boxCaID === ii" id="{{ii}}" class="box-hour">
+                          <p>Horario disponible Consulta Externa</p>
+                          <div class="box-hour-main">
+                            <div *ngFor="let items of itemss.hours.hour; let indexxx = index"><span
+                                id="{{'span-elegir-doctor-horaydia-'+item.service.idTraking}}"
+                                [ngClass]="{'activo': itemss.hours[indexxx].isAvailable === true, 'desactive': itemss.hours[indexxx].isAvailable === false}"><a
+                                  (click)="redirectTo(indexxx, ii, itemDoctor, itemss.hours[indexxx].params.provisionId , indexxx) " >{{items}}</a></span>
+                            </div>
                           </div>
                         </div>
+                        <!--  <div *ngIf="itemDoctor === boxID && boxCaID === ii" id="{{i}}" class="box-hour-tele">
+                          <p class="titleHorarioTel">Horario disponible Teleconsulta</p>
+                          <div class="box-hour-main" >
+                            <div *ngFor="let items of itemss.hours.hour; let indexxx = index">
+                              <span id="{{'span-elegir-doctor-horaydia-'+item.service.idTraking}}" [ngClass]="{'activo': itemss.hours[indexxx].isAvailable === true, 'desactive': itemss.hours[indexxx].isAvailable === false}">
+                                <a (click)="redirectTo(indexxx, ii, itemDoctor, itemss.hours[indexxx].params.provisionId, items)">{{items}}</a>
+                              </span>
+                            </div>
+                          </div>
+                      </div> -->
                       </div>
-                      <!--  <div *ngIf="itemDoctor === boxID && boxCaID === ii" id="{{i}}" class="box-hour-tele">
-                        <p class="titleHorarioTel">Horario disponible Teleconsulta</p>
-                        <div class="box-hour-main" >
-                          <div *ngFor="let items of itemss.hours.hour; let indexxx = index">
-                            <span id="{{'span-elegir-doctor-horaydia-'+item.service.idTraking}}" [ngClass]="{'activo': itemss.hours[indexxx].isAvailable === true, 'desactive': itemss.hours[indexxx].isAvailable === false}">
-                              <a (click)="redirectTo(indexxx, ii, itemDoctor, itemss.hours[indexxx].params.provisionId, items)">{{items}}</a>
-                            </span>
-                          </div>
-                        </div>
-                    </div> -->
                     </div>
                   </div>
                 </div>
