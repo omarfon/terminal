@@ -7,6 +7,8 @@ import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
 import { RegisterService } from '../auth/+register/register.service';
 import { ErrorRegisterComponent } from '../modal/error-register/error-register.component';
+import { DataPacienteService } from './../../services/data-paciente.service';
+import { CreateNoauthService } from './../../services/create-noauth.service';
 
 
 @Component({
@@ -107,7 +109,17 @@ export class RegisterModalComponent implements OnInit {
   public messageDni;
   public messageCrea;
 
-  constructor(public RegisterService: RegisterService, public dialogRed: MatDialogRef<RegisterModalComponent>, @Inject(MAT_DIALOG_DATA) public message: string, public AuthService: AuthService, public router: Router, public dialog: MatDialog, public userSrv: UserService) { }
+  public dataResult;
+
+  constructor(public RegisterService: RegisterService, 
+              public dialogRed: MatDialogRef<RegisterModalComponent>, @Inject(MAT_DIALOG_DATA) 
+              public message: string, 
+              public AuthService: AuthService, 
+              public router: Router, 
+              public dialog: MatDialog, 
+              public userSrv: UserService,
+              public dataXhisSrv: DataPacienteService,
+              public createNoAuthoSrv: CreateNoauthService) { }
 
   ngOnInit() {
     if (this.message === 'aviva-cuida') {
@@ -452,7 +464,8 @@ export class RegisterModalComponent implements OnInit {
     this.dialog.open(TerminosComponent)
   }
 
-  getDataDni(){
+  
+ /*  getDataDni(){
     this.busqueda = true;
     this.userSrv.getDatosUser(this.documentNumber).subscribe((data:any) =>{
       if(data.dni){
@@ -470,5 +483,24 @@ export class RegisterModalComponent implements OnInit {
       console.log(err, 'error');
       this.busqueda = false;
     }
-    )}
+    )} */
+
+    getDataDni(){
+      this.dataXhisSrv.getDataXhis(1, this.documentNumber).subscribe(data => {
+        this.dataResult = data;
+        console.log(this.dataResult);
+        if(this.dataResult){
+          this.createNoAuth();
+        }
+      }, err =>{
+        console.log(err)
+      })
+    }
+
+    createNoAuth(){
+      const patientId = this.dataResult[0].patientId;
+      this.createNoAuthoSrv.createAppoitmentNoAutho(patientId).subscribe(data => {
+        console.log('envío a modal o creación');
+      })
+    }
 }
