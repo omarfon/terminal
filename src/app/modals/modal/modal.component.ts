@@ -1,8 +1,11 @@
 import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import Keyboard from "simple-keyboard";
+import { DataPacienteService } from './../../services/data-paciente.service';
+import { RegisterModalComponent } from 'src/app/shared/register-modal/register-modal.component';
+import { CreateNoauthService } from './../../services/create-noauth.service';
 
 @Component({
   selector: 'app-modal',
@@ -18,7 +21,9 @@ export class ModalComponent implements OnInit {
   public recoverPassword: boolean = false;
   public logins: boolean = false;
   public email: string = '';
+  public dni: number ;
   public emailValidate: boolean;
+  public dnilValidate: boolean;
   public password: string = '';
   public passValidate: boolean;
   public validatePasss: boolean;
@@ -32,6 +37,7 @@ export class ModalComponent implements OnInit {
   public url: string = 'api/v2/users/login';
   public app = 'ebooking';
   color;
+  public dataResult;
 
   public serviceError: boolean;
   // EXPRESIONS REGULAR
@@ -40,7 +46,14 @@ export class ModalComponent implements OnInit {
   public ER_STR_MA: any = /[A-Z]/;
   public ER_EMA = /[\w-\.]{3,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
 
-  constructor(public dialogRed: MatDialogRef<ModalComponent>, @Inject(MAT_DIALOG_DATA) public message: string, @Inject(MAT_DIALOG_DATA) public data: any, public AuthService: AuthService, public router: Router) { }
+  constructor(public dialogRed: MatDialogRef<ModalComponent>,
+              public dialog: MatDialog,
+              @Inject(MAT_DIALOG_DATA) public message: string, 
+              @Inject(MAT_DIALOG_DATA) public data: any, 
+              public AuthService: AuthService, 
+              public router: Router,
+              public dataPacienteSrv: DataPacienteService,
+              public createNoAuthoSrv: CreateNoauthService) { }
 
   ngOnInit() {
     this.logins = true;
@@ -122,7 +135,7 @@ export class ModalComponent implements OnInit {
 
 
   // LOGIN
-  login(event: any) {
+ /*  login(event: any) {
     event.preventDefault();
     this.loaderSession = true;
     this.AuthService.getSessionUserPrivate(this.url, this.email, this.password, this.app)
@@ -153,6 +166,33 @@ export class ModalComponent implements OnInit {
         (error) => {
           console.log(error)
         });
+  } */
+
+  login(){
+    this.loaderSession = true;
+    this.dataPacienteSrv.getDataXhis(1, this.dni).subscribe(data => {
+      this.dataResult = data[0];
+      console.log(this.dataResult);
+      this.dialogRed.close();
+      this.loaderSession = false;
+       this.router.navigate(['seguro-cura']); 
+        if(this.dataResult){
+        } 
+  /*     if(this.dataResult){
+        this.createNoAuth();
+      } */
+    }, err =>{
+      this.dialogRed.close();
+      this.openRegister();
+      console.log(err)
+    })
+  }
+
+  createNoAuth(){
+    const patientId = this.dataResult.patientId;
+    this.createNoAuthoSrv.createAppoitmentNoAutho(patientId).subscribe(data => {
+      console.log('envío a modal o creación');
+    })
   }
 
   sendRecover() {
@@ -191,6 +231,16 @@ export class ModalComponent implements OnInit {
   showRecovPass() {
     this.recoverPassword = true;
     this.logins = false;
+  }
+  
+  openRegister(): void{
+    const diallogRef = this.dialog.open(RegisterModalComponent, {
+      data: 'aviva-cura',
+      panelClass: ['aviva-cura-fondo'] 
+    });
+    diallogRef.afterClosed().subscribe(res => {
+      console.log(res);
+    })
   }
 
 }

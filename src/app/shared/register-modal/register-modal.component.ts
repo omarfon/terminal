@@ -489,9 +489,10 @@ export class RegisterModalComponent implements OnInit {
       this.dataXhisSrv.getDataXhis(1, this.documentNumber).subscribe(data => {
         this.dataResult = data;
         console.log(this.dataResult);
-        if(this.dataResult){
+     /*    if(this.dataResult){
           this.createNoAuth();
-        }
+        } */
+        this.router.navigate([''])
       }, err =>{
         console.log(err)
       })
@@ -501,6 +502,13 @@ export class RegisterModalComponent implements OnInit {
       const patientId = this.dataResult[0].patientId;
       this.createNoAuthoSrv.createAppoitmentNoAutho(patientId).subscribe(data => {
         console.log('envío a modal o creación');
+      })
+    }
+
+    validateDni(){
+      const patientId = this.dataResult[0].patientId;
+      this.dataXhisSrv.getTypesDocument(patientId).subscribe(data => {
+          console.log('mostrar contenido', data);
       })
     }
 }

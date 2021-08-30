@@ -133,6 +133,7 @@ export class DoctoresComponent implements OnInit {
 
 
     this.reservasService.dataJson = newJson;
+    this.reservasService.dataJson = listjson;
 
     const session = JSON.parse(localStorage.getItem('session'));
 

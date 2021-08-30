@@ -27,7 +27,6 @@ import { DoctoresCuraComponent } from './doctores-cura/doctores-cura.component';
 import { RegistroCuraComponent } from './registro-cura/registro-cura.component';
 
 import { MatKeyboardModule, IKeyboardLayouts, keyboardLayouts, MAT_KEYBOARD_LAYOUTS, } from 'angular-onscreen-material-keyboard';
-/* import { TerminosComponent } from 'src/app/modals/terminos/terminos.component'; */
 import { PerfilComponent } from 'src/app/modals/perfil/perfil.component';
 import { ErrorRegisterComponent } from 'src/app/shared/modal/error-register/error-register.component';
 import { ErrorPaymentComponent } from 'src/app/shared/modal/error-payment/error-payment.component';
@@ -101,6 +100,7 @@ const customLayouts: IKeyboardLayouts = {
     ReservaFinalizadaComponent,
     CreateParentComponent,
     ReservaCuraComponent,
+    SeguroCuraComponent,
   ],
   entryComponents:[
     RegisterModalComponent,

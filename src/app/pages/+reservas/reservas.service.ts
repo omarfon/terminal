@@ -24,6 +24,7 @@ export class ReservasService {
   public dateCita;
   public parent;
   public parentId;
+  public patientId;
   public infoCita;
   public idParent;
   public dependens;

@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { ReservasService } from '../pages/+reservas/reservas.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,8 @@ export class DependensService {
 
   public headers;
   public dependens;
-  constructor(public http: HttpClient) { 
+  public patientId;
+  constructor(public http: HttpClient, public reservaSrv: ReservasService) { 
     const session = JSON.parse(localStorage.getItem('session'));
     this.headers = new HttpHeaders({ "Authorization": session.authorization });
     this.getDependens();
@@ -36,6 +38,16 @@ export class DependensService {
   getdependesDay() {
     let headers = this.headers
     return this.http.get(this.apiDatesParents, { headers }).pipe(
+      map(data => {
+        return data;
+      })
+    )
+  }
+
+   // con esta llamada estamos trayendo las citas de todos los dependientes
+   getdependesNoAutho() {
+
+    return this.http.get(this.SERVER + `users/dependentsNoAutho/` + this.patientId).pipe(
       map(data => {
         return data;
       })

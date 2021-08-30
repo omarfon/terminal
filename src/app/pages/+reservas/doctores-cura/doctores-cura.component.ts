@@ -6,6 +6,7 @@ import 'moment/locale/es'
 import { fadeIn } from 'src/app/shared/animations/animation';
 import { MatDialog } from '@angular/material';
 import { AuthService } from 'src/app/services/auth.service';
+import { CreateNoauthService } from './../../../services/create-noauth.service';
 
 @Component({
   selector: 'app-doctores-cura',
@@ -52,6 +53,7 @@ export class DoctoresCuraComponent implements OnInit {
     public dialog: MatDialog, 
     private activeRoute: ActivatedRoute, 
     private reservasService: ReservasService, 
+    public createNoAutho: CreateNoauthService,
     public routes: Router) { }
 
   ngOnInit() {
@@ -116,6 +118,9 @@ export class DoctoresCuraComponent implements OnInit {
 
     this.reservasService.provisionsId = provisionsID[0];
     const listjson = this.dataDoctors[doctor].availables[index].hours[info].listjson;
+    this.reservasService.dataJson = listjson;
+    this.reservasService.dataJson = listjson;
+    this.createNoAutho.dataJson = listjson;
     console.log('lo que tiene e listJson:', listjson);
     const newJson = JSON.parse(listjson);
 

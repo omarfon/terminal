@@ -21,13 +21,11 @@ export class CreateNoauthService {
 
 
   createAppoitmentNoAutho(idPatient) {
-/*     const session = JSON.parse(localStorage.getItem('session'));
-    let headers = new HttpHeaders({ "Authorization": session.authorization }); */
-
- 
-    this.dataJson.provisions = [{ "default": false, "id": this.provisionsId }];
+    this.dataJson.provisions = [{ "default": false, "id": 44 }];
+    let params = {listJson:this.dataJson, patientId:idPatient};
+    let headers = {};
     return this.http
-      .post(this.urlBase + idPatient , this.dataJson ) ;
+      .post(this.urlBase , params, {headers}) ;
   }
 
 

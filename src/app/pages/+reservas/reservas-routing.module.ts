@@ -43,13 +43,6 @@ const routes: Routes = [
       path: '', component: AvivacuraComponent
     }]
   },
-/*   {
-    path: 'avivatele',
-    component: ReservasComponent,
-    children: [{
-      path: '', component: AvivateleComponent
-    }]
-  }, */
   {
     path: 'avivacuida/selecciona-doctor/:id/:description',
     component: ReservasComponent,
@@ -121,7 +114,7 @@ const routes: Routes = [
   },
   {
     path: 'seguro-cura',
-    canActivate: [UserGuard],
+    canActivate: [desactivateUser],
     component: ReservasComponent,
     children: [{
       path: '', component: SeguroCuraComponent
@@ -130,7 +123,7 @@ const routes: Routes = [
   },
   {
     path: 'avivacuida/pago',
-    canActivate: [UserGuard],
+    canActivate: [desactivateUser],
     component: ReservasComponent,
     children: [{
       path: '', component: PagoComponent
@@ -139,7 +132,7 @@ const routes: Routes = [
   },
   {
     path: 'pago',
-    canActivate: [UserGuard],
+    canActivate: [desactivateUser],
     component: ReservasComponent,
     children: [{
       path: '', component: PagoComponent

@@ -18,6 +18,8 @@ export class AvivacuraComponent implements OnInit {
   public color: any = 'warn';
   public mode: any = 'indeterminate';
   urlBaseAlter;
+  public dataSpecialtyCuida;
+  public dataSpecialtyCura;
   
 
   progressPage = {
@@ -46,9 +48,14 @@ export class AvivacuraComponent implements OnInit {
 
       if(data){ this.preloader = false}
 
-      this.dataSpecialty = data.centers[0].services.filter((element) =>{
-        return element.block === 'cura';
+      this.dataSpecialtyCuida = data.centers[0].services.filter((element) =>{
+        return element.block == 'cuida';
       })
+
+      this.dataSpecialtyCura = data.centers[0].services.filter((element) =>{
+        return element.block == 'cura';
+      })
+
 
       this.dataSpecialty.forEach(element => {
 
@@ -57,7 +64,7 @@ export class AvivacuraComponent implements OnInit {
         element.trackingId = element.trackingId.toLowerCase()
          
        });
-
+       console.log('especialidades:',this.dataSpecialty)
     }, (error: any) => {
  
     })

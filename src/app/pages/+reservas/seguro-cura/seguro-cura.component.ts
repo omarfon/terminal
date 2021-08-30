@@ -84,7 +84,7 @@ export class SeguroCuraComponent implements OnInit {
   }
 
   getDependens() {
-    this.dependensSrv.getDependens().subscribe(data => {
+    this.dependensSrv.getdependesNoAutho().subscribe(data => {
       this.parents = data;
     });
     console.log(this.parents);

@@ -2,10 +2,10 @@
     <div class="row">
       <div class="col-12 col-lg-4 padding">
         <div class="box-header">
-          <div class="content-logo">
+      <!--     <div class="content-logo">
               <img src="assets/img/sacar-cita/avivacuida_logo.svg" alt="">
-          </div>
-          <p>Las especialidades de avivacuida están enfocadas en la <span class="strong">prevención de enfermedades mediante controles y chequeos</span> con nuestros especialistas</p>
+          </div> -->
+          <p>Estas son las especialidades de Aviva <span class="strong">enfocados en curar y prevenir</span></p>
           <div class="vector-orange">
           <div class="circle"></div>
           </div>
@@ -30,7 +30,10 @@
               </div>
             <ul>
               <!-- SERVICES -->
-              <li *ngFor="let item of dataSpecialty"><a class="sc-especialidades-cuida" [id]="'ir-elige-especialidad-' + item.trackingId + '_Aviva_Cura'" (click)="doctoresPage(item)"><img src="{{ urlBaseAlter + item.imageUrl }}"><p>{{ item.description }}</p></a></li>
+              <li *ngFor="let item of dataSpecialtyCuida" class="cuidaLi"><a class="sc-especialidades-cuida" [id]="'ir-elige-especialidad-' + item.trackingId + '_Aviva_Cuida'" (click)="doctoresPage(item)"><img src="{{ urlBaseAlter + item.imageUrl }}"><p>{{ item.description }}</p></a></li>
+            </ul>
+            <ul>
+              <li *ngFor="let item of dataSpecialtyCura" class="curaLi"><a class="sc-especialidades-cura" [id]="'ir-elige-especialidad-' + item.trackingId + '_Aviva_Cura'" (click)="doctoresPage(item)"><img src="{{ urlBaseAlter + item.imageUrl }}"><p>{{ item.description }}</p></a></li>
             </ul>
           </div> 
           <div routerLink="/home" class="button-back">
@@ -46,7 +49,7 @@
   
   </div>
   </section>
-  <div class="box-ma">
+ <!--  <div class="box-ma">
       <a [routerLink]="[ '/reserva']">
       <div style="background-color: #FB6E54;" class="box-cura-link">
           <h4>VER ESPECIALIDADES DE AVIVA CUIDA</h4>
@@ -55,7 +58,7 @@
               <img src="assets/img/sacar-cita/change-page.svg" alt="">
           </div>
       </div></a>
-  </div>
+  </div> -->
    
   
   

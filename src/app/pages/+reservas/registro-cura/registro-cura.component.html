@@ -20,18 +20,28 @@
     
         <div class="col-12 col-lg-7 offset-lg-1">
           <section class="box-register content-box-info">
-            <div class="box-specialty">
-              <h2>PARA COMPLETAR LA RESERVA <br> CREA O INGRESA A TU CUENTA</h2>
-            </div>
-            <div class="container-boxes">
-              <a><button (click)="openRegister()" id="button-aviva_cura_paso4_Crear_Cuenta" mat-raised-button
-                  color="primary">CREAR CUENTA</button></a>
-              <a><button (click)="openLogin()" id="button-aviva_cura_paso4_Ingresar_Cuenta" mat-raised-button
-                  color="primary">INGRESAR A MI CUENTA</button></a>
-            </div>
-            <div (click)="backLink()" class="button-back">
-              <img src="assets/img/sacar-cita/back-page.svg" alt="">
-            </div>
+
+            <div class="box-content-form">
+              <!-- DOCUMENT NUMBER -->
+              <div class="box-input" [ngClass]="{
+               'box-input-load': loaderSession,
+               'box-input-error': serviceError
+             }">
+             <label [ngClass]="{ 'input-active': documentNumber != '' }">Número de documento</label>
+             <input maxlength="8" [disabled]="loaderSession " autocomplete="off" type="tel"
+               [(ngModel)]="documentNumber" (keyup)="onkeyValidateString(documentNumber)"
+               (blur)="blurValidateString(documentNumber)" [matKeyboard]/>
+               <span *ngIf="dniInvalid" class="notifiValidate">Este correo ya a sido registrado, intente con otro</span>
+             <div *ngIf="documentReadyValidate" [ngClass]="{
+                 'icon2 check': documentValidate,
+                 'icon error': !documentValidate
+               }"></div>
+           </div>
+           <button *ngIf="!loaderSession && activate == false" mat-raised-button color="primary" (click)="getDataDni()"
+           id="button_crear_cuenta_Enviar_Crear_Cuenta">
+           BUSCAR
+         </button>
+        </div>
           </section>
         </div>
       </div>
