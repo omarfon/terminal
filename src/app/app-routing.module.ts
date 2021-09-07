@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { DataComponent } from './data/data.component';
+import { AprobatedComponent } from './aprobated/aprobated.component';
 
 
 const routes: Routes = [
@@ -14,8 +15,8 @@ const routes: Routes = [
     component: DataComponent
   },
   {
-    path: 'table',
-    component: DataComponent
+    path: 'aprobated',
+    component: AprobatedComponent
   },
 ];
 

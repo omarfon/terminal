@@ -14,9 +14,11 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { DataComponent } from './data/data.component';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { AprobatedComponent } from './aprobated/aprobated.component';
+
 
 @NgModule({
-  declarations: [AppComponent,LoginComponent, DataComponent],
+  declarations: [AppComponent,LoginComponent, DataComponent, AprobatedComponent],
   entryComponents: [],
   imports: [
   BrowserModule, 
