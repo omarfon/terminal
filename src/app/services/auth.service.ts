@@ -141,12 +141,16 @@ export class AuthService {
 
   //GET SESSION PUBLIC
   getSesionPublic() {
-    console.log('llego al service')
-    this.http.get(this.url + 'api/v2/users/public-authorization')
-      .subscribe(data => {
-        localStorage.setItem('session', JSON.stringify(data));
-      }, error => {
-      })
+    return this.http.get(this.url + 'api/v2/users/public-authorization')
+    .subscribe((data) => {
+      localStorage.setItem('session', JSON.stringify(data));
+      const local = JSON.parse(localStorage.getItem('session'));
+      const autho = local.authorization;
+      localStorage.setItem('publicAutho', autho);
+    }, error => {
+      console.log(error);
+    })
+    
   }
 
   deleteCita(id) {

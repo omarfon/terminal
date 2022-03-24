@@ -144,10 +144,11 @@ export class AuthService {
   //GET SESSION PUBLIC
   getSesionPublic() {
     console.log('llego al service')
-    this.http.get(this.url + 'api/v2/users/public-authorization')
+    return this.http.get(this.url + 'api/v2/users/public-authorization')
       .subscribe(data => {
         localStorage.setItem('session', JSON.stringify(data));
       }, error => {
+        console.log(error);
       })
   }
 

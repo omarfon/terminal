@@ -5,10 +5,14 @@
     <section class="box-register aviva-cuida-section content-box-info container-fluid" @fadeIn>
       <div class="row">
         <div class="col-12 col-lg-4 padding">
-          <div class="box-header">
+          <div class="box-header " >
             <!-- <p><span class="main-letter">Hola,</span> <br>en base al motivo de tu consulta, <span class="strong">escoge el servicio donde deseas ser atendido</span></p> -->
-            <p class="registra">Escogiste una cita para el día
-              <span class="strong title-title">{{dateCita}}</span></p>
+            <p class="registra top-50">Escogiste una cita para el día
+              <span class="strong title-title">{{dateCita}}</span>
+              para la especialidad de 
+              <span class="strong title-title" *ngIf="jsonCita">{{jsonCita.service.basicService.description}}</span>, con el(la) 
+              <span class="strong title-title" *ngIf="jsonCita">{{jsonCita.professional.fullName}}</span>
+            </p>
             <div class="vector-orange">
               <div class="circle"></div>
             </div>
@@ -18,7 +22,7 @@
           </div>
         </div>
     
-        <div class="col-12 col-lg-7 offset-lg-1">
+        <div class="col-12 col-lg-8">
           <section class="box-register content-box-info">
 
             <div class="box-content-form">
@@ -31,7 +35,7 @@
              <input maxlength="8" [disabled]="loaderSession " autocomplete="off" type="tel"
                [(ngModel)]="documentNumber" (keyup)="onkeyValidateString(documentNumber)"
                (blur)="blurValidateString(documentNumber)" [matKeyboard]/>
-               <span *ngIf="dniInvalid" class="notifiValidate">Este correo ya a sido registrado, intente con otro</span>
+               <span *ngIf="dniInvalid" class="notifiValidate">El número de dni no es correcto</span>
              <div *ngIf="documentReadyValidate" [ngClass]="{
                  'icon2 check': documentValidate,
                  'icon error': !documentValidate
@@ -42,9 +46,164 @@
            BUSCAR
          </button>
         </div>
-          </section>
+
+        <div class="preloader" *ngIf="preloader === true">
+          <mat-progress-spinner
+          class="example-margin"
+          [color]="color"
+          [mode]="mode"
+          [diameter]="70">
+          <p class="text-small">Estamos revisando tu información...</p>
+        </mat-progress-spinner>
         </div>
+        <!-- BOX FORM -->
+        <div class="box-content-form top-50" *ngIf="dataUser || dataReniec">
+
+          <!-- BOX NAME -->
+          <div class="box-input" *ngIf="activate == true" [ngClass]="{
+              'box-input-load': loaderSession
+            }">
+            <label [ngClass]="{ 'input-active': name != '' }">Nombres</label>
+            <input autocomplete="off" type="text" [(ngModel)]="name"
+              (keyup)="onkeyValidateString(name)" (blur)="blurValidateString(name)" [matKeyboard] />
+            <div *ngIf="nameReadyValidate" [ngClass]="{ 'icon2 check': nameValidate, 'icon error': !nameValidate }"></div>
+          </div>
+        
+       
+          <!-- BOX LASTNAME PATERNO -->
+          <div class="box-input" [ngClass]="{
+              'box-input-load': loaderSession
+            }">
+            <label [ngClass]="{ 'input-active': lastName != '' }">Apellido paterno</label>
+            <input autocomplete="off" type="text" [(ngModel)]="lastName"
+              (change)="onkeyValidateString(lastName)" (blur)="blurValidateString(lastName)" [matKeyboard] />
+            <div *ngIf="lastNameReadyValidate" [ngClass]="{
+                'icon2 check': lastNameValidate,             
+                'icon error': !lastNameValidate
+              }"></div>
+          </div>
+       
+       
+          <!-- BOX LASTNAME MATERNO -->
+          <div class="box-input" [ngClass]="{
+             'box-input-load': loaderSession
+           }">
+            <label [ngClass]="{ 'input-active': lastNameMaterno != '' }">Apellido materno</label>
+            <input autocomplete="off" type="text" [(ngModel)]="lastNameMaterno"
+              (change)="onkeyValidateString(lastNameMaterno)" (blur)="blurValidateString(lastNameMaterno)" [matKeyboard]/>
+            <div *ngIf="lastNameMaternoReadyValidate" [ngClass]="{
+               'icon2 check': lastNameMaternoValidate,
+               'icon error': !lastNameMaternoValidate
+             }"></div>
+          </div>
+       
+          <!-- BOX SEXO -->
+           <div class="box-input" [ngClass]="{
+              'box-input-load': loaderSession
+            }">
+            <label [ngClass]="{ 'input-active': sexo != 'Sexo' }">Sexo</label>
+            <select [(ngModel)]="sexo" (change)="selecGender($event)" *ngIf="!dataUser">
+              <option value=""></option>
+              <option *ngFor="let item of sexoData; let i = index" value="{{item.id}}">{{item.name}}</option>
+            </select>
+            <input autocomplete="off" type="text" [(ngModel)]="sexo" disabled
+              (change)="onkeyValidateString(sexo)" (blur)="blurValidateString(sexo)" value="{{sexo}}" *ngIf="dataUser"/>
+          </div>
+       
+          <!-- BIRTHDATE -->
+          <div class="box-input" [ngClass]="{
+              'box-input-load': loaderSession
+            }">
+            <label [ngClass]="{ 'input-active': birthday != '' }">Fecha de nacimiento (día/mes/año)</label>
+            <input maxlength="10" autocomplete="off" [(ngModel)]="birthday" type="tel"
+              (keyup)="validateBirthdate()" (blur)="validateB()" *ngIf="!dataUser" [matKeyboard]/>
+              <input maxlength="10" autocomplete="off" [(ngModel)]="birthday" type="tel" disabled
+              (keyup)="validateBirthdate()" (blur)="validateB()" *ngIf="dataUser" value="birthday" [matKeyboard]/>
+            <div *ngIf="birthdayReadyValidate" [ngClass]="{
+                'icon2 check': birthdayValidate,
+                'icon error': !birthdayValidate
+              }"></div>
+          </div>
+       
+          <!-- PHONE -->
+          <div class="box-input" *ngIf="activate == true" [ngClass]="{
+              'box-input-load': loaderSession
+            }">
+            <label [ngClass]="{ 'input-active': phoneNumber != '' }">Teléfono</label>
+            <input maxlength="9" autocomplete="off" type="tel" [(ngModel)]="phoneNumber"
+              (change)="onkeyValidateString(phoneNumber)" (blur)="blurValidateString(phoneNumber)" [matKeyboard]/>
+            <div *ngIf="phoneReadyValidate" [ngClass]="{
+                'icon2 check': phoneValidate,
+                'icon error': !phoneValidate
+              }"></div>
+          </div>
+       
+          <!-- EMAIL -->
+          <div class="box-input" *ngIf="activate == true" [ngClass]="{
+              'box-input-load': loaderSession,
+              'box-input-error': mailInvalid
+            }">
+            <label [ngClass]="{ 'input-active': email != '' }">Correo electrónico</label>
+            <input autocomplete="off" type="text" [(ngModel)]="email"
+              (keyup)="onkeyValidateString(email)" (blur)="blurValidateString(email)" [matKeyboard]/>
+            <div *ngIf="emailReadyValidate" [ngClass]="{
+                'icon2 check': emailValidate,
+                'icon error': !emailValidate
+              }"></div>
+          </div>
+       
+        <!-- PASSWORD -->
+    <div class="content-box-input">
+      <div class="box-input" [ngClass]="{
+          'box-input-load': loaderSession,
+          'box-input-error': serviceError
+        }">
+        <label [ngClass]="{ 'input-active': password != '' }">Crear una contraseña</label>
+        <input [disabled]="loaderSession" autocomplete="off" type="text"
+          [(ngModel)]="password" (keyup)="validatePass()" [matKeyboard]/>
+        <div [ngClass]="{ 'icon2 check': passwordValidate }"></div>
+      </div>
+      <!-- REQUISITOS -->
+      <div class="box-validator" [ngClass]="{
+          'box-validator-active': activeRepeat,
+          'box-validator-desactive': !activeRepeat
+        }">
+        <div class="title">
+          <img width="15" src="assets/svg/info.svg" alt="" />
+          <h4>Tu contraseña debe tener</h4>
+        </div>
+        <ul>
+          <li>
+            <div class="ico-small state" [ngClass]="{ check: mayor }"></div>
+            <p class="text blue">Al menos 8 caracteres</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+        
+    
+          <div class="box-checkbox">
+            <mat-checkbox [(ngModel)]="checked" class="blanco"></mat-checkbox>
+            <h6 class="blanco">Acepto los <a (click)="terminos()">términos y condiciones</a></h6>
+          </div>
+        </div>
+        <button class="button buttonCreate"
+                  [disabled]="validateAllInputs()"
+                 (click)="getCode()"
+                 *ngIf="dataReniec">
+                 Bienvenido {{name}} completa los campos y crea una cuenta
+        </button>
+        <div (click)="backButton()" class="button-back">
+          <img src="assets/img/sacar-cita/back-page.svg" alt="">
+        </div>
+          </section>
+
+         
+        </div>
+
       </div>
     </section>
+
     <app-modal-template *ngIf="true"></app-modal-template>
   </div>
+

@@ -46,7 +46,16 @@ export class DependensService {
 
    // con esta llamada estamos trayendo las citas de todos los dependientes
    getdependesNoAutho() {
+     this.patientId = this.reservaSrv.patientId;
+    return this.http.get(this.SERVER + `users/dependentsNoAutho/` + this.patientId).pipe(
+      map(data => {
+        return data;
+      })
+    )
+  }
 
+  getdependesNoAuthoParent() {
+    this.patientId = this.reservaSrv.patientId;
     return this.http.get(this.SERVER + `users/dependentsNoAutho/` + this.patientId).pipe(
       map(data => {
         return data;

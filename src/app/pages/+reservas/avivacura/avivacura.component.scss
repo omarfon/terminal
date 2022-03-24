@@ -1,6 +1,8 @@
 .aviva-cuida-section{
     background: #20668B;
-    height: 80vh!important;
+    min-height: 80vh!important;
+    height: auto!important;
+    padding-bottom: 20px!important;
 }
  
    // START BOX CONTENT RESERVAS CONTENT
@@ -182,7 +184,7 @@
 
 .sc-especialidades-cuida{
       background: #E95A40!important;
-      padding: 20px;
+      padding: 16px;
       p{
         font-size:1.2em!important;
       }
@@ -196,7 +198,7 @@
 }
 
 .sc-especialidades-cura{
-  padding: 20px;
+  padding: 16px;
   p{
     font-size:1.2em!important;
   }

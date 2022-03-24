@@ -9,7 +9,7 @@
             <div class="col-12 col-lg-3 padding">
               <div class="box-header">
                 <div class="row">
-                  <div class="col-12"><span class="main">{{name.name}}</span></div>
+                  <div class="col-12"><span class="main">{{name}}</span></div>
                   <div class="col-12">
                     <p><span class="strong">Tu cita ha sido reservada con éxito</span></p>
                   </div>
@@ -59,42 +59,10 @@
                   </div>
                 </li>
               </ul>
-             <!--  <p>Te enviaremos un correo de confirmación. También puedes obtener tu constancia por medio de:</p> -->
-          <!--     <ul class="social">
-                <li class="whatssap">
-                  <a [href]="LinkWhatssap">
-                    <img width="80" src="assets/reserva-finalizada/whatsapp.svg" alt="">
-                    <h5>WHATSSAP</h5>
-                  </a>
-                </li>
-                <li *ngIf="urlData[0].href">
-                  <a href="{{urlData[0].href}}">
-                    <img width="80" src="assets/reserva-finalizada/pdf.svg" alt="">
-                    <h5>DESCARGAR</h5>
-                  </a>
-                </li>
-              </ul> -->
+              <p class="textoNombre"> Gracias {{name}}, te recordamos venir 30 minutos antes de la hora de tu cita. Para salvaguardar tu salud te pedimos el uso de doble mascarilla y asistir solo (a), no se aceptaran acompañantes en el piso de la atención. Tu confirmación de registro de cita, ha sido enviado al correo electrónico que figura en tu historia clínica.</p>
             </div>
           </div>
-        <!--   <div class="no-padding container">
-            <div class="row">
-              <div class="col-12">
-                <div class="box-content-down">
-                  <div style="display: flex" class="box-header-up">
-                    <img src="assets/reserva-finalizada/madre.jpg" alt="">
-                  </div>
-                  
-                </div>
-              </div>
-            </div>
-          </div> -->
-       <!--    <div class="box-info">
-
-            <h2 class="before">CONOCE NUESTROS PROGRAMAS MATERNOS</h2>
-            <P>Te ofrecemos programas que te acompañarán desde la etapa prenatal, durante y después del parto.</P>
-            <button [routerLink]="['/beneficios']" mat-raised-button color="primary">VER PROGRAMAS</button>
-            <span class="line"></span>
-          </div> -->
+    
         </div>
         <div *ngIf="preloader" style="    height: 81vh;
                         width: 100%;

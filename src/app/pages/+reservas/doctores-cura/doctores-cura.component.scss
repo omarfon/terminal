@@ -16,5 +16,16 @@
 }
 .aviva-cuida-section{
   background: #20668B;
-  height: 83vh!important;
+  min-height: 83vh!important;
+  height: auto!important;
+  padding-bottom: 20px!important;
+}
+
+.textoDias{
+  color:#fff;
+  margin-left:150px;
+  font-size:1.8em;
+  width:65%;
+  margin-top:150px;
+  font-weight: 400;
 }

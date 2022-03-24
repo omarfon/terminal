@@ -7,6 +7,7 @@ import { fadeIn } from 'src/app/shared/animations/animation';
 import { MatDialog } from '@angular/material';
 import { AuthService } from 'src/app/services/auth.service';
 import { CreateNoauthService } from './../../../services/create-noauth.service';
+import { ModalDetailDoctorsComponent } from 'src/app/modals/modal-detail-doctors/modal-detail-doctors.component';
 
 @Component({
   selector: 'app-doctores-cura',
@@ -143,10 +144,28 @@ export class DoctoresCuraComponent implements OnInit {
 
   // OPEN MODAL LOGIN
   openLogin(data): void {
+    const diallogRef = this.dialog.open(ModalDetailDoctorsComponent, {
+      data: {
+
+        page: 'aviva-cura',
+        infoDetails: data
+
+      },
+      width: 'auto'
+    });
+    diallogRef.afterClosed().subscribe(res => {
+
+    })
   }
 
   eliminarDiacriticos(texto) {
     return texto.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
   }
+
+  backLink(){
+    window.history.back();
+  }
+
+  
 
 }

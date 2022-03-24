@@ -8,11 +8,13 @@ import { MatDialog } from '@angular/material';
 import { AlertComponent } from 'src/app/shared/modal/alert/alert.component';
 import { CreateParentComponent } from 'src/app/shared/modal/create-parent/create-parent.component';
 import { DependensService } from 'src/app/services/dependens.service';
+import { CreateNoauthService } from './../../../services/create-noauth.service';
 
 @Component({
   selector: 'app-seguro-cura',
   templateUrl: './seguro-cura.component.html',
-  styleUrls: ['./seguro-cura.component.scss']
+  styleUrls: ['./seguro-cura.component.scss'],
+  animations: [fadeIn]
 })
 export class SeguroCuraComponent implements OnInit {
   @Input() page: string;
@@ -47,6 +49,7 @@ export class SeguroCuraComponent implements OnInit {
   public mode: any = 'indeterminate';
 
   showBoxRadio: boolean = false;
+  public dataPatientRegister;
 
   labelPosition;
   public price;
@@ -58,36 +61,58 @@ export class SeguroCuraComponent implements OnInit {
   public doctor;
   public subida;
   public prestacion;
-  public addFamily: boolean = false;
+  public addFamily: boolean = true;
   personOk: boolean = false;
   parents: Object;
   public items;
   reservaData: any;
   financerInter: any;
+  financerInterPlan: any;
   financerExter: any;
   financerPlanesBene: any;
   financerPlanesNoBene: any;
   appointmentId: any;
   appoiemendIdd: any;
+  public patientId;
   public appoinmentId: any;
+  public dataPaciente;
+  public dataPacienteRe;
+ 
   constructor(private router: Router,
     private reservasService: ReservasService,
     private dependensSrv: DependensService,
+    public createNoAuthSrv: CreateNoauthService,
     private auth: AuthService,
-    private dialog: MatDialog) { }
+    private dialog: MatDialog) { 
+     
+    }
 
   ngOnInit() {
-    this.getDependens(); 
+    this.addFamily = true;
+    
+    
     console.log('data guardada en reservaService:', this.reservasService.dataJson);
+    if(this.reservasService.dataPaciente){
+      this.dataPaciente = this.reservasService.dataPaciente[0];
+      console.log(this.dataPaciente);
+    }else{
+      this.dataPacienteRe = JSON.parse(localStorage.getItem('session'));
+      console.log(this.dataPaciente);
+    }
+    this.reservasService.patientId =this.dataPaciente.patientId;
+    console.log(this.reservasService.patientId)
+    this.getDependens(); 
     this.reservaData = this.reservasService.dataJson;
     this.reservasService._progressPage.next(this.progressPage);
+    const dataPatientRegister = localStorage.getItem('session');
+    this.dataPatientRegister = JSON.parse(dataPatientRegister);
   }
 
   getDependens() {
     this.dependensSrv.getdependesNoAutho().subscribe(data => {
       this.parents = data;
+      console.log(this.parents);
     });
-    console.log(this.parents);
   }
 
   changeState() {
@@ -137,7 +162,8 @@ export class SeguroCuraComponent implements OnInit {
         });
 
         this.dataPago = data;
-        this.financerInter = this.dataPago.filter(x => x.es_paquete_propio == 0 && x.es_plan_propio == 0 && x.siteds == 0);
+        this.financerInter = this.dataPago.filter(x => x.es_paquete_propio == 0 && x.es_plan_propio == 0 && x.siteds == 0 && x.plan_desc !== 'PROGRAMA VIVA +');
+      this.financerInterPlan = this.dataPago.filter(x => x.es_paquete_propio == 0 && x.es_plan_propio == 0 && x.siteds == 0 && x.plan_desc == 'PROGRAMA VIVA +');
         this.financerExter = this.dataPago.filter(x => x.es_paquete_propio == 0 && x.es_plan_propio == 0 && x.siteds == 1);
         this.financerPlanesBene = this.dataPago.filter(x => x.es_paquete_propio == 1 && x.es_plan_propio == 0 && x.siteds == 0 && x.beneficios.length > 0);
         this.financerPlanesNoBene = this.dataPago.filter(x => x.es_paquete_propio == 1 && x.es_plan_propio == 0 && x.siteds == 0 && x.beneficios.length == 0);
@@ -188,15 +214,22 @@ export class SeguroCuraComponent implements OnInit {
     console.log('this.depe:', this.depe);
     console.log('this.reservaData:', this.reservaData);
     let paciente_id = this.depe.patientId;
+    let paciente_idCreate = this.depe._id;
+    this.reservasService.parentId = paciente_id;
+    this.createNoAuthSrv.parentId = paciente_id;
+    this.reservasService.parentIdCreate = paciente_idCreate;
+    this.createNoAuthSrv.parentIdCreate = paciente_idCreate;
+    console.log(paciente_id);
     let servicio_id = this.reservaData.service.id;
     let medico_id = this.reservaData.professional.id;
     let available = moment(this.reservaData.appointmentDateTime).format('YYYY-MM-DD');
-    this.reservasService.getplanesContacto(paciente_id, servicio_id, this.prestacion, medico_id, available).subscribe((data: any) => {
+    this.reservasService.getplanesContactoNoAutho(paciente_id, servicio_id, this.prestacion, medico_id, available).subscribe((data: any) => {
       data.map(x => {
         data.prestación = this.prestacion;
       })
       this.dataPago = data;
-      this.financerInter = this.dataPago.filter(x => x.es_paquete_propio == 0 && x.es_plan_propio == 0 && x.siteds == 0);
+      this.financerInter = this.dataPago.filter(x => x.es_paquete_propio == 0 && x.es_plan_propio == 0 && x.siteds == 0 && x.plan_desc !== 'PROGRAMA VIVA +');
+      this.financerInterPlan = this.dataPago.filter(x => x.es_paquete_propio == 0 && x.es_plan_propio == 0 && x.siteds == 0 && x.plan_desc == 'PROGRAMA VIVA +');
       this.financerExter = this.dataPago.filter(x => x.es_paquete_propio == 0 && x.es_plan_propio == 0 && x.siteds == 1);
       this.financerPlanesBene = this.dataPago.filter(x => x.es_paquete_propio == 1 && x.es_plan_propio == 0 && x.siteds == 0 && x.beneficios.length > 0);
       this.financerPlanesNoBene = this.dataPago.filter(x => x.es_paquete_propio == 1 && x.es_plan_propio == 0 && x.siteds == 0 && x.beneficios.length == 0);
@@ -212,6 +245,9 @@ export class SeguroCuraComponent implements OnInit {
     this.reservasService.financiador = season.Financiador;
     this.reservasService.dataJson.payer = {id:season.codigo_garante_pk};
     this.reservasService.dataJson.plan = {id: season.plan_pk};
+    this.reservasService.provisionsId = season.precio[0].prest_item_pk;
+    this.createNoAuthSrv.provisionsId = season.precio[0].prest_item_pk;
+    this.reservasService.dataJson.provisions = season.precio[0].prest_item_pk;
     console.log('datos de: ', season,seasons,data,data2);
     if (this.reservasService.parent === true) {
       this.reservasService.parent = true;
@@ -223,11 +259,26 @@ export class SeguroCuraComponent implements OnInit {
     }
   }
 
-  selectCreate(season, seasons, data, data2){
+  selectCreate(season){
     this.reservasService.dataJson.payer = {id: season.codigo_garante_pk};
     this.reservasService.dataJson.plan = {id: season.plan_pk};
+    this.reservasService.financiador = "SEGURO"
     console.log('crear cita aqui');
-    this.payLocal();
+    /* this.payLocal(); */
+    this.router.navigate(['pago']);
+  }
+
+  selectCreateAviva(season){
+   /* this.reservasService.dataJson.payer = {id: season.codigo_garante_pk};
+    this.reservasService.dataJson.plan = {id: season.plan_pk};  */
+    this.reservasService.dataJson.payer = {id: 1};
+    this.reservasService.dataJson.plan = {id: 201}; 
+    this.createNoAuthSrv.provisionsId = season.precio[0].prest_item_pk;
+    this.reservasService.dataJson.provisions = season.precio[0].prest_item_pk;
+    this.reservasService.financiador = "VIVA+"
+    console.log('crear cita aqui');
+    /* this.payLocal(); */
+    this.router.navigate(['pago']);
   }
 
   payLocal() {
@@ -237,8 +288,6 @@ export class SeguroCuraComponent implements OnInit {
         this.appoinmentId = appointmentId;
         if (data.appointmentId) {
           const local = true;
-          this.seveServiceNodos(local);
-
         }
       }, (error: any) => {
         console.log(error.error.responseData.errorCode);
@@ -270,7 +319,6 @@ export class SeguroCuraComponent implements OnInit {
       this.appointmentId = this.currentAppointment.appoinmentId;
       if (data.appointmentId) {
         const local = true;
-        this.seveServiceNodos(local);
         /*  this.appoiemendIdd = data.appointmentId; */
       }
     }, error => {
@@ -281,41 +329,6 @@ export class SeguroCuraComponent implements OnInit {
       }
     })
 
-  }
-
-  seveServiceNodos(data) {
-    this.confirmCreate(this.appoinmentId);
-    console.log('data en el servicio de nodos:', data);
-    const dataLocalStorage = JSON.parse(localStorage.getItem('session'));
-    const jsonData = this.reservasService.dataJson;
-    console.log('jsonData:', jsonData);
-    const dataJson = {
-      userId: dataLocalStorage.patientId,
-      firstName: dataLocalStorage.name,
-      lastName: dataLocalStorage.surname1,
-      email: dataLocalStorage.userEmail,
-      telephone: dataLocalStorage.phone,
-      professionalName: jsonData.professional.fullName,
-      appointmentDate: jsonData.appointmentDateTime,
-      serviceName: jsonData.service.name,
-      isPaymentAtTheLocal: data,
-      payload: jsonData
-    }
-    console.log('dataJson', dataJson);
-    this.reservasService.saveCitaNod(dataJson).subscribe((data: any) => {
-      if (data.data.links[0].href) {
-        this.reservasService.urlPdfWhatssap = data.data.links[0].href
-        if (this.page === 'aviva-cura') {
-          this.router.navigate(['avivacura/reserva-finalizada']);
-        } else if (this.page === 'aviva-cuida') {
-          this.router.navigate(['avivacuida/reserva-finalizada']);
-        } else if (this.page === 'aviva-tele') {
-          this.router.navigate(['avivacuida/reserva-finalizada']);
-        } else {
-          this.router.navigate(['/reserva-finalizada']);
-        }
-      }
-    });
   }
 
   errorResponNotification(errorStatus) {

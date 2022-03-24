@@ -24,6 +24,7 @@ export class ReservasService {
   public dateCita;
   public parent;
   public parentId;
+  public parentIdCreate;
   public patientId;
   public infoCita;
   public idParent;
@@ -40,6 +41,11 @@ export class ReservasService {
   public priceReser: any = '';
   public provisions: any;
   private url = environment.urlBaseAlter;
+  public dataPaciente;
+  public dataPacienteReniec;
+  public sexoData;
+  public tipeDocumentService;
+  public relationsService;
 
   constructor(private Authservice: AuthService, private http: HttpClient) { }
 
@@ -102,11 +108,11 @@ export class ReservasService {
   }
 
   getPlansFinanciador(service_id, doctorId, fecha) {
-    const session = JSON.parse(localStorage.getItem('session'));
-    let headers = new HttpHeaders({ "Authorization": session.authorization });
+/*     const session = JSON.parse(localStorage.getItem('session'));
+    let headers = new HttpHeaders({ "Authorization": session.authorization }); */
 
     return this.http
-      .get(this.urlBase + 'api/v2/ebooking/planes-paciente-precio-prestacion?center_id=1&servicio_id=' + service_id + '&prestacion_id=' + this.provisionsId + '&medico_id=' + doctorId + '&fecha=' + fecha + ' ', {headers})
+      .get(this.urlBase + 'api/v2/ebooking/planes-paciente-precio-prestacionNoAutho?center_id=1&servicio_id=' + service_id + '&prestacion_id=' + this.provisionsId + '&medico_id=' + doctorId + '&fecha=' + fecha + '&patientId=' + this.patientId)
   }
 
   getplanesContacto(paciente_id, servicio_id, prestacion_id, medico_id, proposed_date) {
@@ -114,6 +120,17 @@ export class ReservasService {
     let headers = new HttpHeaders({ "Authorization": session.authorization });
 
     return this.http.get(this.urlBase + `api/v2/ebooking/planes-paciente-contacto-precio-prestacion?paciente_id=${paciente_id}&servicio_id=${servicio_id}&prestacion_id=${this.provisionsId}&medico_id=${medico_id}&fecha=${proposed_date}`, { headers }).pipe(
+      map(data => {
+        return data
+      })
+    )
+  }
+
+  getplanesContactoNoAutho(paciente_id, servicio_id, prestacion_id, medico_id, proposed_date) {
+   /*  const session = JSON.parse(localStorage.getItem('session'));
+    let headers = new HttpHeaders({ "Authorization": session.authorization }); */
+
+    return this.http.get(this.urlBase + `api/v2/ebooking/planes-paciente-contacto-precio-prestacionNoAutho?paciente_id=${paciente_id}&servicio_id=${servicio_id}&prestacion_id=${this.provisionsId}&medico_id=${medico_id}&fecha=${proposed_date}&contactId=${this.parentId}` ).pipe(
       map(data => {
         return data
       })
@@ -142,12 +159,21 @@ export class ReservasService {
     )
   }
 
-  createParent(data) {
+ /*  createParent(data) {
     const session = JSON.parse(localStorage.getItem('session'));
     let headers = new HttpHeaders({ "Authorization": session.authorization });
     let params = data;
 
     return this.http.post(this.urlBase + `api/v2/users/register-dependent/`, params, { headers }).pipe(
+      map((resp: any) => {
+        return resp;
+      })
+    )
+  } */
+  createParent(data) {
+    let params = data;
+
+    return this.http.post(this.urlBase + `api/v2/users/register-dependentNoAutho/${this.patientId}`, params).pipe(
       map((resp: any) => {
         return resp;
       })
@@ -164,8 +190,10 @@ export class ReservasService {
   }
 
   saveCitaNod(data) {
+    const authorization = localStorage.getItem('publicAutho');
+    let headers = new HttpHeaders({ "Authorization": authorization });
     return this.http
-      .post(this.urlBaseNodos + 'appointments/reserve', data)
+      .post(this.urlBaseNodos + 'appointments/reserve', data, {headers})
   }
 
   getPdf() {

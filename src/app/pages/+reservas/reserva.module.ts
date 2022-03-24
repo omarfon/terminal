@@ -31,6 +31,8 @@ import { PerfilComponent } from 'src/app/modals/perfil/perfil.component';
 import { ErrorRegisterComponent } from 'src/app/shared/modal/error-register/error-register.component';
 import { ErrorPaymentComponent } from 'src/app/shared/modal/error-payment/error-payment.component';
 import { SeguroCuraComponent } from './seguro-cura/seguro-cura.component';
+import { ModalDetailDoctorsComponent } from 'src/app/modals/modal-detail-doctors/modal-detail-doctors.component';
+import { TerminosComponent } from 'src/app/modals/terminos/terminos.component';
 
 
 const customLayouts: IKeyboardLayouts = {
@@ -71,9 +73,10 @@ const customLayouts: IKeyboardLayouts = {
   DoctoresCuraComponent,
   RegistroCuraComponent,
   SeguroCuraComponent,
+  TerminosComponent
   ],
   imports: [
-    CommonModule,
+CommonModule,
     ReservasRoutingModule,
     HttpClientModule,
     MatProgressSpinnerModule,
@@ -108,7 +111,8 @@ const customLayouts: IKeyboardLayouts = {
     AlertComponent,
     CreateParentComponent,
     ErrorPaymentComponent,
-/*     TerminosComponent, */
+    ModalDetailDoctorsComponent,
+    TerminosComponent
     
   ],
   providers:[

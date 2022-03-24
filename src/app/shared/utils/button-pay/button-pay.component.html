@@ -1,10 +1,8 @@
 
 <div>
-    <h2 [ngClass]="{'buttonCura': page === 'aviva-cura', 'buttonCuida': page === 'aviva-cuida'}">SELECCIONA TU FORMA DE
-      PAGO</h2>
+    <h2 [ngClass]="{'buttonCura': page === 'aviva-cura', 'buttonCuida': page === 'aviva-cuida'}">TERMINA LA RESERVA SELECCIONANDO EL BOTÓN, RESERVAR CITA</h2>
   <div class="container-boxes-seguro">
-      <button (click)="startPay()" color="primary" [id]="idLocal">EN
-        EL LOCAL</button>
+      <button (click)="startPay()" color="primary" [id]="idLocal" class="botonPagar">RESERVAR CITA</button>
        <!--  <button *ngIf="financiador !== 'PACIFICO EPS'" (click)="validateCita()" class="btnPago" color="primary" [id]="idTarjeta">CON TARJETA</button> -->
     </div>
   </div>
@@ -14,5 +12,5 @@
     </mat-progress-spinner>
     <br>
     <br>
-    <p class="text-small">Espere un momento por favor, estamos procesando su pago</p>
+    <p class="text-small">Espere un momento por favor, estamos procesando su reserva</p>
   </div>

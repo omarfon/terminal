@@ -10,8 +10,8 @@
               <div class="box-seguro box-header">
                 <!-- <p><span class="main-letter">Hola,</span> <br>en base al motivo de tu consulta, <span class="strong">escoge el servicio donde deseas ser atendido</span></p> -->
                 <p class="registra">Bienvenido(a)</p>
-                <div *ngIf="isUser()"><span class="main">{{user}}</span></div>
-        
+                <div><span class="main" *ngIf="dataPaciente">{{dataPaciente.nombres}} {{dataPaciente.apellido1}} {{dataPaciente.apellido2}}</span></div>
+                <div><span class="main" *ngIf="dataPacienteRe">{{dataPacienteRe.name}} {{dataPacienteRe.surname1}} {{dataPacienteRe.surname2}}</span></div>
                 <div class="vector-orange">
                   <div class="circle"></div>
                 </div>
@@ -21,34 +21,35 @@
               </div>
             </div>
         
-            <div class="col-12 col-lg-7 offset-lg-1">
+            <div class="col-12 col-lg-8 ">
               <section *ngIf="!preloader" class="content-box-info box-doctor box-seguro">
                 <div class="box-parent">
                   <div class="row">
                     <div class="col col-lg-12">
                       <h3>Escoge para quien es la cita?</h3>
                     </div>
-                    <div class="col-lg-4 offset-lg-1 botonesAdd">
+                    <div class="col-lg-6 botonesAdd">
                       <button class="btn btn-primary" (click)="passFinancer()">
                         PARA MI
                       </button>
                     </div>
-                    <div class="col-lg-4 offset-lg-1 botonesAdd">
+                    <div class="col-lg-6 botonesAdd">
                       <button class="btn btn-primary" (click)="openParents()">
                         PARA UN FAMILIAR
                       </button>
-                    </div>
-                    <div class="col-lg-12" *ngIf="addFamily">
-                      <div class="row">
-                        <div class="col-lg-3" *ngFor="let depe of parents">
-                          <button (click)="passFinancerParent(depe)" class="btn btn-light tarjetaDepes">
-                            <div class="row" no-padding no-margin>
-                              <h3 class="nombrePariente">{{depe.name}} {{depe.surname1}}</h3>
-                            </div>
-                          </button>
+                      <div class="col-lg-12" *ngIf="addFamily">
+                        <div class="row">
+                          <div class="col-lg-6" *ngFor="let depe of parents">
+                            <button (click)="passFinancerParent(depe)" class="btn btn-light tarjetaDepes">
+                              <div class="row" no-padding no-margin>
+                                <h3 class="nombrePariente">{{depe.name}} {{depe.surname1}}</h3>
+                              </div>
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>
+                    
                     <div class="col-lg-4 offset-lg-4" *ngIf="addFamily">
                       <button class="btn btn-rounded botonAgregar" (click)="createParent()">
                         Agregar Familiar
@@ -93,16 +94,25 @@
                               color="primary"
                               (change)="select(season, season.precio[0].total, season.precio, season.plan_pk)">
                               {{season.plan_desc}} <br>
-                              <span>precio: S/ {{season.precio[0].total}}
+                              <span >precio: S/ {{season.precio[0].total}}
                               </span>
                             </mat-radio-button>
                           </div>
         
-                          <div class="col-sm-12 col-md-12 col-lg-12">
+                        <!--   <div class="col-sm-12 col-md-12 col-lg-12">
                             <mat-radio-button *ngFor="let season of financerExter" id="{{'metodo-pago-'+season.trackingId}}"
-                              color="primary" (change)="select(season, season.precio[0].total, season.precio, season.plan_pk)">
+                              color="primary" (change)="selectCreate(season, season.plan_pk)">
                               {{season.Financiador}} <br>
                               <span>Pagarás el copago de tu aseguradora
+                              </span>
+                            </mat-radio-button>
+                          </div> -->
+                          <div class="col-sm-12 col-md-12 col-lg-12">
+                            <mat-radio-button *ngFor="let season of financerInterPlan" id="{{'metodo-pago-'+season.trackingId}}"
+                              color="primary"
+                              (change)="selectCreateAviva(season)">
+                              {{season.plan_desc}} <br>
+                              <span >precio: S/ 15.00
                               </span>
                             </mat-radio-button>
                           </div>
@@ -110,7 +120,7 @@
                           <div class="col-sm-12 col-md-12 col-lg-12">
                             <mat-radio-button *ngFor="let season of financerPlanesNoBene"
                               id="{{'metodo-pago-'+season.trackingId}}" color="primary"
-                              (change)="select(season, season.precio[0].total, season.precio, season.plan_pk)">
+                              (change)="selectCreate(season)">
                               {{season.plan_desc}} <br>
                               <span *ngIf="season.beneficios.length == 0">precio: S/ {{season.precio[0].total}}
                               </span>
@@ -128,6 +138,8 @@
                         </div>
                       </div>
                     </mat-radio-group>
+
+                    <p class="textoDiscalimerSeguro">Nota: Por ahora, si cuentas con seguro selecciona la opción particular. <br> Tu cobertura será según tu poliza de salud. <br> Para mayor información consultar con admisión</p> 
                   </section>
                 </div>
                 <div (click)="backLink()" class="button-back">

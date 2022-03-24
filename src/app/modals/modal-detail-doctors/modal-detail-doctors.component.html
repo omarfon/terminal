@@ -1,0 +1,23 @@
+<div class="close" (click)="onClickNo()"></div>
+      <!-- conent top -->
+      <div class="box-content-doctor-details-2">
+        <div class="box-info-data-2">
+          <div class="box-info-citas-details-img-2">
+            <img width="162" src="{{ urlBaseAlter + dataDoctor.info.imageUrl }}" alt="" />
+          </div>
+          <div class="box-info-citas-details-2">
+            <div class="citas-detail-title-2">
+              <p style="margin: 0px">{{dataDoctor.service.description}}</p>
+              <h4>DR(A). {{dataDoctor.fullName}}</h4>
+            </div>
+            <div class="citas-detail-university-2">
+              <p>CMP: {{dataDoctor.info.cmp ? dataDoctor.info.cmp : '--'}} <span>|</span> RNE: {{dataDoctor.info.rne ? dataDoctor.info.rne : '--'}}</p>
+              <span *ngIf="dataDoctor.info.almaMater">{{dataDoctor.info.almaMater}}</span>
+            </div>
+            <span class="line"></span>
+            <p><img width="15" src="assets/reserva-finalizada/sede2.svg" alt=""> <span style="margin-left: 7px;">Atiende en:</span></p>
+            <h5>Sede Mendiola</h5>
+          </div>
+        </div>
+      </div>
+      <!-- /content top -->

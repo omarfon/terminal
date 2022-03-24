@@ -41,7 +41,7 @@ h3 {
     font-size: 1em;
     text-transform: uppercase;
     color: #062F51;
-    background: transparent;
+    background: #fff;
     border: 2px solid #062F51;
     border-top-right-radius: 20px;
 }
@@ -95,4 +95,9 @@ mat-radio-button {
   .aviva-cuida-section{
     background: #20668B;
     height: 83vh!important;
+  }
+  .textoDiscalimerSeguro{
+      color: #062F51;
+      width:80%;
+      margin-left:30px;
   }

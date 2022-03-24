@@ -7,6 +7,9 @@ import { AuthService } from 'src/app/services/auth.service';
 import { AlertComponent } from '../../modal/alert/alert.component';
 import { ErrorPaymentComponent } from '../../modal/error-payment/error-payment.component';
 import { OkaComponent } from '../../modal/oka/oka.component';
+import { CreateNoauthService } from './../../../services/create-noauth.service';
+import { SaveDataCreateService } from './../../../services/save-data-create.service';
+import * as moment from 'moment';
 
 declare const window: any;
 @Component({
@@ -44,11 +47,14 @@ export class ButtonPayComponent implements OnInit {
   public parent;
   public typeCita;
   public financiador;
+  public patientId;
   public culqiApp: any = window.Culqi;
   constructor(public auth: AuthService,
     public dialog: MatDialog,
+    public createNoSrv: CreateNoauthService,
     private reservasService: ReservasService,
-    private router: Router) { }
+    private router: Router,
+    public saveDataSrv: SaveDataCreateService) { }
 
     public data_opciones = {
       lang: 'es',
@@ -61,6 +67,7 @@ export class ButtonPayComponent implements OnInit {
     }
     ngOnInit() {
       this.financiador = this.reservasService.financiador;
+      this.patientId = this.reservasService.patientId;
       console.log('this.financiador:',this.financiador);
       this.parent = this.reservasService.parent;
       console.log('this.parent en button culqi:', this.parent);
@@ -75,6 +82,7 @@ export class ButtonPayComponent implements OnInit {
       this.dataInfoPlansId = this.reservasService.dataPlansClienteId;
   
       const jsonData = this.reservasService.dataJson;
+      this.createNoSrv.dataJson = jsonData;
       console.log('buttons y jsonData:', jsonData);
       if (jsonData) {
         this.type = jsonData.visitType.name;
@@ -99,7 +107,7 @@ export class ButtonPayComponent implements OnInit {
         window.culqi = this.culqi.bind(this);
   
       } else {
-        this.router.navigate(['/'])
+        /* this.router.navigate(['/']) */
       }
   
     }
@@ -122,7 +130,6 @@ export class ButtonPayComponent implements OnInit {
           source_id: this.tokenCulqi
         }
         this.sendCharged(data).subscribe(data => {
-          // console.log(data)
           if (data.message === 'ok') {
             const local = false
             this.seveServiceNodos(local);
@@ -139,7 +146,6 @@ export class ButtonPayComponent implements OnInit {
                 message: 'Hubo un error con tu tarjeta a la hora del pago, consulta con tu banco. Tu cita no ha podido ser reservada, intenta nuevamente con la reserva'
               }
               this.openErrorData(data);
-              /* this.router.navigate(['reservas']); */
             } else {
               this.reservasService.delteCita(this.appoiemendIdd);
               this.loader = false;
@@ -241,39 +247,30 @@ export class ButtonPayComponent implements OnInit {
     startPay() {
       // EVENT PRELOADER
       this.loader = true;
-      // PAY IN LOCAL TRUE
       this.inLocalPay = true;
-      console.log(this.appoiemendIdd);
-      if (this.appoiemendIdd) {
-        this.reservasService.delteCita(this.appoiemendIdd).subscribe((data: any) => {
-          if (data) {
-            this.payLocal()
-          }
-        });
-      } else {
-        this.payLocal();
+      if(this.parent === true){
+        this.createParentNoAuth();
+      }else{
+        this.createNoAuth();
       }
     }
   
     payLocal() {
       if (this.parent == true) {
-        console.log('crear appointment para familiar');
+       /*  console.log('crear appointment para familiar');
         this.reservasService.createParentDate().subscribe((data: any) => {
           this.currentAppointment = data
           this.appoiemendIdd = data.appointmentId;
           const local = true;
-          /* this.seveServiceNodos(local); */
           this.router.navigate(['reserva-finalizada']);
           console.log('this.currentAppointment en creación parent:', this.currentAppointment);
-        })
+
+        }) */
+        this.createParentNoAuth();
       } else {
         this.reservasService.createAppoitment().subscribe((data: any) => {
           console.log('entro al pago de reserva')
-          if (data.appointmentId) {
-            const local = true;
-            /* this.seveServiceNodos(local); */
-            this.router.navigate(['reserva-finalizada']);
-          }
+          this.createNoAuth();
         }, (error: any) => {
           console.log(error.error.responseData.errorCode);
           if (error.error.status === 400) {
@@ -284,6 +281,37 @@ export class ButtonPayComponent implements OnInit {
       }
     }
   
+    createNoAuth(){
+      this.createNoSrv.createAppoitmentNoAutho(this.patientId).subscribe(data => {
+        this.currentAppointment = data;
+        this.seveServiceNodos(this.currentAppointment);
+        console.log('envío a modal o creación');
+        const local = true;
+        this.router.navigate(['reserva-finalizada']);
+        this.currentAppointment.app = "terminal";
+        this.currentAppointment.fechaCreate = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
+        this.currentAppointment.horaCreate = moment().format("h:mm:ss a");
+        this.saveDataSrv.saveDataCreate(this.currentAppointment).then(resp => {
+          console.log(resp)
+        })
+      })
+    }
+
+    createParentNoAuth(){
+      this.createNoSrv.createParentNoAutho().subscribe(data => {
+        this.currentAppointment = data
+        this.seveServiceNodos(this.currentAppointment);
+        const local = true;
+        this.router.navigate(['reserva-finalizada']);
+        this.currentAppointment.fechaCreate = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
+        this.currentAppointment.horaCreate = moment().format("h:mm:ss a");
+        this.currentAppointment.app = "terminal"
+        this.saveDataSrv.saveDataCreate(this.currentAppointment).then(resp => {
+          console.log(resp)
+        })
+      })
+    }
+
     checkStatus() {
       this.check = setInterval(() => {
         this.reservasService.chekstatusAppointment(this.appointmentId).subscribe(async (status: any) => {
@@ -393,27 +421,26 @@ export class ButtonPayComponent implements OnInit {
   
     seveServiceNodos(data) {
       console.log('data en el servicio de nodos:', data);
-      const dataLocalStorage = JSON.parse(localStorage.getItem('session'));
-      const jsonData = this.reservasService.dataJson;
-      console.log('jsonData:', jsonData);
+      const dataLocalStorage = data
+      console.log('jsonData:', dataLocalStorage);
       const dataJson = {
-        userId: dataLocalStorage.patientId,
-        firstName: dataLocalStorage.name,
-        lastName: dataLocalStorage.surname1,
-        email: dataLocalStorage.userEmail,
-        telephone: dataLocalStorage.phone,
-        professionalName: jsonData.professional.fullName,
-        appointmentDate: jsonData.appointmentDateTime,
-        serviceName: jsonData.service.name,
-        isPaymentAtTheLocal: data,
-        payload: jsonData
+        userId: dataLocalStorage.patient.id,
+        firstName: dataLocalStorage.patient.name,
+        lastName: dataLocalStorage.patient.surname1,
+        email: dataLocalStorage.patient.email,
+        telephone: dataLocalStorage.patient.phone,
+        professionalName: dataLocalStorage.professional.fullName,
+        appointmentDate: dataLocalStorage.appointmentDateTime,
+        serviceName: dataLocalStorage.service.name,
+        isPaymentAtTheLocal: true,
+        payload: dataLocalStorage
       }
       console.log('dataJson', dataJson);
       this.reservasService.saveCitaNod(dataJson).subscribe((data: any) => {
         if (data.data.links[0].href) {
           this.reservasService.urlPdfWhatssap = data.data.links[0].href
-            this.router.navigate(['reserva-finalizada']);
         }
+        console.log(data)
       });
     }
   

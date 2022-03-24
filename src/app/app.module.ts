@@ -40,6 +40,8 @@ import { environment } from 'src/environments/environment';
 import { AgradecimientoComponent } from './modals/agradecimiento/agradecimiento.component';
 import { InscripcionesComponent } from './pages/inscripciones/inscripciones.component';
 import {MatMenuModule} from '@angular/material/menu';
+import { ModalDetailDoctorsComponent } from './modals/modal-detail-doctors/modal-detail-doctors.component';
+import { ErrorCreateParentComponent } from './shared/modal/error-create-parent/error-create-parent.component';
 
 
 
@@ -96,6 +98,8 @@ const GUARDS_APLICATION = [
     InfoFormuComponent,
     AgradecimientoComponent,
     InscripcionesComponent,
+    ModalDetailDoctorsComponent,
+    ErrorCreateParentComponent,
   ],
   imports: [
     BrowserModule,
@@ -118,6 +122,6 @@ const GUARDS_APLICATION = [
     useValue: DEFAULT_SWIPER_CONFIG
   }],
   bootstrap: [AppComponent],
-  entryComponents: [MamappComponent, WawappComponent, GinecopediaComponent, PartoComponent, InfoFormuComponent, AgradecimientoComponent]
+  entryComponents: [MamappComponent, WawappComponent, GinecopediaComponent, PartoComponent, InfoFormuComponent, AgradecimientoComponent, ErrorCreateParentComponent]
 })
 export class AppModule { }

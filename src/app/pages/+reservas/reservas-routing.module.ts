@@ -87,7 +87,6 @@ const routes: Routes = [
   },
   {
     path: 'registro-cura',
-    canActivate: [desactivateUser],
     component: ReservasComponent,
     children: [{
       path: '', component: RegistroCuraComponent
@@ -105,7 +104,6 @@ const routes: Routes = [
   },
   {
     path: 'seguro',
-    canActivate: [UserGuard],
     component: ReservasComponent,
     children: [{
       path: '', component: SeguroComponent
@@ -114,7 +112,6 @@ const routes: Routes = [
   },
   {
     path: 'seguro-cura',
-    canActivate: [desactivateUser],
     component: ReservasComponent,
     children: [{
       path: '', component: SeguroCuraComponent
@@ -123,7 +120,6 @@ const routes: Routes = [
   },
   {
     path: 'avivacuida/pago',
-    canActivate: [desactivateUser],
     component: ReservasComponent,
     children: [{
       path: '', component: PagoComponent
@@ -132,7 +128,6 @@ const routes: Routes = [
   },
   {
     path: 'pago',
-    canActivate: [desactivateUser],
     component: ReservasComponent,
     children: [{
       path: '', component: PagoComponent

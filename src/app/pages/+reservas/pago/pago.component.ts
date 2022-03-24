@@ -45,7 +45,7 @@ export class PagoComponent implements OnInit {
       this.reservasService._progressPage.next(this.progressPage);
 
     } else {
-      this.router.navigate(['/'])
+      /* this.router.navigate(['/']) */
     }
 
   }

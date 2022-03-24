@@ -38,14 +38,14 @@ const routes: Routes = [
     component: AppLayoutReservasComponent,
     loadChildren: () => import('src/app/pages/+reservas/reserva.module').then(m => m.ReservaModule)
   },
-  {
+/*   {
     path: 'seguro-cura',
     component: ReservasComponent,
     children: [{
       path: '', component: SeguroCuraComponent
     }
     ]
-  },
+  }, */
 ];
 
 

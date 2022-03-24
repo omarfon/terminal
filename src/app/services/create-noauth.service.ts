@@ -1,6 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map} from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
+
 
 
 @Injectable({
@@ -14,18 +16,37 @@ export class CreateNoauthService {
   public dateCita;
   public parent;
   public parentId;
+  public parentIdCreate;
+  private SERVER = environment.url + `api/v2/`;
 
-  urlBase = "https://dappapache02.eastus.cloudapp.azure.com/middleware2/api/v2/ebooking/appointments/createNoAutho/"
+  urlBase = `${this.SERVER}ebooking/appointments/createNoAutho/`;
+  urlBaseParent = `${this.SERVER}ebooking/appointments/createforuserNoAutho/`
+  urlDatos = `${this.SERVER}ebooking/datos-pacienteNoAutho?patientId=`;
 
   constructor(public http: HttpClient) { }
 
 
   createAppoitmentNoAutho(idPatient) {
-    this.dataJson.provisions = [{ "default": false, "id": 44 }];
-    let params = {listJson:this.dataJson, patientId:idPatient};
-    let headers = {};
+    this.dataJson.provisions = [{ "default": false, "id": this.dataJson.provisions }];
+    
+    let params = {listJson:this.dataJson};
     return this.http
-      .post(this.urlBase , params, {headers}) ;
+      .post(this.urlBase + idPatient , params).pipe(
+        map(resp => {
+          return resp
+        })
+      ) ;
+  }
+
+  createParentNoAutho(){
+    this.dataJson.provisions = [{ "default": false, "id": this.dataJson.provisions }];
+    let params = {listJson:this.dataJson};
+    return this.http
+      .post(this.urlBaseParent + this.parentIdCreate , params).pipe(
+        map(resp => {
+          return resp
+        })
+      ) ;
   }
 
 
@@ -37,6 +58,14 @@ export class CreateNoauthService {
     this.dataJson.provisions = [{ "default": false, "id": this.provisionsId }];
 
     return this.http.post(this.urlBase + `api/v2/ebooking/appointments/createForUser/${this.parentId}`, params, { headers }).pipe(
+      map((resp: any) => {
+        return resp;
+      })
+    )
+  }
+
+  getDataPatient(id){
+    return this.http.get(this.urlDatos + id ).pipe(
       map((resp: any) => {
         return resp;
       })

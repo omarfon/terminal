@@ -50,6 +50,17 @@ export class RegisterService {
       }, {headers});
   }
 
+  sendCodeNew(email: string, dni: string) {
+    const session = JSON.parse(localStorage.getItem('session'));
+    let headers = new HttpHeaders({ "Authorization": session.authorization });
+    return this.http
+      .post(this.urlBase + 'api/v2/users/validateemail/register', {
+        "email": email,
+        "documentType": {id:1,name:"D.N.I"},
+        "documentNumber":dni
+      }, {headers});
+  }
+
   // REGISTER NEW USER WITH CODE
 
   registerNewUser(codeValida: any) {

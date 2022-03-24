@@ -8,8 +8,7 @@
             <div class="col-12 col-lg-4 padding">
               <div class="box-header">
                 <!-- <p><span class="main-letter">Hola,</span> <br>en base al motivo de tu consulta, <span class="strong">escoge el servicio donde deseas ser atendido</span></p> -->
-                <p class="docs">Para <span class="strong title-title">{{ speciallty }}</span> tenemos al siguiente personal
-                  disponible</p>
+                <p class="docs">Para <span class="strong title-title">{{ speciallty }}</span> tenemos los siguientes doctores(as) disponibles</p>
                 <div class="vector-orange">
                   <div class="circle"></div>
                 </div>
@@ -17,12 +16,13 @@
                   <div class="circle"></div>
                 </div>
               </div>
+              <h6 class="textoDias">La agenda disponible es para las siguientes dos semanas considerando desde el día de hoy.</h6>
             </div>
         
             <div class="col-12 col-lg-7 offset-lg-1">
               <section class="content-box-info box-doctor">
                 <div class="box-specialty">
-                  <h2>ELIGE A UN ESPECIALISTA Y UN HORARIO EN BASE A SU DISPONIBILIDAD</h2>
+                  <h2>ELIGE A TU ESPECIALISTA Y UN HORARIO EN BASE A TU DISPONIBILIDAD</h2>
                 </div>
                 <p *ngIf="preloader === false" class="text-small"><span class="strong">{{manyBoxes}} especialistas</span>
                   disponibles</p>
@@ -91,7 +91,7 @@
                   </div>
                 </div>
                 <!-- BOXES DOCTORS -->
-                <div routerLink="/reserva" class="button-back">
+                <div (click)="backLink()" class="button-back">
                   <img src="assets/img/sacar-cita/back-page.svg" alt="">
                 </div>
               </section>

@@ -1012,7 +1012,7 @@
   }
 }
 
-.registra {
+/* .registra {
   &:before {
     content: "04";
   }
@@ -1022,7 +1022,7 @@
   &:before {
     content: "03";
   }
-}
+} */
 
 .box-register {
   .content-box-info {
@@ -1085,7 +1085,7 @@
 .box-seguro {
   .registra {
     &:before {
-      content: "05";
+      /* content: "05"; */
     }
   }
 
@@ -1243,7 +1243,7 @@
 .box-pago {
   .registra {
     &:before {
-      content: "06";
+      /* content: "06"; */
     }
   }
 
@@ -1334,7 +1334,7 @@
 
 .aviva-cura {
   .box-header {
-    background-color: #006e67 !important;
+    /* background-color: #006e67 !important; */
 
     .content-logo {
       &:before {

@@ -39,7 +39,12 @@ export class ReservaFinalizadaComponent implements OnInit {
   ngOnInit() {
 
     const name = localStorage.getItem('session');
-    this.name = JSON.parse(name)
+    const nombre = JSON.parse(name);
+    if(nombre.name){
+      this.name = nombre.name;
+    }else{
+      this.name = nombre.nombre;
+    }
     this.preloader = true;
     if (this.reservasService.dataJson.length === 0) {
       this.router.navigate(['/'])
@@ -63,6 +68,6 @@ export class ReservaFinalizadaComponent implements OnInit {
   reservaFinalizada(){
     setTimeout(() => {
       this.router.navigate(['/'])
-    }, 8000);
+    }, 25000);
   }
 }

@@ -45,9 +45,7 @@ export class AvivacuraComponent implements OnInit {
     
     this.reservasService.getSpecialty()
     .subscribe((data: any) => {
-
       if(data){ this.preloader = false}
-
       this.dataSpecialtyCuida = data.centers[0].services.filter((element) =>{
         return element.block == 'cuida';
       })
@@ -55,16 +53,12 @@ export class AvivacuraComponent implements OnInit {
       this.dataSpecialtyCura = data.centers[0].services.filter((element) =>{
         return element.block == 'cura';
       })
-
-
-      this.dataSpecialty.forEach(element => {
-
+     /*  this.dataSpecialty.forEach(element => {
         element.trackingId = this.eliminarDiacriticos(element.description);
         element.trackingId = element.trackingId.split(" ").join("-");
         element.trackingId = element.trackingId.toLowerCase()
-         
-       });
-       console.log('especialidades:',this.dataSpecialty)
+        
+       }); */
     }, (error: any) => {
  
     })

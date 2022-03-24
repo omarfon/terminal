@@ -21,7 +21,9 @@ export class HomeComponent implements OnInit {
               public router: Router) { }
 
   ngOnInit() {
+    localStorage.clear();
     this.authSrv.getSesionPublic();
+    
   }
 
 

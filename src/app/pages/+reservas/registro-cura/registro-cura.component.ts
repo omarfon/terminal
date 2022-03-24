@@ -8,6 +8,11 @@ import { RegisterModalComponent } from 'src/app/shared/register-modal/register-m
 import { ReservasService } from '../reservas.service';
 import { CreateNoauthService } from './../../../services/create-noauth.service';
 import { DependensService } from 'src/app/services/dependens.service';
+import * as moment from 'moment';
+import { GetDataUserService } from 'src/app/services/get-data-user.service';
+import { AuthService } from './../../../shared/auth/auth.service';
+import { RegisterService } from './../../../shared/auth/+register/register.service';
+import { TerminosComponent } from './../../../modals/terminos/terminos.component';
 
 @Component({
   selector: 'app-registro-cura',
@@ -22,12 +27,20 @@ export class RegistroCuraComponent implements OnInit {
     pageDoctor : true
   }
 
+  public dataUser: any;
+  public dataReniec: any;
+
   dateCita;
   public dataResult;
    // NAME
    public name: string = '';
    public nameReadyValidate: boolean = false;
    public nameValidate: boolean;
+
+   //VALIDATE DNI
+   public valdni: string = '';
+   public valdniReadyValidate: boolean = false;
+   public valdniValidate: boolean = false;
  
    // LAST NAME
    public lastName: string = '';
@@ -75,7 +88,7 @@ export class RegistroCuraComponent implements OnInit {
    // PASSWORD
    public password = '';
    public passwordReadyValidate: boolean = false;
-   public passwordValidate: boolean = false;
+   public passwordValidate: boolean = true;
  
    // PASSWORD REPEAT
    public passwordRepeat: any = '';
@@ -101,6 +114,7 @@ export class RegistroCuraComponent implements OnInit {
    serviceError;
    public mailInvalid: boolean = false;
    public dniInvalid: boolean = false;
+   public tipeDocumentService;
  
    public mode: string = 'indeterminate'
    // EXPRESIONS REGULAR
@@ -110,17 +124,48 @@ export class RegistroCuraComponent implements OnInit {
    public ER_STR_MA: any = /[A-Z]/;
    public ER_EMA = /[\w-\.]{3,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
    public datDni;
+  numDoc: any;
+  dni: any;
+  public documentInvalid = false;
+  public preloader: boolean = false;
+  public jsonCita;
+  
 
   constructor(private reservasService : ReservasService, 
               public dialog: MatDialog,
               public router: Router,
               public createNoAuthoSrv: CreateNoauthService,
               public dataXhisSrv: DataPacienteService,
-              public dependentSrv: DependensService) { }
+              public gdus: GetDataUserService,
+              public dependentSrv: DependensService,
+              public authSrv: AuthService,
+              public registerService: RegisterService) { }
 
   ngOnInit() {
-   /*  this.dateCita = this.reservasService.dateCita; */
+   this.dateCita = this.reservasService.dateCita; 
+   console.log(this.dateCita);
+   this.jsonCita = JSON.parse(this.createNoAuthoSrv.dataJson);
+    console.log(this.jsonCita);
     this.reservasService._progressPage.next(this.progressPage);
+    this.authSrv.getSesionPublic();
+     if(localStorage.getItem('session')){
+       this.registerService.userGenders().subscribe(data => {
+         this.sexoData = data;
+         this.reservasService.sexoData = data;
+         console.log(this.sexoData)
+       }, error => {
+     });
+   
+     this.registerService.userDocuments().subscribe(data => {
+         this.tipeDocumentService = data;
+         this.reservasService.tipeDocumentService = data;
+       },error => {
+         console.log(error)
+       })
+     }
+     this.registerService.userRelations().subscribe(data => {
+        this.reservasService.relationsService = data
+     })
   }
 
   // OPEN MODAL LOGIN
@@ -150,6 +195,17 @@ export class RegistroCuraComponent implements OnInit {
   backLink(){
     window.history.back();
   }
+
+    //SELECT GENDER
+    selecGender(event:any) {
+      this.selectSexo = event.target.selectedOptions[0].textContent;
+      this.sexoID = event.target.value;
+      if (this.sexo != this.selectSexo) {
+        this.sexoValidate = true;
+      } else {
+        this.sexoValidate = false;
+      }
+    }
   
   onkeyValidateString(data: any): void {
     if (this.nameReadyValidate && data === this.name) {
@@ -214,6 +270,40 @@ export class RegistroCuraComponent implements OnInit {
     }
   }
 
+  validateBirthdate() {
+    const h = '/'
+    if (this.birthday.length === 2) {
+      this.birthday = this.birthday + h;
+    } else if (this.birthday.length === 5) {
+
+      this.birthday = this.birthday + h;
+    } else if (this.birthday.length > 5) {
+
+    }
+    if (this.birthdayReadyValidate === true) {
+
+      this.validateB();
+    }
+  }
+
+  // VALIDATE BIRTHDATE
+  validateB() {
+
+    let date = moment(this.birthday, 'DD-MM-YYYY').isValid();
+    if (this.birthday.length === 10) {
+      if (date) {
+        this.birthdayValidate = true;
+        this.birthdayReadyValidate = true;
+      } else {
+        this.birthdayValidate = false;
+        this.birthdayReadyValidate = true;
+      }
+    } else {
+      this.birthdayValidate = false;
+    }
+  }
+
+
   blurValidateString(data: any): void {
 
     if (data === this.name) {
@@ -272,14 +362,69 @@ export class RegistroCuraComponent implements OnInit {
   }
 
   getDataDni(){
+    this.preloader = true;
     this.dataXhisSrv.getDataXhis(1, this.documentNumber).subscribe(data => {
       this.dataResult = data;
-      this.dependentSrv.patientId = data[0].patientId;
+      if(this.dataResult){
+        this.name = this.dataResult[0].nombres;
+        this.lastName = this.dataResult[0].apellido1;
+        this.lastNameMaterno = this.dataResult[0].apellido2;
+        this.lastNameMaterno = this.dataResult[0].apellido2;
+        this.sexo = this.dataResult[0].desSex;
+        this.email = this.dataResult[0].email;
+        this.phoneNumber = this.dataResult[0].telefono;
+        this.numDoc = this.dataResult[0].numDoc;
+        this.birthday = moment(this.dataResult[0].fecNac).format('d/MM/yyyy');
+      }
+      this.reservasService.patientId = data[0].patientId;
+      this.createNoAuthoSrv.getDataPatient(data[0].patientId).subscribe(data =>{
+        const session = data;
+        console.log('session en getDataDni', JSON.stringify(session));
+        localStorage.setItem('session', JSON.stringify(session));
+      })
+      this.reservasService.dataPaciente = data;
       console.log(this.dataResult);
       this.router.navigate(['seguro-cura']);
+      this.preloader = false;
     }, err =>{
-      console.log(err)
+      console.log(err);
+      this.searchDniReniec();
     })
+  }
+
+  searchDniReniec(){
+    this.gdus.getPublicKey(this.documentNumber).subscribe((data:any) => {
+      if(data.success == false){
+        this.preloader = false;
+        this.dniInvalid = true;
+      }else{
+        this.dataReniec = data.data;
+        this.reservasService.dataPacienteReniec = this.dataReniec;
+        console.log(this.dataReniec);
+        this.name = this.dataReniec.nombres;
+          this.lastName = this.dataReniec.apellido_paterno;
+          this.lastNameMaterno = this.dataReniec.apellido_materno;
+         /*  this.sexo = this.dataUser[0].desSex;
+          this.email = this.dataUser[0].email;
+          this.phoneNumber = this.dataUser[0].telefono; 
+          this.numDoc = this.dni; */
+          this.preloader = false;
+          this.activate = true;
+        console.log(this.dataReniec);
+      }
+  }, err => {
+    this.dniInvalid = true;
+    this.preloader = false;
+    console.log(err)
+  })
+  }
+
+  validateAllInputs(): boolean {
+    if (this.documentValidate && this.birthdayValidate && this.phoneValidate && this.emailValidate && this.checked && this.passwordValidate && this.sexoValidate) {
+      return false;
+    } else {
+      return true;
+    }
   }
 
   createNoAuth(){
@@ -289,6 +434,17 @@ export class RegistroCuraComponent implements OnInit {
     })
   }
 
+  validatePass() {
+    this.validateLen();
+    if (this.mayor) {
+      this.passwordValidate = true;
+      this.activeRepeat = false; 
+    } else {
+      this.passwordValidate = false;
+      this.activeRepeat = true;
+    }
+}
+
   validateDni(){
     const patientId = this.dataResult[0].patientId;
     this.dataXhisSrv.getTypesDocument(patientId).subscribe(data => {
@@ -296,5 +452,91 @@ export class RegistroCuraComponent implements OnInit {
     })
   }
 
+  onValidateDni(event){
+    console.log(event);
+  }
+
+  sendData(){
+    if(this.dataUser){
+      console.log('enviarData', this.dataUser);
+    }else{
+      console.log('')
+    }
+  }
+
+  //GET CODE
+  getCode(email: any) {
+    this.loaderSession = true;
+    this.registerService.sendCodeNew(this.email, this.documentNumber)
+      .subscribe((data: any) => {
+        if (data.result === 'ok') {
+          const newFecha = this.birthday.split('/');
+          const newFechaFormat: string = newFecha[2] + '-' + newFecha[1] + '-' + newFecha[0];
+          this.idCode = data.id;
+          this.registerService.data = {
+            email: this.email,
+            password: this.password,
+            name: this.name,
+            surname1: this.lastName,
+            surname2: this.lastNameMaterno,
+            birthdate: newFechaFormat,
+            gender: {
+              id: this.sexoID,
+              name: this.selectSexo
+            },
+            documentType: {
+              id: 1,
+              name: "D.N.I"
+            },
+            documentNumber: this.documentNumber,
+            phone: this.phoneNumber,
+            code: 1234,
+            id: this.idCode
+          }
+          const code = 1234;
+          this.registerService.registerNewUser(code).subscribe((data:any) => {
+            this.router.navigate(['seguro-cura']);
+            localStorage.setItem('session', JSON.stringify(data));
+            this.reservasService.patientId = data.patientId;
+          }, err => {
+            if (err.error.result === 'error') {
+              if(err.message = "Ya tienes usuario web"){
+                this.documentInvalid = true;
+                this.loaderSession = false;
+              }else{
+                this.mailInvalid = true;
+                this.loaderSession = false;
+              }
+          }
+          this.loaderSession = false;
+          })
+        }
+      }, error => {
+        if (error.error.result === 'error') {
+            if(error.message = "Ya tienes usuario web"){
+              this.documentInvalid = true;
+              this.loaderSession = false;
+            }else{
+              this.mailInvalid = true;
+              this.loaderSession = false;
+            }
+        }
+        this.loaderSession = false;
+      })
+  }
+
+  backButton(){
+    window.history.back();
+  }
+
+  terminos(){
+    const diallogRef = this.dialog.open(TerminosComponent, {
+      data: 'aviva-cura'
+    });
+    diallogRef.afterClosed().subscribe(res => {
+      console.log('cerrando login');
+
+    })
+  }
 
 }

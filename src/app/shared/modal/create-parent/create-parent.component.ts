@@ -1,11 +1,13 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Router } from '@angular/router';
 import { ReservasService } from 'src/app/pages/+reservas/reservas.service';
 import { AuthService } from 'src/app/services/auth.service';
 import * as moment from 'moment';
 import { RegisterService } from '../../auth/+register/register.service';
 import { DependensService } from 'src/app/services/dependens.service';
+import { ErrorRegisterComponent } from './../error-register/error-register.component';
+import { ErrorCreateParentComponent } from './../error-create-parent/error-create-parent.component';
 
 @Component({
   selector: 'app-create-parent',
@@ -114,51 +116,18 @@ export class CreateParentComponent implements OnInit {
     public dialogRed: MatDialogRef<CreateParentComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     public AuthService: AuthService,
+    public dialog:MatDialog,
     public router: Router) { }
 
     ngOnInit() {
-      /* if (this.message === 'aviva-cuida') {
-  
-        document.querySelectorAll('body')[0].classList.add('aviva-cuida-modal');
-        document.querySelectorAll('body')[0].classList.remove('aviva-cura-modal');
-        document.querySelectorAll('body')[0].classList.remove('aviva-home');
-      } else if (this.message === 'home' || this.message === 'reserva-doctor') {
-        document.querySelectorAll('body')[0].classList.remove('aviva-cura-modal');
-        document.querySelectorAll('body')[0].classList.remove('aviva-cuida-modal');
-        document.querySelectorAll('body')[0].classList.add('aviva-home');
-      } else if (this.message === 'aviva-cura') {
-        document.querySelectorAll('body')[0].classList.add('aviva-cura-modal');
-        document.querySelectorAll('body')[0].classList.remove('aviva-cuida-modal');
-        document.querySelectorAll('body')[0].classList.remove('aviva-home');
-      }
-      else if (this.message === 'aviva-tele') {
-        document.querySelectorAll('body')[0].classList.add('aviva-tele-modal');
-        document.querySelectorAll('body')[0].classList.remove('aviva-tele-modal');
-        document.querySelectorAll('body')[0].classList.remove('aviva-home');
-      } */
       this.passwordValidate = false;
   
-      this.RegisterService.userGenders()
-        .subscribe(data => {
-          this.sexoData = data;
+     
+      this.sexoData = this.reservaSrv.sexoData;
+      this.tipeDocumentService = this.reservaSrv.tipeDocumentService;
+      this.relationsService = this.reservaSrv.relationsService;
   
-        }, error => {
-        });
-  
-      this.RegisterService.userDocuments()
-        .subscribe(data => {
-          this.tipeDocumentService = data;
-        }, error => {
-  
-        })
-  
-      this.RegisterService.userRelations()
-        .subscribe(data => {
-          this.relationsService = data;
-          console.log('relaciones:', this.relationsService);
-        }, error => {
-  
-        })
+
     }
   
     //SELECT GENDER
@@ -342,17 +311,16 @@ export class CreateParentComponent implements OnInit {
       this.reservaSrv.createParent(data).subscribe((datos: any) => {
         this.loaderSession = false;
         if (datos.result === 'ok') {
-          this.dependensSrv.getDependens().subscribe(data => {
+          this.dependensSrv.getdependesNoAuthoParent().subscribe(data => {
             this.dialogRed.close({ data: data });
           })
         }
       }, error => {
-        /*       this.dialogRed.close(); */
+        this.dialogRed.close();
+        this.dialog.open(ErrorCreateParentComponent)
         console.log('error', error);
       })
     }
-  
-  
   
     backLink() {
       window.history.back();
