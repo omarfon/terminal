@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
+import { LOCALE_ID, NgModule} from '@angular/core';
 import { APP_ROUTING } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MamappComponent } from './pages/mamapp/mamapp.component';
@@ -42,6 +41,10 @@ import { InscripcionesComponent } from './pages/inscripciones/inscripciones.comp
 import {MatMenuModule} from '@angular/material/menu';
 import { ModalDetailDoctorsComponent } from './modals/modal-detail-doctors/modal-detail-doctors.component';
 import { ErrorCreateParentComponent } from './shared/modal/error-create-parent/error-create-parent.component';
+
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es';
+registerLocaleData(localeEs, 'es');
 
 
 
@@ -117,7 +120,9 @@ const GUARDS_APLICATION = [
     AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
-  providers: [{
+  providers: [
+    {provide:LOCALE_ID,useValue:'es'},
+    {
     provide: SWIPER_CONFIG,
     useValue: DEFAULT_SWIPER_CONFIG
   }],

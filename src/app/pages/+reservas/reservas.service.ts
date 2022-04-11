@@ -75,6 +75,21 @@ export class ReservasService {
       .get(this.urlBase + 'api/v2/ebooking/fmt-centers/1/services/' + params + '/professionals/all/availables?from_date=' + date1 + '&to_date=' + date2, {headers});
   }
 
+  getDoctorsSpecialtyBD(params: any) {
+    const session = JSON.parse(localStorage.getItem('session'));
+    let headers = new HttpHeaders({ "Authorization": session.authorization });
+    return this.http
+      .get(this.urlBase + 'api/v2/ebooking/fmt-centers/1/basicservices/' + params + '/professionals/1/info-for-availables-kiosko', {headers});
+  }
+
+  getDoctorsSlotsPerDay(data: any) {
+    const session = JSON.parse(localStorage.getItem('session'));
+    let headers = new HttpHeaders({ "Authorization": session.authorization });
+    let params = data;
+    return this.http
+      .post(this.urlBase + 'api/v2/ebooking/slots/availables-extra', params, {headers});
+  }
+
   createAppoitment() {
     const session = JSON.parse(localStorage.getItem('session'));
     let headers = new HttpHeaders({ "Authorization": session.authorization });
